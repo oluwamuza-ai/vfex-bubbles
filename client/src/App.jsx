@@ -35,7 +35,7 @@ function App() {
 
   useEffect(() => {
     setSelectedCompany(null);
-    fetch(`http://localhost:5000/api/signals?market=${market}&range=${bubbleRange}`)
+    fetch(`/api/signals?market=${market}&range=${bubbleRange}`)
       .then((res) => res.json())
       .then((data) => {
         setSignals(Array.isArray(data) ? data : []);
@@ -74,7 +74,7 @@ function App() {
     }
 
     setHistoryLoading(true);
-    fetch(`http://localhost:5000/api/history?ticker=${encodeURIComponent(selectedCompany.ticker)}&range=${historyRange}&market=${market}`)
+    fetch(`/api/history?ticker=${encodeURIComponent(selectedCompany.ticker)}&range=${historyRange}&market=${market}`)
       .then((res) => res.json())
       .then((data) => setHistoryData(Array.isArray(data) ? data : []))
       .catch(() => setHistoryData([]))
