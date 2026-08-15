@@ -5,7 +5,8 @@
     "change": 9.27,
     "closingPrice": 1500,
     "marketCap": 1871220000,
-    "estimated": false
+    "estimated": false,
+    "logoUrl": "/logos/zse/AFDS.png"
   },
   {
     "ticker": "ARTD.ZW",
@@ -13,7 +14,8 @@
     "change": 0,
     "closingPrice": 22,
     "marketCap": 96140000,
-    "estimated": false
+    "estimated": false,
+    "logoUrl": "/logos/zse/ARTD.png"
   },
   {
     "ticker": "ARIS.ZW",
@@ -29,7 +31,8 @@
     "change": 0,
     "closingPrice": 18989,
     "marketCap": 3918100000,
-    "estimated": false
+    "estimated": false,
+    "logoUrl": "/logos/zse/BAT.png"
   },
   {
     "ticker": "CAFCA.ZW",
@@ -37,7 +40,8 @@
     "change": 0,
     "closingPrice": 1900,
     "marketCap": 165970000,
-    "estimated": false
+    "estimated": false,
+    "logoUrl": "/logos/zse/CAFCA.png"
   },
   {
     "ticker": "CBZ.ZW",
@@ -45,7 +49,8 @@
     "change": 0.15,
     "closingPrice": 4050,
     "marketCap": 21167790000,
-    "estimated": false
+    "estimated": false,
+    "logoUrl": "/logos/zse/CBZ.png"
   },
   {
     "ticker": "CFI.ZW",
@@ -53,7 +58,8 @@
     "change": 0,
     "closingPrice": 600,
     "marketCap": 636250000,
-    "estimated": false
+    "estimated": false,
+    "logoUrl": "/logos/zse/CFI.png"
   },
   {
     "ticker": "DZL.ZW",
@@ -61,7 +67,8 @@
     "change": -10.85,
     "closingPrice": 543.66,
     "marketCap": 2041410000,
-    "estimated": false
+    "estimated": false,
+    "logoUrl": "/logos/zse/DZL.png"
   },
   {
     "ticker": "DLTA.ZW",
@@ -69,7 +76,8 @@
     "change": 0.18,
     "closingPrice": 3350,
     "marketCap": 42763840000,
-    "estimated": false
+    "estimated": false,
+    "logoUrl": "/logos/zse/DLTA.png"
   },
   {
     "ticker": "FBC.ZW",
@@ -77,7 +85,8 @@
     "change": 0,
     "closingPrice": 1350,
     "marketCap": 40394200000,
-    "estimated": false
+    "estimated": false,
+    "logoUrl": "/logos/zse/FBC.png"
   },
   {
     "ticker": "FIDL.ZW",
@@ -85,7 +94,8 @@
     "change": 0,
     "closingPrice": 80.5,
     "marketCap": 540920000,
-    "estimated": false
+    "estimated": false,
+    "logoUrl": "/logos/zse/FIDL.png"
   },
   {
     "ticker": "FML.ZW",
@@ -93,7 +103,8 @@
     "change": 0,
     "closingPrice": 334.7088,
     "marketCap": 364580000,
-    "estimated": false
+    "estimated": false,
+    "logoUrl": "/logos/zse/FML.png"
   },
   {
     "ticker": "GBH.ZW",
@@ -101,7 +112,8 @@
     "change": -1.98,
     "closingPrice": 12.35,
     "marketCap": 85230000,
-    "estimated": false
+    "estimated": false,
+    "logoUrl": "/logos/zse/GBH.png"
   },
   {
     "ticker": "HIPO.ZW",
@@ -117,7 +129,8 @@
     "change": 0,
     "closingPrice": 180,
     "marketCap": 965860000,
-    "estimated": false
+    "estimated": false,
+    "logoUrl": "/logos/zse/MASH.png"
   },
   {
     "ticker": "MSHL.ZW",
@@ -125,7 +138,8 @@
     "change": 0,
     "closingPrice": 257,
     "marketCap": 496060000,
-    "estimated": false
+    "estimated": false,
+    "logoUrl": "/logos/zse/MSHL.png"
   },
   {
     "ticker": "MEIK.ZW",
@@ -133,7 +147,8 @@
     "change": 0,
     "closingPrice": 290,
     "marketCap": 4893990000,
-    "estimated": false
+    "estimated": false,
+    "logoUrl": "/logos/zse/MEIK.png"
   },
   {
     "ticker": "NPKZ.ZW",
@@ -149,7 +164,8 @@
     "change": 0,
     "closingPrice": 560,
     "marketCap": 1434440000,
-    "estimated": false
+    "estimated": false,
+    "logoUrl": "/logos/zse/NMB.png"
   },
   {
     "ticker": "PROL.ZW",
@@ -165,7 +181,8 @@
     "change": 6.4,
     "closingPrice": 150.05,
     "marketCap": 391310000,
-    "estimated": false
+    "estimated": false,
+    "logoUrl": "/logos/zse/RTG.png"
   },
   {
     "ticker": "RIOZ.ZW",
@@ -173,7 +190,8 @@
     "change": 0,
     "closingPrice": 85,
     "marketCap": 343550000,
-    "estimated": false
+    "estimated": false,
+    "logoUrl": "/logos/zse/RIOZ.png"
   },
   {
     "ticker": "SEED.ZW",
@@ -190,7 +208,8 @@
     "change": -2.3,
     "closingPrice": 3.89,
     "marketCap": 10120000,
-    "estimated": false
+    "estimated": false,
+    "logoUrl": "/logos/zse/SACL.png"
   },
   {
     "ticker": "TANG.ZW",
@@ -198,7 +217,8 @@
     "change": 0,
     "closingPrice": 328.4923,
     "marketCap": 8197510000,
-    "estimated": false
+    "estimated": false,
+    "logoUrl": "/logos/zse/TANG.png"
   },
   {
     "ticker": "TNCI.ZW",
@@ -206,7 +226,8 @@
     "change": 9.11,
     "closingPrice": 31.05,
     "marketCap": 40010000,
-    "estimated": false
+    "estimated": false,
+    "logoUrl": "/logos/zse/TNCI.png"
   },
   {
     "ticker": "TURN.ZW",
@@ -246,7 +267,8 @@
     "change": 0,
     "closingPrice": 0.0018,
     "marketCap": 10000,
-    "estimated": false
+    "estimated": false,
+    "logoUrl": "/logos/zse/ZECO.png"
   },
   {
     "ticker": "ZIMP.ZW",
@@ -254,7 +276,8 @@
     "change": 0,
     "closingPrice": 8,
     "marketCap": 345260000,
-    "estimated": false
+    "estimated": false,
+    "logoUrl": "/logos/zse/ZIMP.png"
   },
   {
     "ticker": "ZSEH.ZW",
@@ -262,7 +285,8 @@
     "change": -10,
     "closingPrice": 135,
     "marketCap": 143740000,
-    "estimated": false
+    "estimated": false,
+    "logoUrl": "/logos/zse/ZSEH.webp"
   },
   {
     "ticker": "ZIMR.ZW",
@@ -270,6 +294,7 @@
     "change": -4.48,
     "closingPrice": 89,
     "marketCap": 1582420000,
-    "estimated": false
+    "estimated": false,
+    "logoUrl": "/logos/zse/ZIMR.png"
   }
 ]

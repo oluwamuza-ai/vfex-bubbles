@@ -143,16 +143,32 @@ function slugTicker(name, suffix) {
   return `${firstWord.toUpperCase().slice(0, 5)}.${suffix}`;
 }
 
-// Preserves ticker + logoUrl from the existing data file, matched by
-// company name, so re-running this daily never makes you re-map tickers
-// or re-source logos for companies you've already set up.
+// MMC's own source PDFs aren't perfectly consistent — the same company can
+// appear as "... Holdings Limited" in one day's PDF and "... Holdings Ltd"
+// in another (confirmed in testing). An exact-string name match would
+// treat those as two different companies, silently dropping the ticker
+// and logoUrl you'd already set up. Stripping common corporate-suffix
+// words and punctuation down to a compact core key makes matching robust
+// to this — same approach used in batch-import-history.js.
+function normalizeNameKey(name) {
+  return name
+    .toLowerCase()
+    .replace(/\bdepository receipts\b/g, '')
+    .replace(/\b(limited|ltd|plc|holdings|corporation|corp|company|co|vx|zdrs|zimbabwe)\b/g, '')
+    .replace(/[^a-z0-9]/g, '')
+    .trim();
+}
+
+// Preserves ticker + logoUrl from the existing data file, matched by a
+// normalized company name, so re-running this daily never makes you
+// re-map tickers or re-source logos for companies you've already set up.
 function loadExistingLookup(dataFile) {
   if (!fs.existsSync(dataFile)) return {};
   try {
     const existing = JSON.parse(fs.readFileSync(dataFile, 'utf8'));
     const lookup = {};
     for (const record of existing) {
-      const key = record.name.toLowerCase();
+      const key = normalizeNameKey(record.name);
       lookup[key] = { ticker: record.ticker, logoUrl: record.logoUrl };
     }
     return lookup;
@@ -170,7 +186,7 @@ function buildRecords(parsedRows, dataFile, tickerSuffix) {
   );
 
   const records = parsedRows.map((row) => {
-    const existing = lookup[row.name.toLowerCase()];
+    const existing = lookup[normalizeNameKey(row.name)];
 
     let ticker = existing?.ticker;
     if (!ticker) {

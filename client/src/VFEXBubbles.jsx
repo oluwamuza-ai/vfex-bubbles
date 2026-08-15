@@ -533,7 +533,7 @@ export default function VFEXBubbles({ data = defaultData, onBubbleSelect, sizeBy
         ref={hostRef}
         style={{
           position: 'relative',
-          height: 'clamp(300px, 64vh, 760px)',
+          height: 'clamp(380px, 82vh, 900px)',
           overflow: 'hidden',
           background: CHART.background,
           border: '1px solid #242424',
@@ -548,34 +548,6 @@ export default function VFEXBubbles({ data = defaultData, onBubbleSelect, sizeBy
           aria-label="Interactive market bubble chart"
           style={{ display: 'block', width: '100%', height: '100%', touchAction: 'manipulation' }}
         />
-      </div>
-
-      <div style={{ marginTop: '14px', borderRadius: '12px', padding: '14px 16px', background: '#171717', border: '1px solid #2b2b2b' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
-          <div>
-            <div style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.2em', color: '#9a9a9a' }}>selected</div>
-            <div style={{ fontSize: '18px', fontWeight: 700 }}>{selected ? `${selected.ticker} - ${selected.name}` : 'Select a bubble'}</div>
-          </div>
-          <div style={{ textAlign: 'right' }}>
-            <div style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.2em', color: '#9a9a9a' }}>change</div>
-            <div style={{ fontSize: '18px', fontWeight: 700, color: colorForChange(selected?.change || 0) }}>
-              {formatChange(selected?.change || 0)}
-            </div>
-          </div>
-        </div>
-        <div style={{ marginTop: '10px', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-          <span style={{ padding: '6px 10px', borderRadius: '999px', background: '#252525', fontSize: '12px' }}>
-            Market cap {formatMarketCap(selected?.marketCap || 0)}
-          </span>
-          <span style={{ padding: '6px 10px', borderRadius: '999px', background: '#252525', fontSize: '12px' }}>
-            Close ${selected?.closingPrice || 0}
-          </span>
-          {selected?.estimated && (
-            <span style={{ padding: '6px 10px', borderRadius: '999px', background: 'rgba(234, 179, 8, 0.18)', color: '#fde68a', fontSize: '12px' }}>
-              Estimated cap (no shares-in-issue on file)
-            </span>
-          )}
-        </div>
       </div>
     </section>
   );

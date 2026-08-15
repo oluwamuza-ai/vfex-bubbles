@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
-  <rect width="256" height="256" rx="48" fill="#f43f5e"/>
-  <rect x="24" y="24" width="208" height="208" rx="36" fill="#0f172a" opacity="0.92"/>
-  <circle cx="128" cy="128" r="80" fill="none" stroke="#f8fafc" stroke-width="12" opacity="0.9"/>
-  <text x="128" y="142" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="700" fill="#f8fafc">ZIMP</text>
-</svg>

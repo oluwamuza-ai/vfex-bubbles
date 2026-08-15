@@ -35,7 +35,7 @@ function App() {
 
   useEffect(() => {
     setSelectedCompany(null);
-    fetch(`/api/signals?market=${market}&range=${bubbleRange}`)
+    fetch(`http://localhost:5000/api/signals?market=${market}&range=${bubbleRange}`)
       .then((res) => res.json())
       .then((data) => {
         setSignals(Array.isArray(data) ? data : []);
@@ -74,7 +74,7 @@ function App() {
     }
 
     setHistoryLoading(true);
-    fetch(`/api/history?ticker=${encodeURIComponent(selectedCompany.ticker)}&range=${historyRange}&market=${market}`)
+    fetch(`http://localhost:5000/api/history?ticker=${encodeURIComponent(selectedCompany.ticker)}&range=${historyRange}&market=${market}`)
       .then((res) => res.json())
       .then((data) => setHistoryData(Array.isArray(data) ? data : []))
       .catch(() => setHistoryData([]))
@@ -90,9 +90,73 @@ function App() {
 
   return (
     <div className="app-shell">
-      <header className="hero-panel" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px', flexWrap: 'wrap', margin: 0, borderBottom: '1px solid #242424', borderRadius: '0 0 0 0', padding: '18px 24px' }}>
-        <div>
+      <header
+        className="hero-panel"
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: '16px',
+          flexWrap: 'wrap',
+          margin: '0 calc(-50vw + 50%)',
+          width: '100vw',
+          borderBottom: '1px solid #242424',
+          borderRadius: 0,
+          padding: '18px 24px',
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
           <h1 style={{ margin: 0 }}>{market === 'zse' ? 'ZSE Bubbles' : 'VFEX Bubbles'}</h1>
+
+          <div style={{ display: 'inline-flex', gap: '6px', background: '#171717', border: '1px solid #2b2b2b', borderRadius: '999px', padding: '4px' }}>
+            {[
+              { key: 'daily', label: '1D' },
+              { key: 'week', label: '1W' },
+              { key: 'month', label: '1M' },
+            ].map((option) => (
+              <button
+                key={option.key}
+                onClick={() => setBubbleRange(option.key)}
+                style={{
+                  padding: '6px 14px',
+                  borderRadius: '999px',
+                  border: 'none',
+                  background: bubbleRange === option.key ? '#2b2b2b' : 'transparent',
+                  color: bubbleRange === option.key ? '#f7f7f7' : '#9a9a9a',
+                  fontSize: '12px',
+                  fontWeight: bubbleRange === option.key ? 700 : 400,
+                  cursor: 'pointer',
+                }}
+              >
+                {option.label}
+              </button>
+            ))}
+          </div>
+
+          <div style={{ display: 'inline-flex', gap: '6px', background: '#171717', border: '1px solid #2b2b2b', borderRadius: '999px', padding: '4px' }}>
+            {[
+              { key: 'change', label: '% Change' },
+              { key: 'marketCap', label: 'Market Cap' },
+            ].map((option) => (
+              <button
+                key={option.key}
+                onClick={() => setSizeBy(option.key)}
+                title={option.key === 'marketCap' ? 'Bubble size reflects company size, not price movement' : 'Bubble size reflects how much the price moved'}
+                style={{
+                  padding: '6px 14px',
+                  borderRadius: '999px',
+                  border: 'none',
+                  background: sizeBy === option.key ? '#2b2b2b' : 'transparent',
+                  color: sizeBy === option.key ? '#f7f7f7' : '#9a9a9a',
+                  fontSize: '12px',
+                  fontWeight: sizeBy === option.key ? 700 : 400,
+                  cursor: 'pointer',
+                }}
+              >
+                {option.label}
+              </button>
+            ))}
+          </div>
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
@@ -160,73 +224,41 @@ function App() {
         </div>
       </header>
 
-      <div style={{ margin: '8px 0 0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '8px' }}>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-          <div style={{ display: 'inline-flex', gap: '6px', background: '#171717', border: '1px solid #2b2b2b', borderRadius: '999px', padding: '4px' }}>
-            {[
-              { key: 'daily', label: '1D' },
-              { key: 'week', label: '1W' },
-              { key: 'month', label: '1M' },
-            ].map((option) => (
-              <button
-                key={option.key}
-                onClick={() => setBubbleRange(option.key)}
-                style={{
-                  padding: '6px 14px',
-                  borderRadius: '999px',
-                  border: 'none',
-                  background: bubbleRange === option.key ? '#2b2b2b' : 'transparent',
-                  color: bubbleRange === option.key ? '#f7f7f7' : '#9a9a9a',
-                  fontSize: '12px',
-                  fontWeight: bubbleRange === option.key ? 700 : 400,
-                  cursor: 'pointer',
-                }}
-              >
-                {option.label}
-              </button>
-            ))}
-          </div>
-
-          <div style={{ display: 'inline-flex', gap: '6px', background: '#171717', border: '1px solid #2b2b2b', borderRadius: '999px', padding: '4px' }}>
-            {[
-              { key: 'change', label: '% Change' },
-              { key: 'marketCap', label: 'Market Cap' },
-            ].map((option) => (
-              <button
-                key={option.key}
-                onClick={() => setSizeBy(option.key)}
-                title={option.key === 'marketCap' ? 'Bubble size reflects company size, not price movement' : 'Bubble size reflects how much the price moved'}
-                style={{
-                  padding: '6px 14px',
-                  borderRadius: '999px',
-                  border: 'none',
-                  background: sizeBy === option.key ? '#2b2b2b' : 'transparent',
-                  color: sizeBy === option.key ? '#f7f7f7' : '#9a9a9a',
-                  fontSize: '12px',
-                  fontWeight: sizeBy === option.key ? 700 : 400,
-                  cursor: 'pointer',
-                }}
-              >
-                {option.label}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {lastUpdated && (
-          <div style={{ color: '#9a9a9a', fontSize: '12px' }}>
-            Last updated: {lastUpdated}
+      {/* Canvas sits flush against the header — zero gap. "Last updated" and
+          the range-availability warning are small overlays positioned over
+          the top of the canvas instead of block elements, since a block
+          here would recreate the gap we just removed. */}
+      <div
+        style={{
+          position: 'relative',
+          margin: '0 calc(-50vw + 50%)',
+          width: '100vw',
+        }}
+      >
+        {(lastUpdated || (bubbleRange !== 'daily' && signals?.some((s) => s.rangeChangeAvailable === false))) && (
+          <div
+            style={{
+              position: 'absolute',
+              top: '8px',
+              right: '16px',
+              zIndex: 5,
+              textAlign: 'right',
+              pointerEvents: 'none',
+            }}
+          >
+            {lastUpdated && (
+              <div style={{ color: '#9a9a9a', fontSize: '11px', textShadow: '0 1px 3px rgba(0,0,0,0.8)' }}>
+                Last updated: {lastUpdated}
+              </div>
+            )}
+            {bubbleRange !== 'daily' && signals?.some((s) => s.rangeChangeAvailable === false) && (
+              <div style={{ marginTop: '2px', fontSize: '10px', color: '#fde68a', textShadow: '0 1px 3px rgba(0,0,0,0.8)', maxWidth: '260px' }}>
+                Some companies lack enough history for a {bubbleRange === 'week' ? '1W' : '1M'} view — showing daily change instead.
+              </div>
+            )}
           </div>
         )}
-      </div>
 
-      {bubbleRange !== 'daily' && signals?.some((s) => s.rangeChangeAvailable === false) && (
-        <div style={{ marginTop: '6px', fontSize: '11px', color: '#fde68a' }}>
-          Some companies don't have enough recorded history yet for a {bubbleRange === 'week' ? '1W' : '1M'} view — showing their daily change instead.
-        </div>
-      )}
-
-      <div style={{ margin: '-1px 0 0', borderTop: 'none' }}>
         <VFEXBubbles data={filteredSignals} onBubbleSelect={setSelectedCompany} sizeBy={sizeBy} />
       </div>
 
