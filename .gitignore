@@ -1,0 +1,21 @@
+# env / secrets
+.env
+.env.*
+!.env.example
+
+# dependencies
+node_modules/
+client/node_modules/
+
+# build artifacts
+client/dist/
+
+# logs
+*.log
+
+# local data
+today-pricesheet.pdf
+
+# editor / OS
+.DS_Store
+.vscode/

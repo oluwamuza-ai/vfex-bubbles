@@ -1,0 +1,136 @@
+[
+  {
+    "ticker": "AXIA.VX",
+    "name": "Axia Corporation Limited",
+    "change": 2,
+    "closingPrice": 0.149,
+    "marketCap": 2190000,
+    "estimated": false,
+    "logoUrl": "/logos/axia.png"
+  },
+  {
+    "ticker": "CMCL.VX",
+    "name": "Caledonia Mining Corporation Plc",
+    "change": -0.49,
+    "closingPrice": 42.25,
+    "marketCap": 234420000,
+    "estimated": false,
+    "logoUrl": "/logos/cmcl.png"
+  },
+  {
+    "ticker": "INFR.VX",
+    "name": "Econet Infraco",
+    "change": -0.18,
+    "closingPrice": 0.229,
+    "marketCap": 0,
+    "estimated": false,
+    "logoUrl": "/logos/infr.png"
+  },
+  {
+    "ticker": "EDGR.VX",
+    "name": "Edgars Stores Limited",
+    "change": 0,
+    "closingPrice": 0.029,
+    "marketCap": 160000,
+    "estimated": false,
+    "logoUrl": "/logos/edgr.png"
+  },
+  {
+    "ticker": "FCA.VX",
+    "name": "First Capital Bank Limited",
+    "change": -6.28,
+    "closingPrice": 0.1505,
+    "marketCap": 3030000,
+    "estimated": false,
+    "logoUrl": "/logos/fca.png"
+  },
+  {
+    "ticker": "INN.VX",
+    "name": "Innscor Africa Limited",
+    "change": 4.16,
+    "closingPrice": 1.52,
+    "marketCap": 8550000,
+    "estimated": false,
+    "logoUrl": "/logos/inn.png"
+  },
+  {
+    "ticker": "INV.VX",
+    "name": "Invictus Energy Limited Depository Receipts",
+    "change": 0,
+    "closingPrice": 0.15,
+    "marketCap": 280000,
+    "estimated": false,
+    "logoUrl": "/logos/inv.png"
+  },
+  {
+    "ticker": "KAV.VX",
+    "name": "Kavango Resources Plc",
+    "change": 0,
+    "closingPrice": 0.02,
+    "marketCap": 0,
+    "estimated": false,
+    "logoUrl": "/logos/kav.png"
+  },
+  {
+    "ticker": "NED.VX",
+    "name": "Nedbank Group Limited Depository Receipts",
+    "change": 0,
+    "closingPrice": 0,
+    "marketCap": 132840000,
+    "estimated": false,
+    "logoUrl": "/logos/ned.png"
+  },
+  {
+    "ticker": "PHL.VX",
+    "name": "Padenga Holdings Ltd",
+    "change": 15.61,
+    "closingPrice": 1.45,
+    "marketCap": 3780000,
+    "estimated": false,
+    "logoUrl": "/logos/phl.png"
+  },
+  {
+    "ticker": "SCIL.VX",
+    "name": "Seed Co International",
+    "change": 0,
+    "closingPrice": 0,
+    "marketCap": 1970000,
+    "estimated": false,
+    "logoUrl": "/logos/scil.png"
+  },
+  {
+    "ticker": "SIM.VX",
+    "name": "Simbisa Brands Limited",
+    "change": 4.52,
+    "closingPrice": 0.7,
+    "marketCap": 210000,
+    "estimated": false,
+    "logoUrl": "/logos/sim.png"
+  },
+  {
+    "ticker": "TSL.VX",
+    "name": "Tsl Limited",
+    "change": 0,
+    "closingPrice": 0.24,
+    "marketCap": 552340000,
+    "estimated": false,
+    "logoUrl": "/logos/tsl.png"
+  },
+  {
+    "ticker": "WPHL.VX",
+    "name": "West Prop Holdings Limited",
+    "change": 0,
+    "closingPrice": 10,
+    "marketCap": 34460000,
+    "estimated": false,
+    "logoUrl": "/logos/wphl.png"
+  },
+  {
+    "ticker": "ZIM.VX",
+    "name": "Zimplow Holdings Limited",
+    "change": 0,
+    "closingPrice": 0.11,
+    "marketCap": 1193080000,
+    "estimated": false
+  }
+]
