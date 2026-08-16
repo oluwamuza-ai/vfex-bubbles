@@ -13067,5 +13067,117 @@
     "closingPrice": 0.11,
     "marketCap": 1193080000,
     "change": 0
+  },
+  {
+    "ticker": "AXIA.VX",
+    "date": "2026-08-16",
+    "closingPrice": 0.13,
+    "marketCap": 1970000,
+    "change": -5.14
+  },
+  {
+    "ticker": "CMCL.VX",
+    "date": "2026-08-16",
+    "closingPrice": 0,
+    "marketCap": 221970000,
+    "change": 0
+  },
+  {
+    "ticker": "INFR.VX",
+    "date": "2026-08-16",
+    "closingPrice": 0.22,
+    "marketCap": 0,
+    "change": -12.99
+  },
+  {
+    "ticker": "EDGR.VX",
+    "date": "2026-08-16",
+    "closingPrice": 0,
+    "marketCap": 120000,
+    "change": 0
+  },
+  {
+    "ticker": "FCA.VX",
+    "date": "2026-08-16",
+    "closingPrice": 0.1505,
+    "marketCap": 3250000,
+    "change": 0.27
+  },
+  {
+    "ticker": "INN.VX",
+    "date": "2026-08-16",
+    "closingPrice": 1.425,
+    "marketCap": 8360000,
+    "change": 4.13
+  },
+  {
+    "ticker": "INV.VX",
+    "date": "2026-08-16",
+    "closingPrice": 0.15,
+    "marketCap": 280000,
+    "change": 0
+  },
+  {
+    "ticker": "KAV.VX",
+    "date": "2026-08-16",
+    "closingPrice": 0.018,
+    "marketCap": 0,
+    "change": -8.12
+  },
+  {
+    "ticker": "NED.VX",
+    "date": "2026-08-16",
+    "closingPrice": 17,
+    "marketCap": 136870000,
+    "change": 5.15
+  },
+  {
+    "ticker": "OLD.VX",
+    "date": "2026-08-16",
+    "closingPrice": 0.9575,
+    "marketCap": 2180000,
+    "change": 4.45
+  },
+  {
+    "ticker": "PHL.VX",
+    "date": "2026-08-16",
+    "closingPrice": 1.3325,
+    "marketCap": 7400000,
+    "change": -1.13
+  },
+  {
+    "ticker": "SCIL.VX",
+    "date": "2026-08-16",
+    "closingPrice": 0.37,
+    "marketCap": 120000,
+    "change": 0
+  },
+  {
+    "ticker": "SIM.VX",
+    "date": "2026-08-16",
+    "closingPrice": 0.75,
+    "marketCap": 599630000,
+    "change": 0
+  },
+  {
+    "ticker": "TSL.VX",
+    "date": "2026-08-16",
+    "closingPrice": 0.22,
+    "marketCap": 760000,
+    "change": 0
+  },
+  {
+    "ticker": "WPHL.VX",
+    "date": "2026-08-16",
+    "closingPrice": 10,
+    "marketCap": 100000000,
+    "change": 0
+  },
+  {
+    "ticker": "ZIM.VX",
+    "date": "2026-08-16",
+    "closingPrice": 0.12,
+    "marketCap": 360000,
+    "change": 0
   }
 ]

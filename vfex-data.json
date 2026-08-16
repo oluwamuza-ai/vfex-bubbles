@@ -2,9 +2,9 @@
   {
     "ticker": "AXIA.VX",
     "name": "Axia Corporation Limited",
-    "change": 2,
-    "closingPrice": 0.149,
-    "marketCap": 2190000,
+    "change": -5.14,
+    "closingPrice": 0.13,
+    "marketCap": 1970000,
     "currency": "USD",
     "estimated": false,
     "logoUrl": "/logos/axia.png"
@@ -12,9 +12,9 @@
   {
     "ticker": "CMCL.VX",
     "name": "Caledonia Mining Corporation Plc",
-    "change": -0.49,
-    "closingPrice": 42.25,
-    "marketCap": 234420000,
+    "change": 0,
+    "closingPrice": 0,
+    "marketCap": 221970000,
     "currency": "USD",
     "estimated": false,
     "logoUrl": "/logos/cmcl.png"
@@ -22,8 +22,8 @@
   {
     "ticker": "INFR.VX",
     "name": "Econet Infraco",
-    "change": -0.18,
-    "closingPrice": 0.229,
+    "change": -12.99,
+    "closingPrice": 0.22,
     "marketCap": 0,
     "currency": "USD",
     "estimated": false,
@@ -33,8 +33,8 @@
     "ticker": "EDGR.VX",
     "name": "Edgars Stores Limited",
     "change": 0,
-    "closingPrice": 0.029,
-    "marketCap": 160000,
+    "closingPrice": 0,
+    "marketCap": 120000,
     "currency": "USD",
     "estimated": false,
     "logoUrl": "/logos/edgr.png"
@@ -42,9 +42,9 @@
   {
     "ticker": "FCA.VX",
     "name": "First Capital Bank Limited",
-    "change": -6.28,
+    "change": 0.27,
     "closingPrice": 0.1505,
-    "marketCap": 3030000,
+    "marketCap": 3250000,
     "currency": "USD",
     "estimated": false,
     "logoUrl": "/logos/fca.png"
@@ -52,9 +52,9 @@
   {
     "ticker": "INN.VX",
     "name": "Innscor Africa Limited",
-    "change": 4.16,
-    "closingPrice": 1.52,
-    "marketCap": 8550000,
+    "change": 4.13,
+    "closingPrice": 1.425,
+    "marketCap": 8360000,
     "currency": "USD",
     "estimated": false,
     "logoUrl": "/logos/inn.png"
@@ -72,8 +72,8 @@
   {
     "ticker": "KAV.VX",
     "name": "Kavango Resources Plc",
-    "change": 0,
-    "closingPrice": 0.02,
+    "change": -8.12,
+    "closingPrice": 0.018,
     "marketCap": 0,
     "currency": "USD",
     "estimated": false,
@@ -82,19 +82,28 @@
   {
     "ticker": "NED.VX",
     "name": "Nedbank Group Limited Depository Receipts",
-    "change": 0,
-    "closingPrice": 0,
-    "marketCap": 132840000,
+    "change": 5.15,
+    "closingPrice": 17,
+    "marketCap": 136870000,
     "currency": "USD",
     "estimated": false,
     "logoUrl": "/logos/ned.png"
   },
   {
+    "ticker": "OLD.VX",
+    "name": "Old Mutual Limited",
+    "change": 4.45,
+    "closingPrice": 0.9575,
+    "marketCap": 2180000,
+    "currency": "USD",
+    "estimated": false
+  },
+  {
     "ticker": "PHL.VX",
     "name": "Padenga Holdings Ltd",
-    "change": 15.61,
-    "closingPrice": 1.45,
-    "marketCap": 3780000,
+    "change": -1.13,
+    "closingPrice": 1.3325,
+    "marketCap": 7400000,
     "currency": "USD",
     "estimated": false,
     "logoUrl": "/logos/phl.png"
@@ -103,8 +112,8 @@
     "ticker": "SCIL.VX",
     "name": "Seed Co International",
     "change": 0,
-    "closingPrice": 0,
-    "marketCap": 1970000,
+    "closingPrice": 0.37,
+    "marketCap": 120000,
     "currency": "USD",
     "estimated": false,
     "logoUrl": "/logos/scil.png"
@@ -112,9 +121,9 @@
   {
     "ticker": "SIM.VX",
     "name": "Simbisa Brands Limited",
-    "change": 4.52,
-    "closingPrice": 0.7,
-    "marketCap": 210000,
+    "change": 0,
+    "closingPrice": 0.75,
+    "marketCap": 599630000,
     "currency": "USD",
     "estimated": false,
     "logoUrl": "/logos/sim.png"
@@ -123,8 +132,8 @@
     "ticker": "TSL.VX",
     "name": "Tsl Limited",
     "change": 0,
-    "closingPrice": 0.24,
-    "marketCap": 552340000,
+    "closingPrice": 0.22,
+    "marketCap": 760000,
     "currency": "USD",
     "estimated": false,
     "logoUrl": "/logos/tsl.png"
@@ -134,7 +143,7 @@
     "name": "West Prop Holdings Limited",
     "change": 0,
     "closingPrice": 10,
-    "marketCap": 34460000,
+    "marketCap": 100000000,
     "currency": "USD",
     "estimated": false,
     "logoUrl": "/logos/wphl.png"
@@ -143,8 +152,8 @@
     "ticker": "ZIM.VX",
     "name": "Zimplow Holdings Limited",
     "change": 0,
-    "closingPrice": 0.11,
-    "marketCap": 1193080000,
+    "closingPrice": 0.12,
+    "marketCap": 360000,
     "currency": "USD",
     "estimated": false
   }
