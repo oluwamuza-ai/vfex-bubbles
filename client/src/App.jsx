@@ -89,6 +89,13 @@ const SearchIcon = (
   </svg>
 );
 
+// Small local helper for the two price displays in the modal that aren't
+// routed through formatMarketCap/formatPrice elsewhere.
+function formatClosingPrice(value, currency = 'USD') {
+  const prefix = currency === 'ZWG' ? 'ZWG ' : '$';
+  return `${prefix}${Number(value || 0).toFixed(4)}`;
+}
+
 function App() {
   const [signals, setSignals] = useState(null);
   const [showList, setShowList] = useState(false);
@@ -185,7 +192,10 @@ function App() {
           borderRadius: 0,
         }}
       >
-        <h1 style={{ margin: 0 }}>{market === 'zse' ? 'ZSE Bubbles' : 'VFEX Bubbles'}</h1>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <img src="/logo-256.png" alt="" width="32" height="32" style={{ display: 'block' }} />
+          <h1 style={{ margin: 0 }}>{market === 'zse' ? 'ZSE Bubbles' : 'VFEX Bubbles'}</h1>
+        </div>
 
         {/* ===== DESKTOP CONTROLS — unchanged, hidden on phones ===== */}
         <div className="header-controls-desktop" style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
@@ -563,7 +573,7 @@ function App() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '10px', marginTop: '16px' }}>
               <div style={{ padding: '12px', borderRadius: '12px', background: '#171717', border: '1px solid #232323' }}>
                 <div style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.2em', color: '#9a9a9a' }}>Closing price</div>
-                <div style={{ marginTop: '6px', fontSize: '20px', fontWeight: 700 }}>${Number(selectedCompany.closingPrice || 0).toFixed(4)}</div>
+                <div style={{ marginTop: '6px', fontSize: '20px', fontWeight: 700 }}>{formatClosingPrice(selectedCompany.closingPrice, selectedCompany.currency)}</div>
               </div>
               <div style={{ padding: '12px', borderRadius: '12px', background: '#171717', border: '1px solid #232323' }}>
                 <div style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.2em', color: '#9a9a9a' }}>Change</div>
@@ -573,7 +583,7 @@ function App() {
               </div>
               <div style={{ padding: '12px', borderRadius: '12px', background: '#171717', border: '1px solid #232323' }}>
                 <div style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.2em', color: '#9a9a9a' }}>Market cap</div>
-                <div style={{ marginTop: '6px', fontSize: '20px', fontWeight: 700 }}>{formatMarketCap(Number(selectedCompany.marketCap) || 0)}</div>
+                <div style={{ marginTop: '6px', fontSize: '20px', fontWeight: 700 }}>{formatMarketCap(Number(selectedCompany.marketCap) || 0, selectedCompany.currency)}</div>
               </div>
               <div style={{ padding: '12px', borderRadius: '12px', background: '#171717', border: '1px solid #232323' }}>
                 <div style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.2em', color: '#9a9a9a' }}>Notes</div>
@@ -619,10 +629,10 @@ function App() {
                   <br />
                   Check back after a few more trading days.
                   <br />
-                  <strong style={{ color: '#f7f7f7' }}>Today's close: ${Number(selectedCompany.closingPrice || 0).toFixed(4)}</strong>
+                  <strong style={{ color: '#f7f7f7' }}>Today's close: {formatClosingPrice(selectedCompany.closingPrice, selectedCompany.currency)}</strong>
                 </div>
               ) : (
-                <PriceChart points={chartPoints} color={colorForChange(selectedCompany.change)} />
+                <PriceChart points={chartPoints} color={colorForChange(selectedCompany.change)} currency={selectedCompany.currency} />
               )}
             </div>
           </div>
