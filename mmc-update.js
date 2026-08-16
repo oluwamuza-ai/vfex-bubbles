@@ -205,12 +205,22 @@ function buildRecords(parsedRows, dataFile, tickerSuffix) {
     }
     usedTickers.add(ticker);
 
+    // ZSE prices are reported in ZWG CENTS in the source PDF (confirmed
+    // against africanfinancials.com and cross-checked against two other
+    // independent live-price sources — our stored raw cents values were
+    // ~100x too high). VFEX is already in whole USD, no conversion needed.
+    // Market cap is NOT touched here — MMC's "$m" column is already in
+    // proper millions, not cents, for both markets.
+    const isZse = tickerSuffix === 'ZW';
+    const closingPrice = isZse ? Number((row.closingPrice / 100).toFixed(4)) : row.closingPrice;
+
     return {
       ticker,
       name: titleCase(row.name),
       change: row.change,
-      closingPrice: row.closingPrice,
+      closingPrice,
       marketCap: row.marketCap,
+      currency: isZse ? 'ZWG' : 'USD',
       estimated: false, // real reported market cap from MMC, not our old placeholder
       ...(existing?.logoUrl ? { logoUrl: existing.logoUrl } : {}),
     };

@@ -5,6 +5,7 @@
     "change": 2,
     "closingPrice": 0.149,
     "marketCap": 2190000,
+    "currency": "USD",
     "estimated": false,
     "logoUrl": "/logos/axia.png"
   },
@@ -14,6 +15,7 @@
     "change": -0.49,
     "closingPrice": 42.25,
     "marketCap": 234420000,
+    "currency": "USD",
     "estimated": false,
     "logoUrl": "/logos/cmcl.png"
   },
@@ -23,6 +25,7 @@
     "change": -0.18,
     "closingPrice": 0.229,
     "marketCap": 0,
+    "currency": "USD",
     "estimated": false,
     "logoUrl": "/logos/infr.png"
   },
@@ -32,6 +35,7 @@
     "change": 0,
     "closingPrice": 0.029,
     "marketCap": 160000,
+    "currency": "USD",
     "estimated": false,
     "logoUrl": "/logos/edgr.png"
   },
@@ -41,6 +45,7 @@
     "change": -6.28,
     "closingPrice": 0.1505,
     "marketCap": 3030000,
+    "currency": "USD",
     "estimated": false,
     "logoUrl": "/logos/fca.png"
   },
@@ -50,6 +55,7 @@
     "change": 4.16,
     "closingPrice": 1.52,
     "marketCap": 8550000,
+    "currency": "USD",
     "estimated": false,
     "logoUrl": "/logos/inn.png"
   },
@@ -59,6 +65,7 @@
     "change": 0,
     "closingPrice": 0.15,
     "marketCap": 280000,
+    "currency": "USD",
     "estimated": false,
     "logoUrl": "/logos/inv.png"
   },
@@ -68,6 +75,7 @@
     "change": 0,
     "closingPrice": 0.02,
     "marketCap": 0,
+    "currency": "USD",
     "estimated": false,
     "logoUrl": "/logos/kav.png"
   },
@@ -77,6 +85,7 @@
     "change": 0,
     "closingPrice": 0,
     "marketCap": 132840000,
+    "currency": "USD",
     "estimated": false,
     "logoUrl": "/logos/ned.png"
   },
@@ -86,6 +95,7 @@
     "change": 15.61,
     "closingPrice": 1.45,
     "marketCap": 3780000,
+    "currency": "USD",
     "estimated": false,
     "logoUrl": "/logos/phl.png"
   },
@@ -95,6 +105,7 @@
     "change": 0,
     "closingPrice": 0,
     "marketCap": 1970000,
+    "currency": "USD",
     "estimated": false,
     "logoUrl": "/logos/scil.png"
   },
@@ -104,6 +115,7 @@
     "change": 4.52,
     "closingPrice": 0.7,
     "marketCap": 210000,
+    "currency": "USD",
     "estimated": false,
     "logoUrl": "/logos/sim.png"
   },
@@ -113,6 +125,7 @@
     "change": 0,
     "closingPrice": 0.24,
     "marketCap": 552340000,
+    "currency": "USD",
     "estimated": false,
     "logoUrl": "/logos/tsl.png"
   },
@@ -122,6 +135,7 @@
     "change": 0,
     "closingPrice": 10,
     "marketCap": 34460000,
+    "currency": "USD",
     "estimated": false,
     "logoUrl": "/logos/wphl.png"
   },
@@ -131,6 +145,7 @@
     "change": 0,
     "closingPrice": 0.11,
     "marketCap": 1193080000,
+    "currency": "USD",
     "estimated": false
   }
 ]

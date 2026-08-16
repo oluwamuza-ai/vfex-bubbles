@@ -118,10 +118,10 @@ export default function CompanyList({ data = [], onSelect }) {
                 </td>
                 <td style={{ padding: '10px 18px', color: LIST_STYLE.mutedTextColor }}>{tickerFor(item)}</td>
                 <td style={{ padding: '10px 18px', textAlign: 'right', color: LIST_STYLE.textColor }}>
-                  ${Number(item.closingPrice || 0)}
+                  {item.currency === 'ZWG' ? 'ZWG ' : '$'}{Number(item.closingPrice || 0)}
                 </td>
                 <td style={{ padding: '10px 18px', textAlign: 'right', color: LIST_STYLE.textColor }}>
-                  {formatMarketCap(Number(item.marketCap) || 0)}
+                  {formatMarketCap(Number(item.marketCap) || 0, item.currency)}
                 </td>
                 <td style={{ padding: '10px 18px', textAlign: 'right', fontWeight: 700, color: colorForChange(item.change) }}>
                   {formatChange(item.change)}

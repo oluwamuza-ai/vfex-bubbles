@@ -41,10 +41,11 @@ export function colorForChange(change) {
   return COLORS.flat;
 }
 
-export function formatMarketCap(value) {
-  if (value >= 1_000_000) return `$${(value / 1_000_000).toFixed(2)}M`;
-  if (value >= 1_000) return `$${(value / 1_000).toFixed(1)}K`;
-  return `$${value}`;
+export function formatMarketCap(value, currency = 'USD') {
+  const prefix = currency === 'ZWG' ? 'ZWG ' : '$';
+  if (value >= 1_000_000) return `${prefix}${(value / 1_000_000).toFixed(2)}M`;
+  if (value >= 1_000) return `${prefix}${(value / 1_000).toFixed(1)}K`;
+  return `${prefix}${value}`;
 }
 
 export function tickerFor(item) {

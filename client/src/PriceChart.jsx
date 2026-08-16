@@ -12,10 +12,11 @@ const CHART = {
   yLabelCount: 4, // number of horizontal gridlines / y-axis price labels
 };
 
-function formatPrice(value) {
-  if (value >= 1000) return `$${value.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
-  if (value >= 1) return `$${value.toFixed(2)}`;
-  return `$${value.toFixed(4)}`;
+function formatPrice(value, currency = 'USD') {
+  const prefix = currency === 'ZWG' ? 'ZWG ' : '$';
+  if (value >= 1000) return `${prefix}${value.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
+  if (value >= 1) return `${prefix}${value.toFixed(2)}`;
+  return `${prefix}${value.toFixed(4)}`;
 }
 
 // Converts a sequence of points into a smooth curve (Catmull-Rom spline
@@ -43,7 +44,7 @@ function smoothPath(coords) {
   return path;
 }
 
-export default function PriceChart({ points = [], color = '#4ade80' }) {
+export default function PriceChart({ points = [], color = '#4ade80', currency = 'USD' }) {
   const svgRef = useRef(null);
   const [hoverIndex, setHoverIndex] = useState(null);
   const { width, height, paddingX, paddingY, maxXLabels, yLabelCount } = CHART;
@@ -135,7 +136,7 @@ export default function PriceChart({ points = [], color = '#4ade80' }) {
           <g key={i}>
             <line x1={paddingX} y1={tick.y} x2={width - 12} y2={tick.y} stroke="#2a2a2a" strokeDasharray="4 4" />
             <text x={paddingX - 8} y={tick.y} textAnchor="end" dominantBaseline="middle" fontSize="10" fill="#9a9a9a">
-              {formatPrice(tick.value)}
+              {formatPrice(tick.value, currency)}
             </text>
           </g>
         ))}
@@ -181,7 +182,7 @@ export default function PriceChart({ points = [], color = '#4ade80' }) {
           }}
         >
           <div style={{ color: '#9a9a9a', fontSize: '10px' }}>{hovered.label}</div>
-          <div style={{ fontWeight: 700 }}>{formatPrice(hovered.value)}</div>
+          <div style={{ fontWeight: 700 }}>{formatPrice(hovered.value, currency)}</div>
         </div>
       )}
     </div>
