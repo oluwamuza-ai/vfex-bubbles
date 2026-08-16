@@ -14,10 +14,87 @@ const HISTORY_RANGES = [
   { key: 'all', label: 'All' },
 ];
 
+// Cycle-on-tap option sets for the compact header icon buttons — each
+// button shows an icon + the CURRENT value, and tapping advances to the
+// next option in the list (wrapping back to the start at the end).
+const RANGE_OPTIONS = ['daily', 'week', 'month'];
+const RANGE_LABELS = { daily: '1D', week: '1W', month: '1M' };
+
+const SIZE_OPTIONS = ['change', 'marketCap'];
+const SIZE_LABELS = { change: '% Chg', marketCap: 'Mkt Cap' };
+
+const MARKET_OPTIONS = ['vfex', 'zse'];
+const MARKET_LABELS = { vfex: 'VFEX', zse: 'ZSE' };
+
+function nextOption(options, current) {
+  return options[(options.indexOf(current) + 1) % options.length];
+}
+
+// Compact icon + label button used throughout the header — tapping cycles
+// to the next value of whatever it controls (range, size mode, market).
+function IconToggleButton({ icon, label, onClick, title, mobileIconOnly }) {
+  return (
+    <button
+      onClick={onClick}
+      title={title}
+      style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: '6px',
+        padding: '8px 12px',
+        borderRadius: '10px',
+        border: '1px solid #2b2b2b',
+        background: '#171717',
+        color: '#f7f7f7',
+        fontSize: '12px',
+        fontWeight: 600,
+        cursor: 'pointer',
+        whiteSpace: 'nowrap',
+      }}
+    >
+      {icon}
+      <span className={mobileIconOnly ? 'icon-btn-label' : undefined}>{label}</span>
+    </button>
+  );
+}
+
+const ClockIcon = (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="9" />
+    <polyline points="12 7 12 12 15 15" />
+  </svg>
+);
+
+const BarChartIcon = (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="6" y1="20" x2="6" y2="10" />
+    <line x1="12" y1="20" x2="12" y2="4" />
+    <line x1="18" y1="20" x2="18" y2="14" />
+  </svg>
+);
+
+const SwapIcon = (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="17 1 21 5 17 9" />
+    <path d="M3 11V9a4 4 0 0 1 4-4h14" />
+    <polyline points="7 23 3 19 7 15" />
+    <path d="M21 13v2a4 4 0 0 1-4 4H3" />
+  </svg>
+);
+
+const SearchIcon = (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="11" cy="11" r="8" />
+    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+  </svg>
+);
+
 function App() {
   const [signals, setSignals] = useState(null);
   const [showList, setShowList] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [searchOpen, setSearchOpen] = useState(false);
+  const searchInputRef = useRef(null);
   const [selectedCompany, setSelectedCompany] = useState(null);
   const [showAbout, setShowAbout] = useState(false);
 
@@ -32,6 +109,12 @@ function App() {
   const [sizeBy, setSizeBy] = useState('change');
   const [lastUpdated, setLastUpdated] = useState('');
   const listRef = useRef(null);
+
+  useEffect(() => {
+    if (searchOpen && searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+  }, [searchOpen]);
 
   useEffect(() => {
     setSelectedCompany(null);
@@ -91,23 +174,21 @@ function App() {
   return (
     <div className="app-shell">
       <header
-        className="hero-panel"
+        className="hero-panel site-header-bleed"
         style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          gap: '16px',
+          gap: '10px',
           flexWrap: 'wrap',
-          margin: '0 calc(-50vw + 50%)',
-          width: '100vw',
           borderBottom: '1px solid #242424',
           borderRadius: 0,
-          padding: '18px 24px',
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
-          <h1 style={{ margin: 0 }}>{market === 'zse' ? 'ZSE Bubbles' : 'VFEX Bubbles'}</h1>
+        <h1 style={{ margin: 0 }}>{market === 'zse' ? 'ZSE Bubbles' : 'VFEX Bubbles'}</h1>
 
+        {/* ===== DESKTOP CONTROLS — unchanged, hidden on phones ===== */}
+        <div className="header-controls-desktop" style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
           <div style={{ display: 'inline-flex', gap: '6px', background: '#171717', border: '1px solid #2b2b2b', borderRadius: '999px', padding: '4px' }}>
             {[
               { key: 'daily', label: '1D' },
@@ -157,9 +238,7 @@ function App() {
               </button>
             ))}
           </div>
-        </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
           <label style={{ display: 'flex', flexDirection: 'column', gap: '4px', minWidth: '140px' }}>
             <span style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.18em', color: '#9a9a9a' }}>Market</span>
             <select
@@ -222,6 +301,98 @@ function App() {
             </svg>
           </button>
         </div>
+
+        {/* ===== PHONE CONTROLS — compact icons, hidden on desktop ===== */}
+        {/* Range (1D/1W/1M) is intentionally absent here — it lives as a
+            pill group at the bottom of the canvas on phones instead (see
+            .range-toggle-bottom further down), since there's no icon that
+            unambiguously means "time range" and it needs more room than
+            this header can spare on a narrow screen. */}
+        <div className="header-controls-phone" style={{ display: 'none', alignItems: 'center', gap: '8px' }}>
+          <IconToggleButton
+            icon={BarChartIcon}
+            label={SIZE_LABELS[sizeBy]}
+            onClick={() => setSizeBy((current) => nextOption(SIZE_OPTIONS, current))}
+            title={sizeBy === 'marketCap' ? 'Bubble size = company size. Tap to switch to % change.' : 'Bubble size = price movement. Tap to switch to market cap.'}
+            mobileIconOnly
+          />
+
+          <IconToggleButton
+            icon={SwapIcon}
+            label={MARKET_LABELS[market]}
+            onClick={() => setMarket((current) => nextOption(MARKET_OPTIONS, current))}
+            title="Tap to switch market (VFEX / ZSE)"
+            mobileIconOnly
+          />
+
+          {searchOpen ? (
+            <input
+              ref={searchInputRef}
+              value={searchQuery}
+              onChange={(event) => setSearchQuery(event.target.value)}
+              onBlur={() => {
+                if (!searchQuery) setSearchOpen(false);
+              }}
+              placeholder="Ticker or company"
+              style={{
+                borderRadius: '10px',
+                border: '1px solid #2b2b2b',
+                background: '#171717',
+                color: '#f7f7f7',
+                padding: '9px 12px',
+                width: '140px',
+                fontSize: '13px',
+              }}
+            />
+          ) : (
+            <button
+              onClick={() => setSearchOpen(true)}
+              aria-label="Search"
+              title="Search"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: '36px',
+                height: '36px',
+                borderRadius: '10px',
+                border: '1px solid #2b2b2b',
+                background: '#171717',
+                color: '#f7f7f7',
+                cursor: 'pointer',
+              }}
+            >
+              {SearchIcon}
+            </button>
+          )}
+
+          <button
+            onClick={() => setShowList((value) => !value)}
+            aria-label={showList ? 'Hide company list' : 'Show company list'}
+            aria-pressed={showList}
+            title={showList ? 'Hide list view' : 'Show list view'}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '36px',
+              height: '36px',
+              borderRadius: '10px',
+              border: `1px solid ${showList ? '#4b4b4b' : '#2b2b2b'}`,
+              background: showList ? '#262626' : '#171717',
+              cursor: 'pointer',
+            }}
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f7f7f7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="8" y1="6" x2="21" y2="6" />
+              <line x1="8" y1="12" x2="21" y2="12" />
+              <line x1="8" y1="18" x2="21" y2="18" />
+              <line x1="3" y1="6" x2="3.01" y2="6" />
+              <line x1="3" y1="12" x2="3.01" y2="12" />
+              <line x1="3" y1="18" x2="3.01" y2="18" />
+            </svg>
+          </button>
+        </div>
       </header>
 
       {/* Canvas sits flush against the header — zero gap. "Last updated" and
@@ -260,6 +431,46 @@ function App() {
         )}
 
         <VFEXBubbles data={filteredSignals} onBubbleSelect={setSelectedCompany} sizeBy={sizeBy} />
+
+        {/* Phone-only: the range control lives here instead of the header
+            on narrow screens, since there's actual room for a real 3-button
+            group at the bottom of a full-width canvas — unlike the cramped
+            header. Hidden on desktop via CSS (see .range-toggle-bottom). */}
+        <div
+          className="range-toggle-bottom"
+          style={{
+            position: 'absolute',
+            bottom: '16px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            zIndex: 5,
+          }}
+        >
+          <div style={{ display: 'inline-flex', gap: '6px', background: 'rgba(23,23,23,0.92)', border: '1px solid #2b2b2b', borderRadius: '999px', padding: '4px', backdropFilter: 'blur(4px)' }}>
+            {[
+              { key: 'daily', label: '1D' },
+              { key: 'week', label: '1W' },
+              { key: 'month', label: '1M' },
+            ].map((option) => (
+              <button
+                key={option.key}
+                onClick={() => setBubbleRange(option.key)}
+                style={{
+                  padding: '8px 16px',
+                  borderRadius: '999px',
+                  border: 'none',
+                  background: bubbleRange === option.key ? '#2b2b2b' : 'transparent',
+                  color: bubbleRange === option.key ? '#f7f7f7' : '#9a9a9a',
+                  fontSize: '13px',
+                  fontWeight: bubbleRange === option.key ? 700 : 400,
+                  cursor: 'pointer',
+                }}
+              >
+                {option.label}
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
 
       {showList && (

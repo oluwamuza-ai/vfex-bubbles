@@ -1,21 +1,37 @@
-.app-shell {
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 32px 20px 56px;
-  color: #f5e8d8;
+.site-header-bleed {
+  margin: 0 calc(-50vw + 50%);
+  width: 100vw;
+  padding: 14px 20px;
 }
 
-.hero-panel {
-  padding: 24px 28px;
-  border-radius: 24px;
-  background: #120906;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+.header-controls-phone {
+  display: none;
 }
 
-.hero-panel h1 {
-  margin: 0;
-  font-size: clamp(28px, 4vw, 42px);
-  line-height: 1.1;
-  color: #f8eadc;
-  letter-spacing: 0.02em;
+.range-toggle-bottom {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .site-header-bleed {
+    margin: 0;
+    width: auto;
+    padding: 8px 14px;
+  }
+
+  .header-controls-desktop {
+    display: none;
+  }
+
+  .header-controls-phone {
+    display: flex !important;
+  }
+
+  .range-toggle-bottom {
+    display: block;
+  }
+
+  .icon-btn-label {
+    display: none;
+  }
 }
