@@ -20,7 +20,7 @@
   }
 
   .header-controls-desktop {
-    display: none;
+    display: none !important;
   }
 
   .header-controls-phone {
