@@ -1,4 +1,11 @@
-import { useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { LinePath, AreaClosed } from '@visx/shape';
+import { scaleLinear } from '@visx/scale';
+import { curveLinear } from '@visx/curve';
+import { LinearGradient } from '@visx/gradient';
+import { useTooltip, TooltipWithBounds, defaultStyles as defaultTooltipStyles } from '@visx/tooltip';
+import { localPoint } from '@visx/event';
+import { clamp } from './utils';
 
 // ============================================================================
 // 📈 CHART CONFIG — edit here for sizing/style tweaks
@@ -10,6 +17,8 @@ const CHART = {
   paddingY: 28,
   maxXLabels: 6,  // show at most this many x-axis date labels, evenly spaced
   yLabelCount: 4, // number of horizontal gridlines / y-axis price labels
+  minZoomPoints: 3,   // can't zoom in past showing this many points
+  zoomStep: 1.15,     // wheel-zoom multiplier per scroll tick
 };
 
 function formatPrice(value, currency = 'USD') {
@@ -19,97 +28,305 @@ function formatPrice(value, currency = 'USD') {
   return `${prefix}${value.toFixed(4)}`;
 }
 
-// Converts a sequence of points into a smooth curve (Catmull-Rom spline
-// converted to cubic beziers) instead of sharp straight-line segments —
-// this is what gives the line its polished, "real financial chart" look
-// instead of a jagged connect-the-dots line.
-function smoothPath(coords) {
-  if (coords.length < 2) return '';
-  if (coords.length === 2) return `M ${coords[0].x} ${coords[0].y} L ${coords[1].x} ${coords[1].y}`;
-
-  let path = `M ${coords[0].x} ${coords[0].y}`;
-  for (let i = 0; i < coords.length - 1; i += 1) {
-    const p0 = coords[i - 1] || coords[i];
-    const p1 = coords[i];
-    const p2 = coords[i + 1];
-    const p3 = coords[i + 2] || p2;
-
-    const cp1x = p1.x + (p2.x - p0.x) / 6;
-    const cp1y = p1.y + (p2.y - p0.y) / 6;
-    const cp2x = p2.x - (p3.x - p1.x) / 6;
-    const cp2y = p2.y - (p3.y - p1.y) / 6;
-
-    path += ` C ${cp1x.toFixed(1)} ${cp1y.toFixed(1)}, ${cp2x.toFixed(1)} ${cp2y.toFixed(1)}, ${p2.x.toFixed(1)} ${p2.y.toFixed(1)}`;
-  }
-  return path;
-}
+const tooltipStyles = {
+  ...defaultTooltipStyles,
+  background: '#1c1c1c',
+  border: '1px solid #333',
+  borderRadius: '8px',
+  padding: '6px 10px',
+  color: '#f7f7f7',
+};
 
 export default function PriceChart({ points = [], color = '#4ade80', currency = 'USD' }) {
   const svgRef = useRef(null);
-  const [hoverIndex, setHoverIndex] = useState(null);
-  const { width, height, paddingX, paddingY, maxXLabels, yLabelCount } = CHART;
+  const { width, height, paddingX, paddingY, maxXLabels, yLabelCount, minZoomPoints, zoomStep } = CHART;
 
-  const { coords, minValue, maxValue } = useMemo(() => {
-    if (points.length === 0) return { coords: [], minValue: 0, maxValue: 0 };
-    const values = points.map((p) => p.value);
+  const {
+    tooltipData,
+    tooltipLeft,
+    tooltipTop,
+    showTooltip,
+    hideTooltip,
+  } = useTooltip();
+
+  // ---------------------------------------------------------------------
+  // ZOOM & PAN STATE — unchanged from before. viewRange is null when
+  // showing the full dataset, or [startIndex, endIndex] (fractional index
+  // positions) once zoomed/panned. Reset whenever the underlying data
+  // changes (fixes a bug where a stale zoom window got reapplied to fresh
+  // data after switching 1W/1M/1Y or selecting a different company).
+  // ---------------------------------------------------------------------
+  const [viewRange, setViewRange] = useState(null);
+  const isDraggingRef = useRef(false);
+  const dragStartXRef = useRef(0);
+  const dragStartRangeRef = useRef(null);
+  const pinchDistRef = useRef(null);
+  const lastTapRef = useRef(0);
+  const touchStartPosRef = useRef(null);
+  const TOUCH_DRAG_THRESHOLD = 10; // px of finger movement before a touch becomes a pan instead of a tooltip scrub
+
+  useEffect(() => {
+    setViewRange(null);
+    hideTooltip();
+  }, [points, hideTooltip]);
+
+  const visiblePoints = useMemo(() => {
+    if (!viewRange || points.length === 0) return points;
+    const startIdx = Math.max(0, Math.floor(viewRange[0]));
+    const endIdx = Math.min(points.length - 1, Math.ceil(viewRange[1]));
+    return points.slice(startIdx, endIdx + 1);
+  }, [points, viewRange]);
+
+  // visx scales — replace the old hand-rolled linear interpolation math.
+  // xScale maps an array INDEX (0..n-1) to pixel space; yScale maps a
+  // price value to pixel space (inverted, since SVG y grows downward).
+  const { xScale, yScale, minValue, maxValue } = useMemo(() => {
+    if (visiblePoints.length === 0) {
+      return { xScale: null, yScale: null, minValue: 0, maxValue: 0 };
+    }
+    const values = visiblePoints.map((p) => p.value);
     const min = Math.min(...values);
     const max = Math.max(...values);
     const spread = max - min || 1;
+    const paddedMin = min - spread * 0.02;
+    const paddedMax = max + spread * 0.02;
 
-    const computed = points.map((point, index) => ({
-      x: paddingX + (index / Math.max(1, points.length - 1)) * (width - paddingX * 2),
-      y: height - paddingY - ((point.value - min) / spread) * (height - paddingY * 2),
-      ...point,
-    }));
+    const x = scaleLinear({
+      domain: [0, Math.max(1, visiblePoints.length - 1)],
+      range: [paddingX, width - paddingX],
+    });
+    const y = scaleLinear({
+      domain: [paddedMin, paddedMax],
+      range: [height - paddingY, paddingY],
+    });
 
-    return { coords: computed, minValue: min, maxValue: max };
-  }, [points, width, height, paddingX, paddingY]);
+    return { xScale: x, yScale: y, minValue: min, maxValue: max };
+  }, [visiblePoints, width, height, paddingX, paddingY]);
 
-  const linePath = useMemo(() => smoothPath(coords), [coords]);
-  const areaPath = useMemo(() => {
-    if (coords.length < 2) return '';
-    const baseline = height - paddingY;
-    return `${smoothPath(coords)} L ${coords[coords.length - 1].x} ${baseline} L ${coords[0].x} ${baseline} Z`;
-  }, [coords, height, paddingY]);
+  // Index accessors — visx's LinePath/AreaClosed call x()/y() with
+  // (datum, index), so using the index argument directly is both correct
+  // and O(1) per point (avoids an O(n) indexOf lookup per point, which
+  // would make rendering O(n²) for larger histories).
+  const getX = useCallback((d, i) => xScale(i), [xScale]);
+  const getY = useCallback((d) => yScale(d.value), [yScale]);
 
   // Which x-axis labels to actually show — evenly spaced indices, capped
-  // at maxXLabels regardless of how many data points there are.
+  // at maxXLabels regardless of how many data points are currently visible.
   const labelIndices = useMemo(() => {
-    if (coords.length <= maxXLabels) return coords.map((_, i) => i);
-    const step = (coords.length - 1) / (maxXLabels - 1);
+    const n = visiblePoints.length;
+    if (n === 0) return [];
+    if (n <= maxXLabels) return visiblePoints.map((_, i) => i);
+    const step = (n - 1) / (maxXLabels - 1);
     return Array.from({ length: maxXLabels }, (_, i) => Math.round(i * step));
-  }, [coords, maxXLabels]);
+  }, [visiblePoints, maxXLabels]);
 
   const yTicks = useMemo(() => {
+    if (!yScale) return [];
     const spread = maxValue - minValue || 1;
     return Array.from({ length: yLabelCount }, (_, i) => {
       const value = minValue + (spread * i) / (yLabelCount - 1);
-      const y = height - paddingY - (i / (yLabelCount - 1)) * (height - paddingY * 2);
-      return { value, y };
+      return { value, y: yScale(value) };
     });
-  }, [minValue, maxValue, height, paddingY, yLabelCount]);
+  }, [yScale, minValue, maxValue, yLabelCount]);
 
-  function handlePointerMove(event) {
-    if (coords.length === 0 || !svgRef.current) return;
+  // ---------------------------------------------------------------------
+  // ZOOM: shared by scroll-wheel (desktop) and pinch (touch). Zooms toward
+  // a specific SVG-space x position, so the point under the cursor/pinch
+  // stays fixed instead of the view jumping around.
+  // ---------------------------------------------------------------------
+  const applyZoom = useCallback((factor, centerSvgX) => {
+    if (points.length < minZoomPoints) return;
+
+    const [curStart, curEnd] = viewRange || [0, points.length - 1];
+    const span = curEnd - curStart;
+
+    const fraction = clamp((centerSvgX - paddingX) / (width - paddingX * 2), 0, 1);
+    const centerIndex = curStart + fraction * span;
+
+    let newSpan = clamp(span * factor, minZoomPoints - 1, points.length - 1);
+    const fractionAtCenter = span === 0 ? 0.5 : (centerIndex - curStart) / span;
+
+    let newStart = centerIndex - fractionAtCenter * newSpan;
+    let newEnd = newStart + newSpan;
+
+    if (newStart < 0) {
+      newEnd -= newStart;
+      newStart = 0;
+    }
+    if (newEnd > points.length - 1) {
+      newStart -= newEnd - (points.length - 1);
+      newEnd = points.length - 1;
+    }
+    newStart = Math.max(0, newStart);
+
+    if (newSpan >= points.length - 1 - 0.01) {
+      setViewRange(null);
+    } else {
+      setViewRange([newStart, newEnd]);
+    }
+  }, [points.length, viewRange, minZoomPoints, paddingX, width]);
+
+  function handleWheel(event) {
+    if (points.length < minZoomPoints || !svgRef.current) return;
+    event.preventDefault();
+    const point = localPoint(svgRef.current, event);
+    if (!point) return;
+    applyZoom(event.deltaY > 0 ? zoomStep : 1 / zoomStep, point.x);
+  }
+
+  // ---------------------------------------------------------------------
+  // PAN: click-and-drag (mouse) or single-finger drag (touch).
+  // ---------------------------------------------------------------------
+  function panTo(clientX) {
+    if (!svgRef.current || !dragStartRangeRef.current) return;
     const rect = svgRef.current.getBoundingClientRect();
-    const clientX = event.touches ? event.touches[0].clientX : event.clientX;
-    const relativeX = ((clientX - rect.left) / rect.width) * width;
+    const pixelDeltaX = clientX - dragStartXRef.current;
+    const svgDeltaX = (pixelDeltaX / rect.width) * width;
+
+    const [startRange, endRange] = dragStartRangeRef.current;
+    const span = endRange - startRange;
+    const indexDelta = -(svgDeltaX / (width - paddingX * 2)) * span;
+
+    let newStart = startRange + indexDelta;
+    let newEnd = endRange + indexDelta;
+
+    if (newStart < 0) {
+      newEnd -= newStart;
+      newStart = 0;
+    }
+    if (newEnd > points.length - 1) {
+      newStart -= newEnd - (points.length - 1);
+      newEnd = points.length - 1;
+    }
+    newStart = Math.max(0, newStart);
+
+    setViewRange([newStart, newEnd]);
+  }
+
+  function handleMouseDown(event) {
+    if (!viewRange && points.length <= minZoomPoints) return;
+    isDraggingRef.current = true;
+    dragStartXRef.current = event.clientX;
+    dragStartRangeRef.current = viewRange || [0, points.length - 1];
+
+    const handleWindowMove = (moveEvent) => {
+      if (!isDraggingRef.current) return;
+      panTo(moveEvent.clientX);
+    };
+    const handleWindowUp = () => {
+      isDraggingRef.current = false;
+      window.removeEventListener('mousemove', handleWindowMove);
+      window.removeEventListener('mouseup', handleWindowUp);
+    };
+    window.addEventListener('mousemove', handleWindowMove);
+    window.addEventListener('mouseup', handleWindowUp);
+  }
+
+  function handleDoubleClick() {
+    setViewRange(null);
+  }
+
+  // ---------------------------------------------------------------------
+  // HOVER / TOOLTIP — using visx's localPoint (handles SVG viewBox scaling
+  // correctly) and useTooltip (auto-managed state + TooltipWithBounds
+  // auto-keeps the tooltip on-screen near chart edges, which the old
+  // hand-rolled version didn't do as robustly).
+  // ---------------------------------------------------------------------
+  const handlePointerMove = useCallback((event) => {
+    if (isDraggingRef.current || !svgRef.current || !xScale || visiblePoints.length === 0) return;
+    const point = localPoint(svgRef.current, event);
+    if (!point) return;
 
     let closest = 0;
     let closestDistance = Infinity;
-    coords.forEach((c, i) => {
-      const distance = Math.abs(c.x - relativeX);
+    visiblePoints.forEach((p, i) => {
+      const distance = Math.abs(xScale(i) - point.x);
       if (distance < closestDistance) {
         closestDistance = distance;
         closest = i;
       }
     });
-    setHoverIndex(closest);
+
+    const datum = visiblePoints[closest];
+    showTooltip({
+      tooltipData: datum,
+      tooltipLeft: xScale(closest),
+      tooltipTop: yScale(datum.value),
+    });
+  }, [visiblePoints, xScale, yScale, showTooltip]);
+
+  function handleTouchStart(event) {
+    if (event.touches.length === 2) {
+      pinchDistRef.current = Math.hypot(
+        event.touches[0].clientX - event.touches[1].clientX,
+        event.touches[0].clientY - event.touches[1].clientY
+      );
+    } else if (event.touches.length === 1) {
+      const now = Date.now();
+      const isDoubleTap = now - lastTapRef.current < 300;
+      lastTapRef.current = now;
+
+      // A double-tap resets the view — base the drag snapshot on the range
+      // it's resetting TO (full range), not the stale pre-reset viewRange
+      // still sitting in this closure (setViewRange(null) hasn't applied yet).
+      if (isDoubleTap) {
+        setViewRange(null);
+        dragStartRangeRef.current = [0, points.length - 1];
+      } else {
+        dragStartRangeRef.current = viewRange || [0, points.length - 1];
+      }
+
+      // Don't assume a drag yet — a tap-and-hold should scrub the tooltip,
+      // not pan. handleTouchMove promotes this to a drag once the finger
+      // actually moves past TOUCH_DRAG_THRESHOLD.
+      isDraggingRef.current = false;
+      dragStartXRef.current = event.touches[0].clientX;
+      touchStartPosRef.current = { x: event.touches[0].clientX, y: event.touches[0].clientY };
+    }
   }
 
-  if (coords.length < 2) return null; // caller handles the "not enough data" state
+  function handleTouchMove(event) {
+    if (event.touches.length === 2 && pinchDistRef.current != null && svgRef.current) {
+      event.preventDefault();
+      const dx = event.touches[0].clientX - event.touches[1].clientX;
+      const dy = event.touches[0].clientY - event.touches[1].clientY;
+      const dist = Math.hypot(dx, dy) || 1;
 
-  const hovered = hoverIndex !== null ? coords[hoverIndex] : null;
+      const midClientX = (event.touches[0].clientX + event.touches[1].clientX) / 2;
+      const midClientY = (event.touches[0].clientY + event.touches[1].clientY) / 2;
+      const point = localPoint(svgRef.current, { clientX: midClientX, clientY: midClientY });
+
+      const factor = pinchDistRef.current / dist;
+      applyZoom(factor, point ? point.x : width / 2);
+      pinchDistRef.current = dist;
+    } else if (event.touches.length === 1) {
+      const touch = event.touches[0];
+
+      if (!isDraggingRef.current && touchStartPosRef.current) {
+        const dx = touch.clientX - touchStartPosRef.current.x;
+        const dy = touch.clientY - touchStartPosRef.current.y;
+        if (Math.hypot(dx, dy) > TOUCH_DRAG_THRESHOLD) {
+          isDraggingRef.current = true;
+          hideTooltip();
+        }
+      }
+
+      if (isDraggingRef.current) {
+        panTo(touch.clientX);
+      } else {
+        handlePointerMove(event);
+      }
+    }
+  }
+
+  function handleTouchEnd(event) {
+    isDraggingRef.current = false;
+    pinchDistRef.current = null;
+    touchStartPosRef.current = null;
+    if (event.touches.length === 0) hideTooltip();
+  }
+
+  if (!xScale || visiblePoints.length < 2) return null; // caller handles the "not enough data" state
 
   return (
     <div style={{ position: 'relative' }}>
@@ -118,18 +335,17 @@ export default function PriceChart({ points = [], color = '#4ade80', currency = 
         viewBox={`0 0 ${width} ${height}`}
         width="100%"
         height={height}
-        style={{ marginTop: '10px', touchAction: 'none', cursor: 'crosshair' }}
+        style={{ marginTop: '10px', touchAction: 'none', cursor: isDraggingRef.current ? 'grabbing' : 'grab' }}
         onMouseMove={handlePointerMove}
-        onMouseLeave={() => setHoverIndex(null)}
-        onTouchMove={handlePointerMove}
-        onTouchEnd={() => setHoverIndex(null)}
+        onMouseLeave={hideTooltip}
+        onMouseDown={handleMouseDown}
+        onDoubleClick={handleDoubleClick}
+        onWheel={handleWheel}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
       >
-        <defs>
-          <linearGradient id="priceFillGradient" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor={color} stopOpacity="0.35" />
-            <stop offset="100%" stopColor={color} stopOpacity="0" />
-          </linearGradient>
-        </defs>
+        <LinearGradient id="priceFillGradient" from={color} to={color} fromOpacity={0.35} toOpacity={0} />
 
         {/* Horizontal gridlines + y-axis price labels */}
         {yTicks.map((tick, i) => (
@@ -142,49 +358,79 @@ export default function PriceChart({ points = [], color = '#4ade80', currency = 
         ))}
 
         {/* Gradient area fill under the line */}
-        <path d={areaPath} fill="url(#priceFillGradient)" stroke="none" />
+        <AreaClosed
+          data={visiblePoints}
+          x={getX}
+          y={getY}
+          yScale={yScale}
+          curve={curveLinear}
+          fill="url(#priceFillGradient)"
+          stroke="none"
+        />
 
-        {/* The smooth price line itself */}
-        <path d={linePath} fill="none" stroke={color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+        {/* The price line — curveLinear gives straight segments between
+            points (the "spiked" look), not a smoothed curve. */}
+        <LinePath
+          data={visiblePoints}
+          x={getX}
+          y={getY}
+          curve={curveLinear}
+          stroke={color}
+          strokeWidth={2.5}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
 
         {/* x-axis date labels — sparse, evenly spaced regardless of point count */}
         {labelIndices.map((i) => (
-          <text key={i} x={coords[i].x} y={height - 6} textAnchor="middle" fontSize="10" fill="#9a9a9a">
-            {coords[i].label}
+          <text key={i} x={xScale(i)} y={height - 6} textAnchor="middle" fontSize="10" fill="#9a9a9a">
+            {visiblePoints[i].label}
           </text>
         ))}
 
-        {/* Hover crosshair + highlighted point + tooltip */}
-        {hovered && (
+        {/* Hover crosshair + highlighted point */}
+        {tooltipData && (
           <>
-            <line x1={hovered.x} y1={paddingY / 2} x2={hovered.x} y2={height - paddingY} stroke="#4b4b4b" strokeWidth="1" />
-            <circle cx={hovered.x} cy={hovered.y} r="5" fill={color} stroke="#fff" strokeWidth="1.5" />
+            <line x1={tooltipLeft} y1={paddingY / 2} x2={tooltipLeft} y2={height - paddingY} stroke="#4b4b4b" strokeWidth="1" />
+            <circle cx={tooltipLeft} cy={tooltipTop} r="5" fill={color} stroke="#fff" strokeWidth="1.5" />
           </>
         )}
       </svg>
 
-      {/* HTML tooltip overlay (easier to style/position precisely than SVG text) */}
-      {hovered && (
-        <div
+      {/* visx's TooltipWithBounds automatically keeps itself on-screen near
+          chart edges — the old hand-rolled version only flipped based on a
+          fixed 70%-width threshold, less robust. */}
+      {tooltipData && (
+        <TooltipWithBounds left={tooltipLeft + 12} top={tooltipTop} style={tooltipStyles}>
+          <div style={{ color: '#9a9a9a', fontSize: '10px' }}>{tooltipData.label}</div>
+          <div style={{ fontWeight: 700 }}>{formatPrice(tooltipData.value, currency)}</div>
+        </TooltipWithBounds>
+      )}
+
+      {/* Reset-zoom control — only shown once actually zoomed/panned */}
+      {viewRange && (
+        <button
+          onClick={() => setViewRange(null)}
           style={{
             position: 'absolute',
-            left: `${(hovered.x / width) * 100}%`,
-            top: 0,
-            transform: hovered.x > width * 0.7 ? 'translateX(-105%)' : 'translateX(8px)',
-            background: '#1c1c1c',
+            top: '6px',
+            right: '6px',
+            padding: '4px 10px',
+            borderRadius: '999px',
             border: '1px solid #333',
-            borderRadius: '8px',
-            padding: '6px 10px',
-            fontSize: '12px',
-            color: '#f7f7f7',
-            pointerEvents: 'none',
-            whiteSpace: 'nowrap',
+            background: 'rgba(28,28,28,0.9)',
+            color: '#e2e2e2',
+            fontSize: '11px',
+            cursor: 'pointer',
           }}
         >
-          <div style={{ color: '#9a9a9a', fontSize: '10px' }}>{hovered.label}</div>
-          <div style={{ fontWeight: 700 }}>{formatPrice(hovered.value, currency)}</div>
-        </div>
+          Reset zoom
+        </button>
       )}
+
+      <div style={{ marginTop: '4px', fontSize: '10px', color: '#6b6b6b', textAlign: 'center' }}>
+        Scroll or pinch to zoom · drag to pan · double-click/tap to reset
+      </div>
     </div>
   );
 }

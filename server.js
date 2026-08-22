@@ -105,6 +105,13 @@ app.get('/api/signals', dataLimiter, async (req, res) => {
 // so "week"/"month"/"all" mean "last 7 daily closes" / "last 30 daily
 // closes" / "everything recorded" — there's no meaningful finer-grained
 // "day" option, since a single day only ever has one data point.
+// "1W"/"1M"/"1Y" filter by actual CALENDAR days back from today, not by
+// counting the last N recorded entries — since real gaps exist in the
+// history (skipped update days, anomalous PDFs), entry-count-based
+// slicing could silently span more or less than the labeled period. Date
+// filtering is honest regardless of gaps. If you have less than a year of
+// history yet, "1Y" simply shows everything you have — that's expected,
+// not a bug.
 app.get('/api/history', dataLimiter, async (req, res) => {
   try {
     const ticker = String(req.query.ticker || '').toUpperCase().slice(0, 20);
@@ -123,10 +130,11 @@ app.get('/api/history', dataLimiter, async (req, res) => {
       .filter((entry) => entry.ticker.toUpperCase() === ticker)
       .sort((a, b) => a.date.localeCompare(b.date));
 
-    const rangeDays = { week: 7, month: 30, all: Infinity }[range] ?? 30;
-    const trimmed = Number.isFinite(rangeDays)
-      ? tickerHistory.slice(-rangeDays)
-      : tickerHistory;
+    const rangeDays = { week: 7, month: 30, year: 365 }[range] ?? 30;
+    const cutoff = new Date();
+    cutoff.setUTCDate(cutoff.getUTCDate() - rangeDays);
+    const cutoffStr = cutoff.toISOString().slice(0, 10);
+    const trimmed = tickerHistory.filter((entry) => entry.date >= cutoffStr);
 
     res.json(trimmed);
   } catch (error) {

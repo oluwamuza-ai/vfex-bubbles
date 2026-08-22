@@ -6,12 +6,14 @@ import PriceChart from './PriceChart';
 
 // NOTE: VFEX only publishes one closing price per trading day (no intraday
 // data), so there's no meaningful "days" granularity finer than a single
-// daily close. These ranges reflect what's actually recordable: a week of
-// daily closes, a month of daily closes, or everything collected so far.
+// daily close. Ranges filter by actual calendar days back from today (see
+// server.js) rather than counting recorded entries, since real gaps exist
+// in the history. "1Y" will simply show everything available until a full
+// year of history has actually accumulated.
 const HISTORY_RANGES = [
-  { key: 'week', label: 'Week' },
-  { key: 'month', label: 'Month' },
-  { key: 'all', label: 'All' },
+  { key: 'week', label: '1W' },
+  { key: 'month', label: '1M' },
+  { key: 'year', label: '1Y' },
 ];
 
 // Cycle-on-tap option sets for the compact header icon buttons — each
@@ -177,6 +179,22 @@ function App() {
       value: Number(entry.closingPrice) || 0,
     }));
   }, [historyData]);
+
+  // % change across the currently-selected period (1W/1M/1Y) — from the
+  // oldest point in view to the most recent, not the same thing as
+  // selectedCompany.change (which is always just today's daily move).
+  const periodChange = useMemo(() => {
+    if (chartPoints.length < 2) return null;
+    const first = chartPoints[0].value;
+    const last = chartPoints[chartPoints.length - 1].value;
+    if (!Number.isFinite(first) || first === 0) return null; // avoid dividing by zero
+    return ((last - first) / first) * 100;
+  }, [chartPoints]);
+
+  const historyRangeLabel = useMemo(
+    () => HISTORY_RANGES.find((option) => option.key === historyRange)?.label ?? '',
+    [historyRange]
+  );
 
   return (
     <div className="app-shell">
@@ -593,23 +611,38 @@ function App() {
               </div>
             </div>
 
-            <div style={{ marginTop: '18px', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-              {HISTORY_RANGES.map((option) => (
-                <button
-                  key={option.key}
-                  onClick={() => setHistoryRange(option.key)}
+            <div style={{ marginTop: '18px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px', flexWrap: 'wrap' }}>
+              <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                {HISTORY_RANGES.map((option) => (
+                  <button
+                    key={option.key}
+                    onClick={() => setHistoryRange(option.key)}
+                    style={{
+                      border: `1px solid ${historyRange === option.key ? '#4b4b4b' : '#2b2b2b'}`,
+                      borderRadius: '999px',
+                      background: historyRange === option.key ? '#262626' : 'transparent',
+                      color: historyRange === option.key ? '#f7f7f7' : '#9a9a9a',
+                      padding: '8px 12px',
+                      cursor: 'pointer',
+                    }}
+                  >
+                    {option.label}
+                  </button>
+                ))}
+              </div>
+
+              {periodChange !== null && (
+                <div
                   style={{
-                    border: `1px solid ${historyRange === option.key ? '#4b4b4b' : '#2b2b2b'}`,
-                    borderRadius: '999px',
-                    background: historyRange === option.key ? '#262626' : 'transparent',
-                    color: historyRange === option.key ? '#f7f7f7' : '#9a9a9a',
-                    padding: '8px 12px',
-                    cursor: 'pointer',
+                    fontSize: '13px',
+                    fontWeight: 700,
+                    color: colorForChange(periodChange),
                   }}
+                  title={`Change over the selected ${historyRangeLabel} period`}
                 >
-                  {option.label}
-                </button>
-              ))}
+                  {periodChange > 0 ? '+' : ''}{periodChange.toFixed(2)}% over {historyRangeLabel}
+                </div>
+              )}
             </div>
 
             <div style={{ marginTop: '16px', borderRadius: '14px', padding: '14px', background: '#101010', border: '1px solid #232323' }}>
