@@ -11,12 +11,12 @@ import { clamp } from './utils';
 // 📈 CHART CONFIG — edit here for sizing/style tweaks
 // ============================================================================
 const CHART = {
-  width: 640,
-  height: 260,
-  paddingX: 44,   // left/right padding — needs room for y-axis price labels
+  width: 820,
+  height: 340,
+  paddingX: 48,   // left/right padding — needs room for y-axis price labels
   paddingY: 28,
-  maxXLabels: 6,  // show at most this many x-axis date labels, evenly spaced
-  yLabelCount: 4, // number of horizontal gridlines / y-axis price labels
+  maxXLabels: 7,  // show at most this many x-axis date labels, evenly spaced
+  yLabelCount: 5, // number of horizontal gridlines / y-axis price labels
   minZoomPoints: 3,   // can't zoom in past showing this many points
   zoomStep: 1.15,     // wheel-zoom multiplier per scroll tick
 };

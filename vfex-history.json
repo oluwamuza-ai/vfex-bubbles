@@ -177,7 +177,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-08-06",
-    "closingPrice": 0,
+    "closingPrice": 16.5,
     "marketCap": 132840000,
     "change": 0
   },
@@ -212,7 +212,7 @@
   {
     "ticker": "WPHL.VX",
     "date": "2026-08-06",
-    "closingPrice": 0,
+    "closingPrice": 10,
     "marketCap": 34460000,
     "change": 0
   },
@@ -233,7 +233,7 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-08-08",
-    "closingPrice": 0,
+    "closingPrice": 40,
     "marketCap": 237730000,
     "change": 0
   },
@@ -282,7 +282,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-08-08",
-    "closingPrice": 0,
+    "closingPrice": 16.5,
     "marketCap": 132840000,
     "change": 0
   },
@@ -317,7 +317,7 @@
   {
     "ticker": "WPHL.VX",
     "date": "2026-08-08",
-    "closingPrice": 0,
+    "closingPrice": 10,
     "marketCap": 34460000,
     "change": 0
   },
@@ -345,14 +345,14 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-01-02",
-    "closingPrice": 0,
+    "closingPrice": 39.9,
     "marketCap": 250000,
     "change": 0
   },
   {
     "ticker": "EDGR.VX",
     "date": "2026-01-02",
-    "closingPrice": 0,
+    "closingPrice": 0.023,
     "marketCap": 140000,
     "change": 0
   },
@@ -394,14 +394,14 @@
   {
     "ticker": "PHL.VX",
     "date": "2026-01-02",
-    "closingPrice": 0,
+    "closingPrice": 0.595,
     "marketCap": 1550000,
     "change": 0
   },
   {
     "ticker": "SCIL.VX",
     "date": "2026-01-02",
-    "closingPrice": 0,
+    "closingPrice": 0.2595,
     "marketCap": 1270000,
     "change": 0
   },
@@ -429,7 +429,7 @@
   {
     "ticker": "AFRIC.VX",
     "date": "2026-01-05",
-    "closingPrice": 0,
+    "closingPrice": 4,
     "marketCap": 59120000,
     "change": 0
   },
@@ -443,14 +443,14 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-01-05",
-    "closingPrice": 0,
+    "closingPrice": 39.9,
     "marketCap": 250000,
     "change": 0
   },
   {
     "ticker": "EDGR.VX",
     "date": "2026-01-05",
-    "closingPrice": 0,
+    "closingPrice": 0.023,
     "marketCap": 140000,
     "change": 0
   },
@@ -478,14 +478,14 @@
   {
     "ticker": "KAV.VX",
     "date": "2026-01-05",
-    "closingPrice": 0,
+    "closingPrice": 0.0165,
     "marketCap": 0,
     "change": 0
   },
   {
     "ticker": "NED.VX",
     "date": "2026-01-05",
-    "closingPrice": 0,
+    "closingPrice": 15.6,
     "marketCap": 156990000,
     "change": 0
   },
@@ -499,7 +499,7 @@
   {
     "ticker": "SCIL.VX",
     "date": "2026-01-05",
-    "closingPrice": 0,
+    "closingPrice": 0.2595,
     "marketCap": 1270000,
     "change": 0
   },
@@ -513,7 +513,7 @@
   {
     "ticker": "ZIM.VX",
     "date": "2026-01-05",
-    "closingPrice": 0,
+    "closingPrice": 0.043,
     "marketCap": 150000,
     "change": 0
   },
@@ -632,7 +632,7 @@
   {
     "ticker": "AFRIC.VX",
     "date": "2026-01-07",
-    "closingPrice": 0,
+    "closingPrice": 4,
     "marketCap": 58520000,
     "change": 0
   },
@@ -646,14 +646,14 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-01-07",
-    "closingPrice": 0,
+    "closingPrice": 39.9,
     "marketCap": 250000,
     "change": 0
   },
   {
     "ticker": "EDGR.VX",
     "date": "2026-01-07",
-    "closingPrice": 0,
+    "closingPrice": 0.023,
     "marketCap": 140000,
     "change": 0
   },
@@ -688,7 +688,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-01-07",
-    "closingPrice": 0,
+    "closingPrice": 15.6,
     "marketCap": 125590000,
     "change": 0
   },
@@ -744,14 +744,14 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-01-08",
-    "closingPrice": 0,
+    "closingPrice": 39.9,
     "marketCap": 250000,
     "change": 0
   },
   {
     "ticker": "EDGR.VX",
     "date": "2026-01-08",
-    "closingPrice": 0,
+    "closingPrice": 0.023,
     "marketCap": 140000,
     "change": 0
   },
@@ -786,7 +786,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-01-08",
-    "closingPrice": 0,
+    "closingPrice": 15.6,
     "marketCap": 125590000,
     "change": 0
   },
@@ -814,7 +814,7 @@
   {
     "ticker": "ZIM.VX",
     "date": "2026-01-08",
-    "closingPrice": 0,
+    "closingPrice": 0.0425,
     "marketCap": 150000,
     "change": 0
   },
@@ -828,7 +828,7 @@
   {
     "ticker": "AFRIC.VX",
     "date": "2026-01-09",
-    "closingPrice": 0,
+    "closingPrice": 4,
     "marketCap": 59120000,
     "change": 0
   },
@@ -842,7 +842,7 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-01-09",
-    "closingPrice": 0,
+    "closingPrice": 39.9,
     "marketCap": 250000,
     "change": 0
   },
@@ -856,7 +856,7 @@
   {
     "ticker": "FCA.VX",
     "date": "2026-01-09",
-    "closingPrice": 0,
+    "closingPrice": 0.1005,
     "marketCap": 2170000,
     "change": 0
   },
@@ -884,7 +884,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-01-09",
-    "closingPrice": 0,
+    "closingPrice": 15.6,
     "marketCap": 125590000,
     "change": 0
   },
@@ -982,7 +982,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-01-12",
-    "closingPrice": 0,
+    "closingPrice": 15.6,
     "marketCap": 125590000,
     "change": 0
   },
@@ -996,7 +996,7 @@
   {
     "ticker": "SCIL.VX",
     "date": "2026-01-12",
-    "closingPrice": 0,
+    "closingPrice": 0.27,
     "marketCap": 1410000,
     "change": 0
   },
@@ -1024,7 +1024,7 @@
   {
     "ticker": "AFRIC.VX",
     "date": "2026-01-13",
-    "closingPrice": 0,
+    "closingPrice": 3.5,
     "marketCap": 54120000,
     "change": 0
   },
@@ -1038,14 +1038,14 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-01-13",
-    "closingPrice": 0,
+    "closingPrice": 39.9,
     "marketCap": 250000,
     "change": 0
   },
   {
     "ticker": "EDGR.VX",
     "date": "2026-01-13",
-    "closingPrice": 0,
+    "closingPrice": 0.023,
     "marketCap": 140000,
     "change": 0
   },
@@ -1073,7 +1073,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-01-13",
-    "closingPrice": 0,
+    "closingPrice": 15.6,
     "marketCap": 125590000,
     "change": 0
   },
@@ -1101,7 +1101,7 @@
   {
     "ticker": "ZIM.VX",
     "date": "2026-01-13",
-    "closingPrice": 0,
+    "closingPrice": 0.0425,
     "marketCap": 150000,
     "change": 0
   },
@@ -1115,7 +1115,7 @@
   {
     "ticker": "AFRIC.VX",
     "date": "2026-01-14",
-    "closingPrice": 0,
+    "closingPrice": 3.5,
     "marketCap": 54120000,
     "change": 0
   },
@@ -1129,7 +1129,7 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-01-14",
-    "closingPrice": 0,
+    "closingPrice": 39.9,
     "marketCap": 250000,
     "change": 0
   },
@@ -1171,7 +1171,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-01-14",
-    "closingPrice": 0,
+    "closingPrice": 15.6,
     "marketCap": 125590000,
     "change": 0
   },
@@ -1199,7 +1199,7 @@
   {
     "ticker": "ZIM.VX",
     "date": "2026-01-14",
-    "closingPrice": 0,
+    "closingPrice": 0.0425,
     "marketCap": 150000,
     "change": 0
   },
@@ -1213,7 +1213,7 @@
   {
     "ticker": "AFRIC.VX",
     "date": "2026-01-15",
-    "closingPrice": 0,
+    "closingPrice": 3.5,
     "marketCap": 54120000,
     "change": 0
   },
@@ -1234,7 +1234,7 @@
   {
     "ticker": "EDGR.VX",
     "date": "2026-01-15",
-    "closingPrice": 0,
+    "closingPrice": 0.023,
     "marketCap": 140000,
     "change": 0
   },
@@ -1269,7 +1269,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-01-15",
-    "closingPrice": 0,
+    "closingPrice": 15.6,
     "marketCap": 125590000,
     "change": 0
   },
@@ -1325,7 +1325,7 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-01-16",
-    "closingPrice": 0,
+    "closingPrice": 47.85,
     "marketCap": 300000,
     "change": 0
   },
@@ -1367,7 +1367,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-01-16",
-    "closingPrice": 0,
+    "closingPrice": 15.6,
     "marketCap": 125590000,
     "change": 0
   },
@@ -1465,7 +1465,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-01-19",
-    "closingPrice": 0,
+    "closingPrice": 15.6,
     "marketCap": 125590000,
     "change": 0
   },
@@ -1479,7 +1479,7 @@
   {
     "ticker": "SCIL.VX",
     "date": "2026-01-19",
-    "closingPrice": 0,
+    "closingPrice": 0.213,
     "marketCap": 1200000,
     "change": 0
   },
@@ -1493,7 +1493,7 @@
   {
     "ticker": "ZIM.VX",
     "date": "2026-01-19",
-    "closingPrice": 0,
+    "closingPrice": 0.043,
     "marketCap": 150000,
     "change": 0
   },
@@ -1563,7 +1563,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-01-20",
-    "closingPrice": 0,
+    "closingPrice": 15.6,
     "marketCap": 125590000,
     "change": 0
   },
@@ -1626,7 +1626,7 @@
   {
     "ticker": "EDGR.VX",
     "date": "2026-01-21",
-    "closingPrice": 0,
+    "closingPrice": 0.027,
     "marketCap": 160000,
     "change": 0
   },
@@ -1661,7 +1661,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-01-21",
-    "closingPrice": 0,
+    "closingPrice": 15.6,
     "marketCap": 125590000,
     "change": 0
   },
@@ -1675,7 +1675,7 @@
   {
     "ticker": "SCIL.VX",
     "date": "2026-01-21",
-    "closingPrice": 0,
+    "closingPrice": 0.2255,
     "marketCap": 1240000,
     "change": 0
   },
@@ -1717,14 +1717,14 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-01-22",
-    "closingPrice": 0,
+    "closingPrice": 50,
     "marketCap": 310000,
     "change": 0
   },
   {
     "ticker": "EDGR.VX",
     "date": "2026-01-22",
-    "closingPrice": 0,
+    "closingPrice": 0.027,
     "marketCap": 160000,
     "change": 0
   },
@@ -1745,7 +1745,7 @@
   {
     "ticker": "INV.VX",
     "date": "2026-01-22",
-    "closingPrice": 0,
+    "closingPrice": 0.15,
     "marketCap": 280000,
     "change": 0
   },
@@ -1787,7 +1787,7 @@
   {
     "ticker": "ZIM.VX",
     "date": "2026-01-22",
-    "closingPrice": 0,
+    "closingPrice": 0.042,
     "marketCap": 140000,
     "change": 0
   },
@@ -1815,7 +1815,7 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-01-23",
-    "closingPrice": 0,
+    "closingPrice": 50,
     "marketCap": 310000,
     "change": 0
   },
@@ -1857,7 +1857,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-01-23",
-    "closingPrice": 0,
+    "closingPrice": 12.6,
     "marketCap": 101440000,
     "change": 0
   },
@@ -1885,7 +1885,7 @@
   {
     "ticker": "ZIM.VX",
     "date": "2026-01-23",
-    "closingPrice": 0,
+    "closingPrice": 0.042,
     "marketCap": 140000,
     "change": 0
   },
@@ -2011,14 +2011,14 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-01-27",
-    "closingPrice": 0,
+    "closingPrice": 50,
     "marketCap": 310000,
     "change": 0
   },
   {
     "ticker": "EDGR.VX",
     "date": "2026-01-27",
-    "closingPrice": 0,
+    "closingPrice": 0.0251,
     "marketCap": 150000,
     "change": 0
   },
@@ -2053,7 +2053,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-01-27",
-    "closingPrice": 0,
+    "closingPrice": 12.6,
     "marketCap": 101440000,
     "change": 0
   },
@@ -2116,7 +2116,7 @@
   {
     "ticker": "EDGR.VX",
     "date": "2026-01-28",
-    "closingPrice": 0,
+    "closingPrice": 0.0251,
     "marketCap": 150000,
     "change": 0
   },
@@ -2151,7 +2151,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-01-28",
-    "closingPrice": 0,
+    "closingPrice": 12.6,
     "marketCap": 101440000,
     "change": 0
   },
@@ -2179,7 +2179,7 @@
   {
     "ticker": "ZIM.VX",
     "date": "2026-01-28",
-    "closingPrice": 0,
+    "closingPrice": 0.04,
     "marketCap": 140000,
     "change": 0
   },
@@ -2207,14 +2207,14 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-01-30",
-    "closingPrice": 0,
+    "closingPrice": 50.3,
     "marketCap": 310000,
     "change": 0
   },
   {
     "ticker": "EDGR.VX",
     "date": "2026-01-30",
-    "closingPrice": 0,
+    "closingPrice": 0.0251,
     "marketCap": 150000,
     "change": 0
   },
@@ -2242,14 +2242,14 @@
   {
     "ticker": "KAV.VX",
     "date": "2026-01-30",
-    "closingPrice": 0,
+    "closingPrice": 0.0175,
     "marketCap": 0,
     "change": 0
   },
   {
     "ticker": "NED.VX",
     "date": "2026-01-30",
-    "closingPrice": 0,
+    "closingPrice": 12.6,
     "marketCap": 101440000,
     "change": 0
   },
@@ -2277,7 +2277,7 @@
   {
     "ticker": "ZIM.VX",
     "date": "2026-01-30",
-    "closingPrice": 0,
+    "closingPrice": 0.04,
     "marketCap": 140000,
     "change": 0
   },
@@ -2305,14 +2305,14 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-02-02",
-    "closingPrice": 0,
+    "closingPrice": 50.3,
     "marketCap": 310000,
     "change": 0
   },
   {
     "ticker": "EDGR.VX",
     "date": "2026-02-02",
-    "closingPrice": 0,
+    "closingPrice": 0.0251,
     "marketCap": 150000,
     "change": 0
   },
@@ -2347,7 +2347,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-02-02",
-    "closingPrice": 0,
+    "closingPrice": 12.6,
     "marketCap": 101440000,
     "change": 0
   },
@@ -2403,14 +2403,14 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-02-03",
-    "closingPrice": 0,
+    "closingPrice": 50.3,
     "marketCap": 310000,
     "change": 0
   },
   {
     "ticker": "EDGR.VX",
     "date": "2026-02-03",
-    "closingPrice": 0,
+    "closingPrice": 0.0251,
     "marketCap": 150000,
     "change": 0
   },
@@ -2431,7 +2431,7 @@
   {
     "ticker": "INV.VX",
     "date": "2026-02-03",
-    "closingPrice": 0,
+    "closingPrice": 0.14,
     "marketCap": 260000,
     "change": 0
   },
@@ -2445,7 +2445,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-02-03",
-    "closingPrice": 0,
+    "closingPrice": 12.6,
     "marketCap": 101440000,
     "change": 0
   },
@@ -2508,7 +2508,7 @@
   {
     "ticker": "EDGR.VX",
     "date": "2026-02-04",
-    "closingPrice": 0,
+    "closingPrice": 0.0251,
     "marketCap": 150000,
     "change": 0
   },
@@ -2536,14 +2536,14 @@
   {
     "ticker": "KAV.VX",
     "date": "2026-02-04",
-    "closingPrice": 0,
+    "closingPrice": 0.022,
     "marketCap": 0,
     "change": 0
   },
   {
     "ticker": "NED.VX",
     "date": "2026-02-04",
-    "closingPrice": 0,
+    "closingPrice": 12.6,
     "marketCap": 101440000,
     "change": 0
   },
@@ -2564,7 +2564,7 @@
   {
     "ticker": "SIM.VX",
     "date": "2026-02-04",
-    "closingPrice": 0,
+    "closingPrice": 0.6025,
     "marketCap": 180000,
     "change": 0
   },
@@ -2599,14 +2599,14 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-02-05",
-    "closingPrice": 0,
+    "closingPrice": 50.3,
     "marketCap": 310000,
     "change": 0
   },
   {
     "ticker": "EDGR.VX",
     "date": "2026-02-05",
-    "closingPrice": 0,
+    "closingPrice": 0.0251,
     "marketCap": 150000,
     "change": 0
   },
@@ -2641,7 +2641,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-02-05",
-    "closingPrice": 0,
+    "closingPrice": 12.6,
     "marketCap": 101440000,
     "change": 0
   },
@@ -2697,14 +2697,14 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-02-06",
-    "closingPrice": 0,
+    "closingPrice": 50.3,
     "marketCap": 310000,
     "change": 0
   },
   {
     "ticker": "EDGR.VX",
     "date": "2026-02-06",
-    "closingPrice": 0,
+    "closingPrice": 0.0251,
     "marketCap": 150000,
     "change": 0
   },
@@ -2739,7 +2739,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-02-06",
-    "closingPrice": 0,
+    "closingPrice": 12.6,
     "marketCap": 101440000,
     "change": 0
   },
@@ -2802,7 +2802,7 @@
   {
     "ticker": "EDGR.VX",
     "date": "2026-02-09",
-    "closingPrice": 0,
+    "closingPrice": 0.0251,
     "marketCap": 150000,
     "change": 0
   },
@@ -2837,7 +2837,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-02-09",
-    "closingPrice": 0,
+    "closingPrice": 12.6,
     "marketCap": 101440000,
     "change": 0
   },
@@ -3040,7 +3040,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-02-11",
-    "closingPrice": 0,
+    "closingPrice": 13,
     "marketCap": 104660000,
     "change": 0
   },
@@ -3054,7 +3054,7 @@
   {
     "ticker": "SCIL.VX",
     "date": "2026-02-11",
-    "closingPrice": 0,
+    "closingPrice": 0.2805,
     "marketCap": 1580000,
     "change": 0
   },
@@ -3103,14 +3103,14 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-02-12",
-    "closingPrice": 0,
+    "closingPrice": 53,
     "marketCap": 330000,
     "change": 0
   },
   {
     "ticker": "EDGR.VX",
     "date": "2026-02-12",
-    "closingPrice": 0,
+    "closingPrice": 0.024,
     "marketCap": 150000,
     "change": 0
   },
@@ -3145,7 +3145,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-02-12",
-    "closingPrice": 0,
+    "closingPrice": 13,
     "marketCap": 104660000,
     "change": 0
   },
@@ -3208,7 +3208,7 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-02-13",
-    "closingPrice": 0,
+    "closingPrice": 53,
     "marketCap": 330000,
     "change": 0
   },
@@ -3250,7 +3250,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-02-13",
-    "closingPrice": 0,
+    "closingPrice": 13,
     "marketCap": 104660000,
     "change": 0
   },
@@ -3313,14 +3313,14 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-02-16",
-    "closingPrice": 0,
+    "closingPrice": 53,
     "marketCap": 330000,
     "change": 0
   },
   {
     "ticker": "EDGR.VX",
     "date": "2026-02-16",
-    "closingPrice": 0,
+    "closingPrice": 0.028,
     "marketCap": 170000,
     "change": 0
   },
@@ -3355,7 +3355,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-02-16",
-    "closingPrice": 0,
+    "closingPrice": 13,
     "marketCap": 104660000,
     "change": 0
   },
@@ -3418,7 +3418,7 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-02-17",
-    "closingPrice": 0,
+    "closingPrice": 53,
     "marketCap": 330000,
     "change": 0
   },
@@ -3488,7 +3488,7 @@
   {
     "ticker": "ZIM.VX",
     "date": "2026-02-17",
-    "closingPrice": 0,
+    "closingPrice": 0.04,
     "marketCap": 140000,
     "change": 0
   },
@@ -3523,7 +3523,7 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-02-18",
-    "closingPrice": 0,
+    "closingPrice": 53,
     "marketCap": 330000,
     "change": 0
   },
@@ -3628,7 +3628,7 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-02-19",
-    "closingPrice": 0,
+    "closingPrice": 53,
     "marketCap": 330000,
     "change": 0
   },
@@ -3684,7 +3684,7 @@
   {
     "ticker": "SCIL.VX",
     "date": "2026-02-19",
-    "closingPrice": 0,
+    "closingPrice": 0.25,
     "marketCap": 1380000,
     "change": 0
   },
@@ -3698,7 +3698,7 @@
   {
     "ticker": "ZIM.VX",
     "date": "2026-02-19",
-    "closingPrice": 0,
+    "closingPrice": 0.04,
     "marketCap": 140000,
     "change": 0
   },
@@ -3719,7 +3719,7 @@
   {
     "ticker": "AFRIC.VX",
     "date": "2026-02-23",
-    "closingPrice": 0,
+    "closingPrice": 3.6325,
     "marketCap": 56140000,
     "change": 0
   },
@@ -3733,7 +3733,7 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-02-23",
-    "closingPrice": 0,
+    "closingPrice": 53,
     "marketCap": 330000,
     "change": 0
   },
@@ -3824,7 +3824,7 @@
   {
     "ticker": "AFRIC.VX",
     "date": "2026-02-24",
-    "closingPrice": 0,
+    "closingPrice": 3.6325,
     "marketCap": 56140000,
     "change": 0
   },
@@ -3880,7 +3880,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-02-24",
-    "closingPrice": 0,
+    "closingPrice": 13,
     "marketCap": 104660000,
     "change": 0
   },
@@ -3943,7 +3943,7 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-02-25",
-    "closingPrice": 0,
+    "closingPrice": 53,
     "marketCap": 330000,
     "change": 0
   },
@@ -4048,7 +4048,7 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-02-26",
-    "closingPrice": 0,
+    "closingPrice": 53,
     "marketCap": 330000,
     "change": 0
   },
@@ -4153,14 +4153,14 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-02-27",
-    "closingPrice": 0,
+    "closingPrice": 53,
     "marketCap": 330000,
     "change": 0
   },
   {
     "ticker": "EDGR.VX",
     "date": "2026-02-27",
-    "closingPrice": 0,
+    "closingPrice": 0.0309,
     "marketCap": 190000,
     "change": 0
   },
@@ -4181,7 +4181,7 @@
   {
     "ticker": "INV.VX",
     "date": "2026-02-27",
-    "closingPrice": 0,
+    "closingPrice": 0.141,
     "marketCap": 260000,
     "change": 0
   },
@@ -4370,7 +4370,7 @@
   {
     "ticker": "EDGR.VX",
     "date": "2026-03-03",
-    "closingPrice": 0,
+    "closingPrice": 0.03,
     "marketCap": 180000,
     "change": 0
   },
@@ -4454,7 +4454,7 @@
   {
     "ticker": "AFRIC.VX",
     "date": "2026-03-04",
-    "closingPrice": 0,
+    "closingPrice": 3.9275,
     "marketCap": 57980000,
     "change": 0
   },
@@ -4510,7 +4510,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-03-04",
-    "closingPrice": 0,
+    "closingPrice": 13,
     "marketCap": 104660000,
     "change": 0
   },
@@ -4580,7 +4580,7 @@
   {
     "ticker": "EDGR.VX",
     "date": "2026-03-05",
-    "closingPrice": 0,
+    "closingPrice": 0.03,
     "marketCap": 180000,
     "change": 0
   },
@@ -4615,7 +4615,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-03-05",
-    "closingPrice": 0,
+    "closingPrice": 13,
     "marketCap": 104660000,
     "change": 0
   },
@@ -4643,7 +4643,7 @@
   {
     "ticker": "ZIM.VX",
     "date": "2026-03-05",
-    "closingPrice": 0,
+    "closingPrice": 0.0481,
     "marketCap": 170000,
     "change": 0
   },
@@ -4685,7 +4685,7 @@
   {
     "ticker": "EDGR.VX",
     "date": "2026-03-06",
-    "closingPrice": 0,
+    "closingPrice": 0.03,
     "marketCap": 180000,
     "change": 0
   },
@@ -4706,7 +4706,7 @@
   {
     "ticker": "INV.VX",
     "date": "2026-03-06",
-    "closingPrice": 0,
+    "closingPrice": 0.15,
     "marketCap": 280000,
     "change": 0
   },
@@ -4720,7 +4720,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-03-06",
-    "closingPrice": 0,
+    "closingPrice": 13,
     "marketCap": 104660000,
     "change": 0
   },
@@ -4895,7 +4895,7 @@
   {
     "ticker": "EDGR.VX",
     "date": "2026-03-10",
-    "closingPrice": 0,
+    "closingPrice": 0.03,
     "marketCap": 180000,
     "change": 0
   },
@@ -4958,7 +4958,7 @@
   {
     "ticker": "ZIM.VX",
     "date": "2026-03-10",
-    "closingPrice": 0,
+    "closingPrice": 0.0455,
     "marketCap": 160000,
     "change": 0
   },
@@ -5203,7 +5203,7 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-03-13",
-    "closingPrice": 0,
+    "closingPrice": 70,
     "marketCap": 430000,
     "change": 0
   },
@@ -5273,7 +5273,7 @@
   {
     "ticker": "ZIM.VX",
     "date": "2026-03-13",
-    "closingPrice": 0,
+    "closingPrice": 0.0455,
     "marketCap": 160000,
     "change": 0
   },
@@ -5455,7 +5455,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-03-17",
-    "closingPrice": 0,
+    "closingPrice": 13,
     "marketCap": 104660000,
     "change": 0
   },
@@ -5518,14 +5518,14 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-03-18",
-    "closingPrice": 0,
+    "closingPrice": 70,
     "marketCap": 430000,
     "change": 0
   },
   {
     "ticker": "EDGR.VX",
     "date": "2026-03-18",
-    "closingPrice": 0,
+    "closingPrice": 0.024,
     "marketCap": 150000,
     "change": 0
   },
@@ -5560,7 +5560,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-03-18",
-    "closingPrice": 0,
+    "closingPrice": 13,
     "marketCap": 104660000,
     "change": 0
   },
@@ -5609,7 +5609,7 @@
   {
     "ticker": "AFRIC.VX",
     "date": "2026-03-20",
-    "closingPrice": 0,
+    "closingPrice": 4.22,
     "marketCap": 69120000,
     "change": 0
   },
@@ -5665,7 +5665,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-03-20",
-    "closingPrice": 0,
+    "closingPrice": 13,
     "marketCap": 104660000,
     "change": 0
   },
@@ -5693,7 +5693,7 @@
   {
     "ticker": "ZIM.VX",
     "date": "2026-03-20",
-    "closingPrice": 0,
+    "closingPrice": 0.0546,
     "marketCap": 160000,
     "change": 0
   },
@@ -5714,7 +5714,7 @@
   {
     "ticker": "AFRIC.VX",
     "date": "2026-03-23",
-    "closingPrice": 0,
+    "closingPrice": 4.22,
     "marketCap": 69120000,
     "change": 0
   },
@@ -5770,7 +5770,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-03-23",
-    "closingPrice": 0,
+    "closingPrice": 13,
     "marketCap": 104660000,
     "change": 0
   },
@@ -5833,7 +5833,7 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-03-24",
-    "closingPrice": 0,
+    "closingPrice": 69,
     "marketCap": 430000,
     "change": 0
   },
@@ -5903,7 +5903,7 @@
   {
     "ticker": "ZIM.VX",
     "date": "2026-03-24",
-    "closingPrice": 0,
+    "closingPrice": 0.0481,
     "marketCap": 170000,
     "change": 0
   },
@@ -5980,7 +5980,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-03-25",
-    "closingPrice": 0,
+    "closingPrice": 11,
     "marketCap": 93780000,
     "change": 0
   },
@@ -6008,7 +6008,7 @@
   {
     "ticker": "ZIM.VX",
     "date": "2026-03-25",
-    "closingPrice": 0,
+    "closingPrice": 0.0481,
     "marketCap": 170000,
     "change": 0
   },
@@ -6050,7 +6050,7 @@
   {
     "ticker": "EDGR.VX",
     "date": "2026-03-26",
-    "closingPrice": 0,
+    "closingPrice": 0.03,
     "marketCap": 180000,
     "change": 0
   },
@@ -6190,7 +6190,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-03-27",
-    "closingPrice": 0,
+    "closingPrice": 13,
     "marketCap": 104660000,
     "change": 0
   },
@@ -6239,7 +6239,7 @@
   {
     "ticker": "AFRIC.VX",
     "date": "2026-03-30",
-    "closingPrice": 0,
+    "closingPrice": 4.22,
     "marketCap": 62370000,
     "change": 0
   },
@@ -6295,7 +6295,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-03-30",
-    "closingPrice": 0,
+    "closingPrice": 13,
     "marketCap": 104660000,
     "change": 0
   },
@@ -6323,7 +6323,7 @@
   {
     "ticker": "ZIM.VX",
     "date": "2026-03-30",
-    "closingPrice": 0,
+    "closingPrice": 0.0504,
     "marketCap": 170000,
     "change": 0
   },
@@ -6407,7 +6407,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-03-31",
-    "closingPrice": 0,
+    "closingPrice": 13,
     "marketCap": 33870000,
     "change": 0
   },
@@ -6428,7 +6428,7 @@
   {
     "ticker": "WPHL.VX",
     "date": "2026-03-31",
-    "closingPrice": 0,
+    "closingPrice": 10,
     "marketCap": 34460000,
     "change": 0
   },
@@ -6498,7 +6498,7 @@
   {
     "ticker": "INV.VX",
     "date": "2026-04-01",
-    "closingPrice": 0,
+    "closingPrice": 0.15,
     "marketCap": 0,
     "change": 0
   },
@@ -6512,7 +6512,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-04-01",
-    "closingPrice": 0,
+    "closingPrice": 13,
     "marketCap": 33870000,
     "change": 0
   },
@@ -6533,7 +6533,7 @@
   {
     "ticker": "WPHL.VX",
     "date": "2026-04-01",
-    "closingPrice": 0,
+    "closingPrice": 10,
     "marketCap": 34460000,
     "change": 0
   },
@@ -6554,7 +6554,7 @@
   {
     "ticker": "AFRIC.VX",
     "date": "2026-04-02",
-    "closingPrice": 0,
+    "closingPrice": 4.22,
     "marketCap": 62370000,
     "change": 0
   },
@@ -6568,7 +6568,7 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-04-02",
-    "closingPrice": 0,
+    "closingPrice": 55.2,
     "marketCap": 400000,
     "change": 0
   },
@@ -6582,7 +6582,7 @@
   {
     "ticker": "EDGR.VX",
     "date": "2026-04-02",
-    "closingPrice": 0,
+    "closingPrice": 0.024,
     "marketCap": 520000,
     "change": 0
   },
@@ -6603,7 +6603,7 @@
   {
     "ticker": "INV.VX",
     "date": "2026-04-02",
-    "closingPrice": 0,
+    "closingPrice": 0.15,
     "marketCap": 0,
     "change": 0
   },
@@ -6617,7 +6617,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-04-02",
-    "closingPrice": 0,
+    "closingPrice": 13,
     "marketCap": 33870000,
     "change": 0
   },
@@ -6631,14 +6631,14 @@
   {
     "ticker": "SCIL.VX",
     "date": "2026-04-02",
-    "closingPrice": 0,
+    "closingPrice": 0.28,
     "marketCap": 80000,
     "change": 0
   },
   {
     "ticker": "WPHL.VX",
     "date": "2026-04-02",
-    "closingPrice": 0,
+    "closingPrice": 10,
     "marketCap": 34460000,
     "change": 0
   },
@@ -6687,7 +6687,7 @@
   {
     "ticker": "EDGR.VX",
     "date": "2026-04-07",
-    "closingPrice": 0,
+    "closingPrice": 0.024,
     "marketCap": 520000,
     "change": 0
   },
@@ -6722,7 +6722,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-04-07",
-    "closingPrice": 0,
+    "closingPrice": 13,
     "marketCap": 33870000,
     "change": 0
   },
@@ -6736,7 +6736,7 @@
   {
     "ticker": "SCIL.VX",
     "date": "2026-04-07",
-    "closingPrice": 0,
+    "closingPrice": 0.28,
     "marketCap": 80000,
     "change": 0
   },
@@ -6750,7 +6750,7 @@
   {
     "ticker": "WPHL.VX",
     "date": "2026-04-07",
-    "closingPrice": 0,
+    "closingPrice": 10,
     "marketCap": 34460000,
     "change": 0
   },
@@ -6806,7 +6806,7 @@
   {
     "ticker": "EDGR.VX",
     "date": "2026-04-08",
-    "closingPrice": 0,
+    "closingPrice": 0.024,
     "marketCap": 520000,
     "change": 0
   },
@@ -6869,7 +6869,7 @@
   {
     "ticker": "WPHL.VX",
     "date": "2026-04-08",
-    "closingPrice": 0,
+    "closingPrice": 10,
     "marketCap": 34460000,
     "change": 0
   },
@@ -6911,7 +6911,7 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-04-09",
-    "closingPrice": 0,
+    "closingPrice": 64.25,
     "marketCap": 410000,
     "change": 0
   },
@@ -6960,7 +6960,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-04-09",
-    "closingPrice": 0,
+    "closingPrice": 13,
     "marketCap": 33870000,
     "change": 0
   },
@@ -6988,7 +6988,7 @@
   {
     "ticker": "WPHL.VX",
     "date": "2026-04-09",
-    "closingPrice": 0,
+    "closingPrice": 10,
     "marketCap": 34460000,
     "change": 0
   },
@@ -7030,7 +7030,7 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-04-10",
-    "closingPrice": 0,
+    "closingPrice": 64.25,
     "marketCap": 410000,
     "change": 0
   },
@@ -7044,7 +7044,7 @@
   {
     "ticker": "EDGR.VX",
     "date": "2026-04-10",
-    "closingPrice": 0,
+    "closingPrice": 0.024,
     "marketCap": 520000,
     "change": 0
   },
@@ -7079,7 +7079,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-04-10",
-    "closingPrice": 0,
+    "closingPrice": 13,
     "marketCap": 33870000,
     "change": 0
   },
@@ -7107,7 +7107,7 @@
   {
     "ticker": "WPHL.VX",
     "date": "2026-04-10",
-    "closingPrice": 0,
+    "closingPrice": 10,
     "marketCap": 34460000,
     "change": 0
   },
@@ -7135,7 +7135,7 @@
   {
     "ticker": "AFRIC.VX",
     "date": "2026-04-13",
-    "closingPrice": 0,
+    "closingPrice": 5.17,
     "marketCap": 76410000,
     "change": 0
   },
@@ -7163,7 +7163,7 @@
   {
     "ticker": "EDGR.VX",
     "date": "2026-04-13",
-    "closingPrice": 0,
+    "closingPrice": 0.024,
     "marketCap": 520000,
     "change": 0
   },
@@ -7198,7 +7198,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-04-13",
-    "closingPrice": 0,
+    "closingPrice": 13,
     "marketCap": 33870000,
     "change": 0
   },
@@ -7226,7 +7226,7 @@
   {
     "ticker": "WPHL.VX",
     "date": "2026-04-13",
-    "closingPrice": 0,
+    "closingPrice": 10,
     "marketCap": 34460000,
     "change": 0
   },
@@ -7247,7 +7247,7 @@
   {
     "ticker": "AFRIC.VX",
     "date": "2026-04-14",
-    "closingPrice": 0,
+    "closingPrice": 5.17,
     "marketCap": 76410000,
     "change": 0
   },
@@ -7275,7 +7275,7 @@
   {
     "ticker": "EDGR.VX",
     "date": "2026-04-14",
-    "closingPrice": 0,
+    "closingPrice": 0.024,
     "marketCap": 520000,
     "change": 0
   },
@@ -7310,7 +7310,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-04-14",
-    "closingPrice": 0,
+    "closingPrice": 13,
     "marketCap": 33870000,
     "change": 0
   },
@@ -7338,7 +7338,7 @@
   {
     "ticker": "WPHL.VX",
     "date": "2026-04-14",
-    "closingPrice": 0,
+    "closingPrice": 10,
     "marketCap": 34460000,
     "change": 0
   },
@@ -7422,7 +7422,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-04-15",
-    "closingPrice": 0,
+    "closingPrice": 13,
     "marketCap": 33870000,
     "change": 0
   },
@@ -7443,7 +7443,7 @@
   {
     "ticker": "WPHL.VX",
     "date": "2026-04-15",
-    "closingPrice": 0,
+    "closingPrice": 10,
     "marketCap": 34460000,
     "change": 0
   },
@@ -7478,7 +7478,7 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-04-16",
-    "closingPrice": 0,
+    "closingPrice": 50,
     "marketCap": 310000,
     "change": 0
   },
@@ -7548,7 +7548,7 @@
   {
     "ticker": "WPHL.VX",
     "date": "2026-04-16",
-    "closingPrice": 0,
+    "closingPrice": 10,
     "marketCap": 34460000,
     "change": 0
   },
@@ -7569,7 +7569,7 @@
   {
     "ticker": "AFRIC.VX",
     "date": "2026-04-17",
-    "closingPrice": 0,
+    "closingPrice": 5.17,
     "marketCap": 76410000,
     "change": 0
   },
@@ -7597,7 +7597,7 @@
   {
     "ticker": "EDGR.VX",
     "date": "2026-04-17",
-    "closingPrice": 0,
+    "closingPrice": 0.0192,
     "marketCap": 480000,
     "change": 0
   },
@@ -7653,7 +7653,7 @@
   {
     "ticker": "WPHL.VX",
     "date": "2026-04-17",
-    "closingPrice": 0,
+    "closingPrice": 10,
     "marketCap": 34460000,
     "change": 0
   },
@@ -7681,7 +7681,7 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-04-21",
-    "closingPrice": 0,
+    "closingPrice": 50,
     "marketCap": 278020000,
     "change": 0
   },
@@ -7758,7 +7758,7 @@
   {
     "ticker": "ZIM.VX",
     "date": "2026-04-21",
-    "closingPrice": 0,
+    "closingPrice": 0.06,
     "marketCap": 230000,
     "change": 0
   },
@@ -7800,7 +7800,7 @@
   {
     "ticker": "EDGR.VX",
     "date": "2026-04-22",
-    "closingPrice": 0,
+    "closingPrice": 0.0224,
     "marketCap": 140000,
     "change": 0
   },
@@ -7835,7 +7835,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-04-22",
-    "closingPrice": 0,
+    "closingPrice": 15.6,
     "marketCap": 125590000,
     "change": 0
   },
@@ -7940,7 +7940,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-04-23",
-    "closingPrice": 0,
+    "closingPrice": 15.6,
     "marketCap": 125590000,
     "change": 0
   },
@@ -8045,7 +8045,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-04-24",
-    "closingPrice": 0,
+    "closingPrice": 15.6,
     "marketCap": 125590000,
     "change": 0
   },
@@ -8150,7 +8150,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-04-27",
-    "closingPrice": 0,
+    "closingPrice": 15.6,
     "marketCap": 125590000,
     "change": 0
   },
@@ -8178,7 +8178,7 @@
   {
     "ticker": "ZIM.VX",
     "date": "2026-04-27",
-    "closingPrice": 0,
+    "closingPrice": 0.05,
     "marketCap": 170000,
     "change": 0
   },
@@ -8206,7 +8206,7 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-04-28",
-    "closingPrice": 0,
+    "closingPrice": 55,
     "marketCap": 305290000,
     "change": 0
   },
@@ -8283,7 +8283,7 @@
   {
     "ticker": "ZIM.VX",
     "date": "2026-04-28",
-    "closingPrice": 0,
+    "closingPrice": 0.05,
     "marketCap": 170000,
     "change": 0
   },
@@ -8311,7 +8311,7 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-04-29",
-    "closingPrice": 0,
+    "closingPrice": 55,
     "marketCap": 305290000,
     "change": 0
   },
@@ -8325,7 +8325,7 @@
   {
     "ticker": "EDGR.VX",
     "date": "2026-04-29",
-    "closingPrice": 0,
+    "closingPrice": 0.02,
     "marketCap": 120000,
     "change": 0
   },
@@ -8360,7 +8360,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-04-29",
-    "closingPrice": 0,
+    "closingPrice": 18,
     "marketCap": 144920000,
     "change": 0
   },
@@ -8430,7 +8430,7 @@
   {
     "ticker": "EDGR.VX",
     "date": "2026-05-04",
-    "closingPrice": 0,
+    "closingPrice": 0.02,
     "marketCap": 120000,
     "change": 0
   },
@@ -8745,7 +8745,7 @@
   {
     "ticker": "EDGR.VX",
     "date": "2026-05-07",
-    "closingPrice": 0,
+    "closingPrice": 0.028,
     "marketCap": 170000,
     "change": 0
   },
@@ -8766,7 +8766,7 @@
   {
     "ticker": "INV.VX",
     "date": "2026-05-07",
-    "closingPrice": 0,
+    "closingPrice": 0.15,
     "marketCap": 280000,
     "change": 0
   },
@@ -8780,7 +8780,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-05-07",
-    "closingPrice": 0,
+    "closingPrice": 18,
     "marketCap": 144920000,
     "change": 0
   },
@@ -9354,7 +9354,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-05-27",
-    "closingPrice": 0,
+    "closingPrice": 19.5,
     "marketCap": 144920000,
     "change": 0
   },
@@ -9473,7 +9473,7 @@
   {
     "ticker": "ZIM.VX",
     "date": "2026-06-04",
-    "closingPrice": 0,
+    "closingPrice": 0.08,
     "marketCap": 290000,
     "change": 0
   },
@@ -9501,7 +9501,7 @@
   {
     "ticker": "EDGR.VX",
     "date": "2026-06-05",
-    "closingPrice": 0,
+    "closingPrice": 0.03,
     "marketCap": 150000,
     "change": 0
   },
@@ -9578,7 +9578,7 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-06-08",
-    "closingPrice": 0,
+    "closingPrice": 45,
     "marketCap": 258850000,
     "change": 0
   },
@@ -9627,7 +9627,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-06-08",
-    "closingPrice": 0,
+    "closingPrice": 16,
     "marketCap": 128810000,
     "change": 0
   },
@@ -9683,7 +9683,7 @@
   {
     "ticker": "EDGR.VX",
     "date": "2026-06-09",
-    "closingPrice": 0,
+    "closingPrice": 0.0245,
     "marketCap": 160000,
     "change": 0
   },
@@ -9774,7 +9774,7 @@
   {
     "ticker": "EDGR.VX",
     "date": "2026-06-11",
-    "closingPrice": 0,
+    "closingPrice": 0.0245,
     "marketCap": 160000,
     "change": 0
   },
@@ -9865,7 +9865,7 @@
   {
     "ticker": "EDGR.VX",
     "date": "2026-06-12",
-    "closingPrice": 0,
+    "closingPrice": 0.0245,
     "marketCap": 160000,
     "change": 0
   },
@@ -9956,7 +9956,7 @@
   {
     "ticker": "EDGR.VX",
     "date": "2026-06-15",
-    "closingPrice": 0,
+    "closingPrice": 0.0245,
     "marketCap": 160000,
     "change": 0
   },
@@ -10019,7 +10019,7 @@
   {
     "ticker": "ZIM.VX",
     "date": "2026-06-15",
-    "closingPrice": 0,
+    "closingPrice": 0.0552,
     "marketCap": 190000,
     "change": 0
   },
@@ -10173,7 +10173,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-06-17",
-    "closingPrice": 0,
+    "closingPrice": 13,
     "marketCap": 105470000,
     "change": 0
   },
@@ -10264,7 +10264,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-06-18",
-    "closingPrice": 0,
+    "closingPrice": 13,
     "marketCap": 105470000,
     "change": 0
   },
@@ -10355,7 +10355,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-06-19",
-    "closingPrice": 0,
+    "closingPrice": 13,
     "marketCap": 105470000,
     "change": 0
   },
@@ -10411,7 +10411,7 @@
   {
     "ticker": "EDGR.VX",
     "date": "2026-06-22",
-    "closingPrice": 0,
+    "closingPrice": 0.026,
     "marketCap": 160000,
     "change": 0
   },
@@ -10600,7 +10600,7 @@
   {
     "ticker": "EDGR.VX",
     "date": "2026-06-24",
-    "closingPrice": 0,
+    "closingPrice": 0.03,
     "marketCap": 160000,
     "change": 0
   },
@@ -10698,7 +10698,7 @@
   {
     "ticker": "EDGR.VX",
     "date": "2026-06-25",
-    "closingPrice": 0,
+    "closingPrice": 0.03,
     "marketCap": 160000,
     "change": 0
   },
@@ -10859,7 +10859,7 @@
   {
     "ticker": "ZIM.VX",
     "date": "2026-06-26",
-    "closingPrice": 0,
+    "closingPrice": 0.11,
     "marketCap": 400000,
     "change": 0
   },
@@ -10950,7 +10950,7 @@
   {
     "ticker": "ZIM.VX",
     "date": "2026-06-29",
-    "closingPrice": 0,
+    "closingPrice": 0.11,
     "marketCap": 400000,
     "change": 0
   },
@@ -10999,7 +10999,7 @@
   {
     "ticker": "INV.VX",
     "date": "2026-06-30",
-    "closingPrice": 0,
+    "closingPrice": 0.15,
     "marketCap": 280000,
     "change": 0
   },
@@ -11013,7 +11013,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-06-30",
-    "closingPrice": 0,
+    "closingPrice": 13,
     "marketCap": 104660000,
     "change": 0
   },
@@ -11055,7 +11055,7 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-07-01",
-    "closingPrice": 0,
+    "closingPrice": 52,
     "marketCap": 288480000,
     "change": 0
   },
@@ -11069,7 +11069,7 @@
   {
     "ticker": "EDGR.VX",
     "date": "2026-07-01",
-    "closingPrice": 0,
+    "closingPrice": 0.0268,
     "marketCap": 170000,
     "change": 0
   },
@@ -11104,7 +11104,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-07-01",
-    "closingPrice": 0,
+    "closingPrice": 13,
     "marketCap": 104660000,
     "change": 0
   },
@@ -11118,7 +11118,7 @@
   {
     "ticker": "SCIL.VX",
     "date": "2026-07-01",
-    "closingPrice": 0,
+    "closingPrice": 0.305,
     "marketCap": 1710000,
     "change": 0
   },
@@ -11132,7 +11132,7 @@
   {
     "ticker": "ZIM.VX",
     "date": "2026-07-01",
-    "closingPrice": 0,
+    "closingPrice": 0.12,
     "marketCap": 410000,
     "change": 0
   },
@@ -11300,7 +11300,7 @@
   {
     "ticker": "SCIL.VX",
     "date": "2026-07-03",
-    "closingPrice": 0,
+    "closingPrice": 0.32,
     "marketCap": 1800000,
     "change": 0
   },
@@ -11405,7 +11405,7 @@
   {
     "ticker": "WPHL.VX",
     "date": "2026-07-06",
-    "closingPrice": 0,
+    "closingPrice": 10,
     "marketCap": 34460000,
     "change": 0
   },
@@ -11510,7 +11510,7 @@
   {
     "ticker": "WPHL.VX",
     "date": "2026-07-07",
-    "closingPrice": 0,
+    "closingPrice": 10,
     "marketCap": 34460000,
     "change": 0
   },
@@ -11608,7 +11608,7 @@
   {
     "ticker": "WPHL.VX",
     "date": "2026-07-08",
-    "closingPrice": 0,
+    "closingPrice": 10,
     "marketCap": 34460000,
     "change": 0
   },
@@ -11678,7 +11678,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-07-09",
-    "closingPrice": 0,
+    "closingPrice": 12.5,
     "marketCap": 100680000,
     "change": 0
   },
@@ -11713,7 +11713,7 @@
   {
     "ticker": "WPHL.VX",
     "date": "2026-07-09",
-    "closingPrice": 0,
+    "closingPrice": 10,
     "marketCap": 34460000,
     "change": 0
   },
@@ -11874,7 +11874,7 @@
   {
     "ticker": "INV.VX",
     "date": "2026-07-14",
-    "closingPrice": 0,
+    "closingPrice": 0.13,
     "marketCap": 240000,
     "change": 0
   },
@@ -11888,7 +11888,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-07-14",
-    "closingPrice": 0,
+    "closingPrice": 12.5058,
     "marketCap": 100640000,
     "change": 0
   },
@@ -11923,7 +11923,7 @@
   {
     "ticker": "WPHL.VX",
     "date": "2026-07-14",
-    "closingPrice": 0,
+    "closingPrice": 10,
     "marketCap": 34460000,
     "change": 0
   },
@@ -11993,7 +11993,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-07-15",
-    "closingPrice": 0,
+    "closingPrice": 12.5058,
     "marketCap": 100640000,
     "change": 0
   },
@@ -12140,7 +12140,7 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-07-17",
-    "closingPrice": 0,
+    "closingPrice": 51,
     "marketCap": 285000000,
     "change": 0
   },
@@ -12154,7 +12154,7 @@
   {
     "ticker": "EDGR.VX",
     "date": "2026-07-17",
-    "closingPrice": 0,
+    "closingPrice": 0.0218,
     "marketCap": 160000,
     "change": 0
   },
@@ -12252,7 +12252,7 @@
   {
     "ticker": "EDGR.VX",
     "date": "2026-07-21",
-    "closingPrice": 0,
+    "closingPrice": 0.0218,
     "marketCap": 160000,
     "change": 0
   },
@@ -12273,7 +12273,7 @@
   {
     "ticker": "INV.VX",
     "date": "2026-07-21",
-    "closingPrice": 0,
+    "closingPrice": 0.132,
     "marketCap": 240000,
     "change": 0
   },
@@ -12287,7 +12287,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-07-21",
-    "closingPrice": 0,
+    "closingPrice": 17.95,
     "marketCap": 143320000,
     "change": 0
   },
@@ -12301,7 +12301,7 @@
   {
     "ticker": "SCIL.VX",
     "date": "2026-07-21",
-    "closingPrice": 0,
+    "closingPrice": 0.33,
     "marketCap": 2050000,
     "change": 0
   },
@@ -12322,7 +12322,7 @@
   {
     "ticker": "WPHL.VX",
     "date": "2026-07-21",
-    "closingPrice": 0,
+    "closingPrice": 10,
     "marketCap": 34460000,
     "change": 0
   },
@@ -12343,7 +12343,7 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-07-23",
-    "closingPrice": 0,
+    "closingPrice": 47,
     "marketCap": 283010000,
     "change": 0
   },
@@ -12357,7 +12357,7 @@
   {
     "ticker": "EDGR.VX",
     "date": "2026-07-23",
-    "closingPrice": 0,
+    "closingPrice": 0.0218,
     "marketCap": 160000,
     "change": 0
   },
@@ -12406,7 +12406,7 @@
   {
     "ticker": "SCIL.VX",
     "date": "2026-07-23",
-    "closingPrice": 0,
+    "closingPrice": 0.33,
     "marketCap": 2050000,
     "change": 0
   },
@@ -12427,7 +12427,7 @@
   {
     "ticker": "WPHL.VX",
     "date": "2026-07-23",
-    "closingPrice": 0,
+    "closingPrice": 10,
     "marketCap": 34460000,
     "change": 0
   },
@@ -12553,7 +12553,7 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-07-27",
-    "closingPrice": 0,
+    "closingPrice": 49,
     "marketCap": 229320000,
     "change": 0
   },
@@ -12567,7 +12567,7 @@
   {
     "ticker": "EDGR.VX",
     "date": "2026-07-27",
-    "closingPrice": 0,
+    "closingPrice": 0.0265,
     "marketCap": 170000,
     "change": 0
   },
@@ -12637,7 +12637,7 @@
   {
     "ticker": "WPHL.VX",
     "date": "2026-07-27",
-    "closingPrice": 0,
+    "closingPrice": 10,
     "marketCap": 34460000,
     "change": 0
   },
@@ -12707,7 +12707,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-07-28",
-    "closingPrice": 0,
+    "closingPrice": 18,
     "marketCap": 144920000,
     "change": 0
   },
@@ -12777,7 +12777,7 @@
   {
     "ticker": "EDGR.VX",
     "date": "2026-07-29",
-    "closingPrice": 0,
+    "closingPrice": 0.0219,
     "marketCap": 150000,
     "change": 0
   },
@@ -12812,7 +12812,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-07-29",
-    "closingPrice": 0,
+    "closingPrice": 18,
     "marketCap": 144920000,
     "change": 0
   },
@@ -12847,7 +12847,7 @@
   {
     "ticker": "WPHL.VX",
     "date": "2026-07-29",
-    "closingPrice": 0,
+    "closingPrice": 10,
     "marketCap": 34460000,
     "change": 0
   },
@@ -12903,7 +12903,7 @@
   {
     "ticker": "INV.VX",
     "date": "2026-07-30",
-    "closingPrice": 0,
+    "closingPrice": 0.15,
     "marketCap": 280000,
     "change": 0
   },
@@ -12952,7 +12952,7 @@
   {
     "ticker": "WPHL.VX",
     "date": "2026-07-30",
-    "closingPrice": 0,
+    "closingPrice": 10,
     "marketCap": 34460000,
     "change": 0
   },
@@ -13022,7 +13022,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-07-31",
-    "closingPrice": 0,
+    "closingPrice": 16.5,
     "marketCap": 132840000,
     "change": 0
   },
@@ -13036,7 +13036,7 @@
   {
     "ticker": "SCIL.VX",
     "date": "2026-07-31",
-    "closingPrice": 0,
+    "closingPrice": 0.42,
     "marketCap": 1970000,
     "change": 0
   },
@@ -13078,7 +13078,7 @@
   {
     "ticker": "CMCL.VX",
     "date": "2026-08-16",
-    "closingPrice": 0,
+    "closingPrice": 40,
     "marketCap": 221970000,
     "change": 0
   },
@@ -13092,7 +13092,7 @@
   {
     "ticker": "EDGR.VX",
     "date": "2026-08-16",
-    "closingPrice": 0,
+    "closingPrice": 0.02,
     "marketCap": 120000,
     "change": 0
   },
@@ -13344,7 +13344,7 @@
   {
     "ticker": "NED.VX",
     "date": "2026-08-22",
-    "closingPrice": 0,
+    "closingPrice": 18,
     "marketCap": 117530000,
     "change": 0
   },

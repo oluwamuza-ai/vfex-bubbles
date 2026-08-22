@@ -723,7 +723,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-01-02",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 10000,
     "change": 0
   },
@@ -989,7 +989,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-01-05",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 10000,
     "change": 0
   },
@@ -1255,7 +1255,7 @@
   {
     "ticker": "ZBFH.ZW",
     "date": "2026-01-06",
-    "closingPrice": 0,
+    "closingPrice": 4.5,
     "marketCap": 0,
     "change": 0
   },
@@ -1528,7 +1528,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-01-07",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -1794,7 +1794,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-01-08",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -2060,7 +2060,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-01-09",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -2326,7 +2326,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-01-12",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -2543,7 +2543,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-01-13",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -2809,7 +2809,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-01-14",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -3075,7 +3075,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-01-15",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -3341,7 +3341,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-01-16",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -3607,7 +3607,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-01-19",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -3873,7 +3873,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-01-20",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -4139,7 +4139,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-01-21",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -4405,7 +4405,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-01-22",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -4671,7 +4671,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-01-23",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -4937,7 +4937,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-01-26",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -5203,7 +5203,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-01-27",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -5469,7 +5469,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-01-28",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -5735,7 +5735,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-01-30",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -6001,7 +6001,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-02-02",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -6267,7 +6267,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-02-03",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -6533,7 +6533,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-02-04",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -6799,7 +6799,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-02-05",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -7065,7 +7065,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-02-06",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -7331,7 +7331,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-02-09",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -7597,7 +7597,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-02-10",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -7863,7 +7863,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-02-11",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -8129,7 +8129,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-02-12",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -8395,7 +8395,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-02-13",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -8661,7 +8661,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-02-16",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -8927,7 +8927,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-02-17",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -9193,7 +9193,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-02-18",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -9459,7 +9459,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-02-19",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -9725,7 +9725,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-02-23",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -9991,7 +9991,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-02-24",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -10264,7 +10264,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-02-25",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 10000,
     "change": 0
   },
@@ -10537,7 +10537,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-02-26",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 10000,
     "change": 0
   },
@@ -10810,7 +10810,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-02-27",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 10000,
     "change": 0
   },
@@ -11083,7 +11083,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-03-02",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 10000,
     "change": 0
   },
@@ -11356,7 +11356,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-03-03",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 10000,
     "change": 0
   },
@@ -11629,7 +11629,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-03-04",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 10000,
     "change": 0
   },
@@ -11902,7 +11902,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-03-05",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 10000,
     "change": 0
   },
@@ -12175,7 +12175,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-03-06",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 10000,
     "change": 0
   },
@@ -12441,7 +12441,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-03-09",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 10000,
     "change": 0
   },
@@ -12707,7 +12707,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-03-10",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 10000,
     "change": 0
   },
@@ -12973,7 +12973,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-03-11",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 10000,
     "change": 0
   },
@@ -13246,7 +13246,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-03-12",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 10000,
     "change": 0
   },
@@ -13519,7 +13519,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-03-13",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 10000,
     "change": 0
   },
@@ -13785,7 +13785,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-03-16",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -14051,7 +14051,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-03-17",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -14317,7 +14317,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-03-18",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -14583,7 +14583,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-03-20",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -14849,7 +14849,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-03-23",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -15115,7 +15115,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-03-24",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -15381,7 +15381,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-03-25",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -15647,7 +15647,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-03-26",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -15913,7 +15913,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-03-27",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -16179,7 +16179,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-03-30",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -16445,7 +16445,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-03-31",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -16704,7 +16704,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-04-01",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 30000,
     "change": 0
   },
@@ -16956,7 +16956,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-04-02",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -17208,7 +17208,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-04-07",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -17460,7 +17460,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-04-08",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -17712,7 +17712,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-04-09",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -17873,7 +17873,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-04-10",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -18118,7 +18118,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-04-13",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -18370,7 +18370,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-04-14",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -18622,7 +18622,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-04-15",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -18874,7 +18874,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-04-16",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -19126,7 +19126,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-04-17",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -19378,7 +19378,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-04-21",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -19630,7 +19630,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-04-22",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -19882,7 +19882,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-04-23",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -20134,7 +20134,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-04-24",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -20386,7 +20386,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-04-27",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -20638,7 +20638,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-04-28",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -20890,7 +20890,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-04-29",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -21142,7 +21142,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-05-04",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -21394,7 +21394,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-05-05",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -21646,7 +21646,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-05-06",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -21898,7 +21898,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-05-07",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -22150,7 +22150,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-05-08",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -22402,7 +22402,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-05-12",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -22654,7 +22654,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-05-13",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -22906,7 +22906,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-05-15",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -23158,7 +23158,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-05-19",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -23410,7 +23410,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-05-27",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -23662,7 +23662,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-06-04",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -23914,7 +23914,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-06-05",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -24166,7 +24166,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-06-08",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -24418,7 +24418,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-06-09",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -24670,7 +24670,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-06-11",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -24922,7 +24922,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-06-12",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -25174,7 +25174,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-06-15",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -25426,7 +25426,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-06-16",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -25678,7 +25678,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-06-17",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -25930,7 +25930,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-06-18",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -26182,7 +26182,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-06-19",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -26434,7 +26434,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-06-22",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -26686,7 +26686,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-06-23",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -26938,7 +26938,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-06-24",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -27190,7 +27190,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-06-25",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -27442,7 +27442,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-06-26",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -27694,7 +27694,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-06-29",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -27946,7 +27946,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-06-30",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -28198,7 +28198,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-07-01",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 0,
     "change": 0
   },
@@ -28436,7 +28436,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-07-02",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 10000,
     "change": 0
   },
@@ -28674,7 +28674,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-07-03",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 10000,
     "change": 0
   },
@@ -28919,7 +28919,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-07-06",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 80000,
     "change": 0
   },
@@ -29157,7 +29157,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-07-07",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 10000,
     "change": 0
   },
@@ -29395,7 +29395,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-07-08",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 10000,
     "change": 0
   },
@@ -29633,7 +29633,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-07-09",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 10000,
     "change": 0
   },
@@ -29871,7 +29871,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-07-10",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 10000,
     "change": 0
   },
@@ -30109,7 +30109,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-07-14",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 10000,
     "change": 0
   },
@@ -30347,7 +30347,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-07-15",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 10000,
     "change": 0
   },
@@ -30585,7 +30585,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-07-16",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 10000,
     "change": 0
   },
@@ -30823,7 +30823,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-07-17",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 10000,
     "change": 0
   },
@@ -31061,7 +31061,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-07-21",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 10000,
     "change": 0
   },
@@ -31299,7 +31299,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-07-23",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 10000,
     "change": 0
   },
@@ -31537,7 +31537,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-07-24",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 10000,
     "change": 0
   },
@@ -31775,7 +31775,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-07-27",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 10000,
     "change": 0
   },
@@ -32013,7 +32013,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-07-28",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 10000,
     "change": 0
   },
@@ -32251,7 +32251,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-07-29",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 10000,
     "change": 0
   },
@@ -32489,7 +32489,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-07-30",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 10000,
     "change": 0
   },
@@ -32727,7 +32727,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-07-31",
-    "closingPrice": 0,
+    "closingPrice": 0.07,
     "marketCap": 10000,
     "change": 0
   },
@@ -32965,7 +32965,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-08-16",
-    "closingPrice": 0,
+    "closingPrice": 0.0018,
     "marketCap": 10000,
     "change": 0
   },
@@ -33203,7 +33203,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-08-18",
-    "closingPrice": 0,
+    "closingPrice": 0.0018,
     "marketCap": 10000,
     "change": 0
   },
@@ -33441,7 +33441,7 @@
   {
     "ticker": "ZECO.ZW",
     "date": "2026-08-22",
-    "closingPrice": 0,
+    "closingPrice": 0.0018,
     "marketCap": 10000,
     "change": 0
   },

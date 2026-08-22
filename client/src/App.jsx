@@ -527,48 +527,25 @@ function App() {
           <div
             onClick={(event) => event.stopPropagation()}
             style={{
-              width: 'min(760px, 100%)',
-              maxHeight: '90vh',
+              width: 'min(880px, 100%)',
+              maxHeight: '92vh',
               overflowY: 'auto',
               WebkitOverflowScrolling: 'touch',
               borderRadius: '16px',
               background: '#121212',
               border: '1px solid #2b2b2b',
               boxShadow: '0 25px 80px rgba(0, 0, 0, 0.42)',
-              padding: '22px',
+              padding: '18px 20px 20px',
               color: '#f7f7f7',
             }}
           >
+            {/* Compact header: name/ticker + close, all on one line */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '12px' }}>
-              <div>
-                <div style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.2em', color: '#9a9a9a' }}>Company detail</div>
-                <h2 style={{ margin: '4px 0 0', fontSize: '24px' }}>{selectedCompany.name}</h2>
-                <div style={{ marginTop: '4px', color: '#9a9a9a' }}>{selectedCompany.ticker}</div>
-
-                <button
-                  onClick={() => setShowAbout((value) => !value)}
-                  style={{
-                    marginTop: '10px',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '6px',
-                    padding: '6px 12px',
-                    borderRadius: '999px',
-                    border: '1px solid #2b2b2b',
-                    background: showAbout ? '#262626' : 'transparent',
-                    color: '#e1e1e1',
-                    fontSize: '12px',
-                    cursor: 'pointer',
-                  }}
-                >
-                  {showAbout ? 'Hide' : 'What does this company do?'}
-                </button>
-
-                {showAbout && (
-                  <div style={{ marginTop: '10px', fontSize: '13px', lineHeight: 1.6, color: '#cfcfcf', maxWidth: '520px' }}>
-                    {selectedCompany.description || 'No description on file for this company yet.'}
-                  </div>
-                )}
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', flexWrap: 'wrap', minWidth: 0 }}>
+                <h2 style={{ margin: 0, fontSize: '19px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                  {selectedCompany.name}
+                </h2>
+                <span style={{ fontSize: '12px', color: '#9a9a9a', flexShrink: 0 }}>{selectedCompany.ticker}</span>
               </div>
               <button
                 onClick={() => setSelectedCompany(null)}
@@ -578,8 +555,8 @@ function App() {
                   background: '#171717',
                   color: '#f7f7f7',
                   borderRadius: '999px',
-                  width: '44px',
-                  height: '44px',
+                  width: '32px',
+                  height: '32px',
                   flexShrink: 0,
                   cursor: 'pointer',
                 }}
@@ -588,31 +565,51 @@ function App() {
               </button>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '10px', marginTop: '16px' }}>
-              <div style={{ padding: '12px', borderRadius: '12px', background: '#171717', border: '1px solid #232323' }}>
-                <div style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.2em', color: '#9a9a9a' }}>Closing price</div>
-                <div style={{ marginTop: '6px', fontSize: '20px', fontWeight: 700 }}>{formatClosingPrice(selectedCompany.closingPrice, selectedCompany.currency)}</div>
-              </div>
-              <div style={{ padding: '12px', borderRadius: '12px', background: '#171717', border: '1px solid #232323' }}>
-                <div style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.2em', color: '#9a9a9a' }}>Change</div>
-                <div style={{ marginTop: '6px', fontSize: '20px', fontWeight: 700, color: colorForChange(selectedCompany.change) }}>
-                  {formatChange(selectedCompany.change)}
-                </div>
-              </div>
-              <div style={{ padding: '12px', borderRadius: '12px', background: '#171717', border: '1px solid #232323' }}>
-                <div style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.2em', color: '#9a9a9a' }}>Market cap</div>
-                <div style={{ marginTop: '6px', fontSize: '20px', fontWeight: 700 }}>{formatMarketCap(Number(selectedCompany.marketCap) || 0, selectedCompany.currency)}</div>
-              </div>
-              <div style={{ padding: '12px', borderRadius: '12px', background: '#171717', border: '1px solid #232323' }}>
-                <div style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.2em', color: '#9a9a9a' }}>Notes</div>
-                <div style={{ marginTop: '6px', fontSize: '14px', color: '#cfcfcf' }}>
-                  {selectedCompany.estimated ? 'Estimated market cap from the current dataset.' : 'Officially listed data point.'}
-                </div>
-              </div>
+            {/* Compact stat strip — price/change/market cap inline, replaces the old 2x2 card grid */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap', marginTop: '8px' }}>
+              <span style={{ fontSize: '20px', fontWeight: 700 }}>
+                {formatClosingPrice(selectedCompany.closingPrice, selectedCompany.currency)}
+              </span>
+              <span style={{ fontSize: '14px', fontWeight: 700, color: colorForChange(selectedCompany.change) }}>
+                {formatChange(selectedCompany.change)}
+              </span>
+              <span style={{ fontSize: '12px', color: '#9a9a9a' }}>
+                Mkt Cap <span style={{ color: '#f7f7f7', fontWeight: 600 }}>{formatMarketCap(Number(selectedCompany.marketCap) || 0, selectedCompany.currency)}</span>
+              </span>
+              {selectedCompany.estimated && (
+                <span
+                  title="Estimated market cap from the current dataset"
+                  style={{ fontSize: '10px', padding: '2px 7px', borderRadius: '999px', border: '1px solid #333', color: '#9a9a9a' }}
+                >
+                  est.
+                </span>
+              )}
+              <button
+                onClick={() => setShowAbout((value) => !value)}
+                style={{
+                  marginLeft: 'auto',
+                  padding: '4px 10px',
+                  borderRadius: '999px',
+                  border: '1px solid #2b2b2b',
+                  background: showAbout ? '#262626' : 'transparent',
+                  color: '#9a9a9a',
+                  fontSize: '11px',
+                  cursor: 'pointer',
+                }}
+              >
+                {showAbout ? 'Hide about' : 'About'}
+              </button>
             </div>
 
-            <div style={{ marginTop: '18px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px', flexWrap: 'wrap' }}>
-              <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+            {showAbout && (
+              <div style={{ marginTop: '8px', fontSize: '12px', lineHeight: 1.6, color: '#cfcfcf' }}>
+                {selectedCompany.description || 'No description on file for this company yet.'}
+              </div>
+            )}
+
+            {/* Chart toolbar sits directly above the chart it controls */}
+            <div style={{ marginTop: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px', flexWrap: 'wrap' }}>
+              <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
                 {HISTORY_RANGES.map((option) => (
                   <button
                     key={option.key}
@@ -622,7 +619,8 @@ function App() {
                       borderRadius: '999px',
                       background: historyRange === option.key ? '#262626' : 'transparent',
                       color: historyRange === option.key ? '#f7f7f7' : '#9a9a9a',
-                      padding: '8px 12px',
+                      padding: '5px 12px',
+                      fontSize: '12px',
                       cursor: 'pointer',
                     }}
                   >
@@ -634,7 +632,7 @@ function App() {
               {periodChange !== null && (
                 <div
                   style={{
-                    fontSize: '13px',
+                    fontSize: '12px',
                     fontWeight: 700,
                     color: colorForChange(periodChange),
                   }}
@@ -645,18 +643,14 @@ function App() {
               )}
             </div>
 
-            <div style={{ marginTop: '16px', borderRadius: '14px', padding: '14px', background: '#101010', border: '1px solid #232323' }}>
-              <div style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.2em', color: '#9a9a9a' }}>Price history</div>
-              <div style={{ fontSize: '13px', color: '#cfcfcf', marginTop: '4px' }}>
-                Recorded end-of-day closing prices for the selected company.
-              </div>
-
+            {/* The chart itself — the centerpiece, minimal chrome around it */}
+            <div style={{ marginTop: '6px' }}>
               {historyLoading ? (
-                <div style={{ padding: '40px 0', textAlign: 'center', color: '#9a9a9a', fontSize: '13px' }}>
+                <div style={{ padding: '60px 0', textAlign: 'center', color: '#9a9a9a', fontSize: '13px' }}>
                   Loading history…
                 </div>
               ) : chartPoints.length < 2 ? (
-                <div style={{ padding: '30px 12px', textAlign: 'center', color: '#9a9a9a', fontSize: '13px', lineHeight: 1.6 }}>
+                <div style={{ padding: '40px 12px', textAlign: 'center', color: '#9a9a9a', fontSize: '13px', lineHeight: 1.6 }}>
                   Not enough recorded history yet to draw a trend — this app started tracking daily closes on{' '}
                   {historyData[0]?.date ? new Date(historyData[0].date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : 'a recent date'}.
                   <br />

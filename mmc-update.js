@@ -93,14 +93,18 @@ function parseCompanyRow(line) {
     else absChange = parseNumber(trailing[0]);
   }
 
-  const closingPrice = lastTraded ?? opening ?? 0;
+  // null (not 0) when a counter simply didn't trade that day — both
+  // "Opening" and "Last Traded" print as "-" in the PDF for a no-trade day,
+  // and a stock's price doesn't become $0 just because it didn't trade.
+  // buildRecords carries forward the last known real price for these.
+  const closingPrice = lastTraded ?? opening ?? null;
   let change = pctChange;
   if (change === null && absChange !== null && opening) {
     change = Number(((absChange / opening) * 100).toFixed(2));
   }
   if (change === null) change = 0;
 
-  if (marketCapM === null || Number.isNaN(closingPrice)) return null;
+  if (marketCapM === null || (closingPrice !== null && Number.isNaN(closingPrice))) return null;
 
   return {
     name,
@@ -159,9 +163,11 @@ function normalizeNameKey(name) {
     .trim();
 }
 
-// Preserves ticker + logoUrl from the existing data file, matched by a
-// normalized company name, so re-running this daily never makes you
-// re-map tickers or re-source logos for companies you've already set up.
+// Preserves ticker + logoUrl + last known price from the existing data
+// file, matched by a normalized company name, so re-running this daily
+// never makes you re-map tickers or re-source logos for companies you've
+// already set up — and so a no-trade day can carry forward a real price
+// instead of falling back to a fabricated $0.
 function loadExistingLookup(dataFile) {
   if (!fs.existsSync(dataFile)) return {};
   try {
@@ -169,7 +175,7 @@ function loadExistingLookup(dataFile) {
     const lookup = {};
     for (const record of existing) {
       const key = normalizeNameKey(record.name);
-      lookup[key] = { ticker: record.ticker, logoUrl: record.logoUrl };
+      lookup[key] = { ticker: record.ticker, logoUrl: record.logoUrl, closingPrice: record.closingPrice };
     }
     return lookup;
   } catch (error) {
@@ -212,7 +218,15 @@ function buildRecords(parsedRows, dataFile, tickerSuffix) {
     // Market cap is NOT touched here — MMC's "$m" column is already in
     // proper millions, not cents, for both markets.
     const isZse = tickerSuffix === 'ZW';
-    const closingPrice = isZse ? Number((row.closingPrice / 100).toFixed(4)) : row.closingPrice;
+    // row.closingPrice is null when the counter didn't trade today (both
+    // Opening and Last Traded were "-" in the PDF) — carry forward the
+    // last known real price instead of showing a fabricated $0. existing's
+    // closingPrice is already in final display units (previously
+    // converted), so it's used as-is, unlike row.closingPrice which still
+    // needs the cents conversion below.
+    const closingPrice = row.closingPrice !== null
+      ? (isZse ? Number((row.closingPrice / 100).toFixed(4)) : row.closingPrice)
+      : (existing?.closingPrice ?? 0);
 
     return {
       ticker,
