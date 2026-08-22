@@ -1,0 +1,47 @@
+name: Daily price sheet update
+
+# Runs entirely on GitHub's infrastructure — doesn't need any local machine
+# to be on. Fetches MMC Capital's latest daily price sheet, parses it via
+# daily-update.mjs (which wraps the existing mmc-update.js), and pushes the
+# resulting data files to main if anything changed. This repo's hosting
+# platform auto-deploys on push to main, so a successful run here is what
+# actually updates the live site.
+on:
+  schedule:
+    # 18:00 Africa/Harare (UTC+2 year-round, no DST) = 16:00 UTC.
+    # Weekdays only — MMC has nothing new to publish on weekends.
+    - cron: '0 16 * * 1-5'
+  # Lets you (or Claude, if asked) trigger a run on demand from the
+  # Actions tab instead of waiting for the schedule — useful for testing.
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Fetch and parse today's price sheet
+        run: node daily-update.mjs
+
+      - name: Commit and push if data changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add vfex-data.json vfex-history.json zse-data.json zse-history.json
+          if git diff --staged --quiet; then
+            echo "No data changes — nothing to commit."
+          else
+            git commit -m "Daily price sheet update: $(date -u +%Y-%m-%d)"
+            git push
+          fi
