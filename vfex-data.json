@@ -2,9 +2,9 @@
   {
     "ticker": "AXIA.VX",
     "name": "Axia Corporation Limited",
-    "change": -2.26,
-    "closingPrice": 0.134,
-    "marketCap": 1920000,
+    "change": -0.55,
+    "closingPrice": 0.145,
+    "marketCap": 2140000,
     "currency": "USD",
     "estimated": false,
     "logoUrl": "/logos/axia.png"
@@ -12,9 +12,9 @@
   {
     "ticker": "CMCL.VX",
     "name": "Caledonia Mining Corporation Plc",
-    "change": 0,
-    "closingPrice": 40,
-    "marketCap": 221970000,
+    "change": -7.01,
+    "closingPrice": 37,
+    "marketCap": 206130000,
     "currency": "USD",
     "estimated": false,
     "logoUrl": "/logos/cmcl.png"
@@ -22,8 +22,8 @@
   {
     "ticker": "INFR.VX",
     "name": "Econet Infraco",
-    "change": 0.83,
-    "closingPrice": 0.228,
+    "change": -0.18,
+    "closingPrice": 0.215,
     "marketCap": 0,
     "currency": "USD",
     "estimated": false,
@@ -33,7 +33,7 @@
     "ticker": "EDGR.VX",
     "name": "Edgars Stores Limited",
     "change": 0,
-    "closingPrice": 0.024,
+    "closingPrice": 0.0225,
     "marketCap": 140000,
     "currency": "USD",
     "estimated": false,
@@ -42,9 +42,9 @@
   {
     "ticker": "FCA.VX",
     "name": "First Capital Bank Limited",
-    "change": -6.18,
-    "closingPrice": 0.145,
-    "marketCap": 3050000,
+    "change": -2.27,
+    "closingPrice": 0.144,
+    "marketCap": 2980000,
     "currency": "USD",
     "estimated": false,
     "logoUrl": "/logos/fca.png"
@@ -52,9 +52,9 @@
   {
     "ticker": "INN.VX",
     "name": "Innscor Africa Limited",
-    "change": -0.62,
-    "closingPrice": 1.45,
-    "marketCap": 8300000,
+    "change": 3.9,
+    "closingPrice": 1.5,
+    "marketCap": 8520000,
     "currency": "USD",
     "estimated": false,
     "logoUrl": "/logos/inn.png"
@@ -62,7 +62,7 @@
   {
     "ticker": "INV.VX",
     "name": "Invictus Energy Limited Depository Receipts",
-    "change": 0,
+    "change": -0.27,
     "closingPrice": 0.15,
     "marketCap": 280000,
     "currency": "USD",
@@ -72,7 +72,7 @@
   {
     "ticker": "KAV.VX",
     "name": "Kavango Resources Plc",
-    "change": 0,
+    "change": -7,
     "closingPrice": 0.02,
     "marketCap": 0,
     "currency": "USD",
@@ -82,9 +82,9 @@
   {
     "ticker": "NED.VX",
     "name": "Nedbank Group Limited Depository Receipts",
-    "change": 5.88,
-    "closingPrice": 18,
-    "marketCap": 144920000,
+    "change": 0,
+    "closingPrice": 0,
+    "marketCap": 117530000,
     "currency": "USD",
     "estimated": false,
     "logoUrl": "/logos/ned.png"
@@ -92,18 +92,18 @@
   {
     "ticker": "OLD.VX",
     "name": "Old Mutual Limited",
-    "change": 2.16,
-    "closingPrice": 0.8525,
-    "marketCap": 2230000,
+    "change": -5.38,
+    "closingPrice": 0.9,
+    "marketCap": 2350000,
     "currency": "USD",
     "estimated": false
   },
   {
     "ticker": "PHL.VX",
     "name": "Padenga Holdings Ltd",
-    "change": 0.28,
-    "closingPrice": 1.32,
-    "marketCap": 7420000,
+    "change": 0.57,
+    "closingPrice": 1.3125,
+    "marketCap": 7350000,
     "currency": "USD",
     "estimated": false,
     "logoUrl": "/logos/phl.png"
@@ -111,9 +111,9 @@
   {
     "ticker": "SCIL.VX",
     "name": "Seed Co International",
-    "change": 0,
-    "closingPrice": 0.41,
-    "marketCap": 120000,
+    "change": -13.64,
+    "closingPrice": 0.38,
+    "marketCap": 110000,
     "currency": "USD",
     "estimated": false,
     "logoUrl": "/logos/scil.png"
@@ -122,8 +122,8 @@
     "ticker": "SIM.VX",
     "name": "Simbisa Brands Limited",
     "change": 0,
-    "closingPrice": 0.75,
-    "marketCap": 34246860000,
+    "closingPrice": 0.72,
+    "marketCap": 1885340000,
     "currency": "USD",
     "estimated": false,
     "logoUrl": "/logos/sim.png"
@@ -132,19 +132,10 @@
     "ticker": "TSL.VX",
     "name": "Tsl Limited",
     "change": 0,
-    "closingPrice": 0.2195,
+    "closingPrice": 0.22,
     "marketCap": 760000,
     "currency": "USD",
     "estimated": false,
     "logoUrl": "/logos/tsl.png"
-  },
-  {
-    "ticker": "ZIM.VX",
-    "name": "Zimplow Holdings Limited",
-    "change": 0,
-    "closingPrice": 0.12,
-    "marketCap": 194040000,
-    "currency": "USD",
-    "estimated": false
   }
 ]

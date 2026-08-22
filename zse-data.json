@@ -2,9 +2,9 @@
   {
     "ticker": "AFDS.ZW",
     "name": "Afdis Distillers Limited",
-    "change": 3.21,
-    "closingPrice": 15.5005,
-    "marketCap": 1934480000,
+    "change": 1.52,
+    "closingPrice": 16.5,
+    "marketCap": 2089530000,
     "currency": "ZWG",
     "estimated": false,
     "logoUrl": "/logos/zse/AFDS.png"
@@ -22,9 +22,9 @@
   {
     "ticker": "ARIS.ZW",
     "name": "Ariston Holdings Limited",
-    "change": -1.05,
-    "closingPrice": 0.0752,
-    "marketCap": 122380000,
+    "change": 0,
+    "closingPrice": 0.075,
+    "marketCap": 122050000,
     "currency": "ZWG",
     "estimated": false
   },
@@ -32,8 +32,8 @@
     "ticker": "BAT.ZW",
     "name": "British American Tobacco Zimbabwe Limited",
     "change": 0,
-    "closingPrice": 189.8895,
-    "marketCap": 3918090000,
+    "closingPrice": 184,
+    "marketCap": 3796570000,
     "currency": "ZWG",
     "estimated": false,
     "logoUrl": "/logos/zse/BAT.png"
@@ -51,9 +51,9 @@
   {
     "ticker": "CBZ.ZW",
     "name": "Cbz Holdings Limited",
-    "change": 11.97,
-    "closingPrice": 35,
-    "marketCap": 21697920000,
+    "change": -0.01,
+    "closingPrice": 39.99,
+    "marketCap": 20901230000,
     "currency": "ZWG",
     "estimated": false,
     "logoUrl": "/logos/zse/CBZ.png"
@@ -61,9 +61,9 @@
   {
     "ticker": "CFI.ZW",
     "name": "Cfi Holdings Limited",
-    "change": 0,
-    "closingPrice": 6,
-    "marketCap": 636250000,
+    "change": 15,
+    "closingPrice": 6.9,
+    "marketCap": 731680000,
     "currency": "ZWG",
     "estimated": false,
     "logoUrl": "/logos/zse/CFI.png"
@@ -71,8 +71,8 @@
   {
     "ticker": "DZL.ZW",
     "name": "Dairibord Holdings Limited",
-    "change": -7.73,
-    "closingPrice": 4.8,
+    "change": 0,
+    "closingPrice": 3.8577,
     "marketCap": 1381060000,
     "currency": "ZWG",
     "estimated": false,
@@ -81,9 +81,9 @@
   {
     "ticker": "DLTA.ZW",
     "name": "Delta Corporation Limited",
-    "change": -0.03,
-    "closingPrice": 32.39,
-    "marketCap": 43216690000,
+    "change": -3.18,
+    "closingPrice": 30.05,
+    "marketCap": 41296070000,
     "currency": "ZWG",
     "estimated": false,
     "logoUrl": "/logos/zse/DLTA.png"
@@ -132,8 +132,8 @@
     "ticker": "HIPO.ZW",
     "name": "Hippo Valley Estates Limited",
     "change": 0,
-    "closingPrice": 10.75,
-    "marketCap": 13287810000,
+    "closingPrice": 10.7504,
+    "marketCap": 13288310000,
     "currency": "ZWG",
     "estimated": false
   },
@@ -141,8 +141,8 @@
     "ticker": "MASH.ZW",
     "name": "Mashonaland Holdings Limited",
     "change": 0,
-    "closingPrice": 1.7,
-    "marketCap": 912200000,
+    "closingPrice": 1.6995,
+    "marketCap": 911930000,
     "currency": "ZWG",
     "estimated": false,
     "logoUrl": "/logos/zse/MASH.png"
@@ -151,8 +151,8 @@
     "ticker": "MSHL.ZW",
     "name": "Masimba Holdings Limited",
     "change": 0,
-    "closingPrice": 2.4995,
-    "marketCap": 482540000,
+    "closingPrice": 2.3,
+    "marketCap": 443950000,
     "currency": "ZWG",
     "estimated": false,
     "logoUrl": "/logos/zse/MSHL.png"
@@ -160,9 +160,9 @@
   {
     "ticker": "MEIK.ZW",
     "name": "Meikles Limited",
-    "change": 0,
+    "change": 0.87,
     "closingPrice": 2.5,
-    "marketCap": 4218960000,
+    "marketCap": 4144710000,
     "currency": "ZWG",
     "estimated": false,
     "logoUrl": "/logos/zse/MEIK.png"
@@ -171,8 +171,8 @@
     "ticker": "NPKZ.ZW",
     "name": "Nampak Zimbabwe Limited",
     "change": 0,
-    "closingPrice": 0.9595,
-    "marketCap": 229690000,
+    "closingPrice": 1,
+    "marketCap": 239390000,
     "currency": "ZWG",
     "estimated": false
   },
@@ -180,8 +180,8 @@
     "ticker": "NMB.ZW",
     "name": "Nmbz Holdings Limited",
     "change": 0,
-    "closingPrice": 5.6095,
-    "marketCap": 1436880000,
+    "closingPrice": 5.95,
+    "marketCap": 1524100000,
     "currency": "ZWG",
     "estimated": false,
     "logoUrl": "/logos/zse/NMB.png"
@@ -190,17 +190,17 @@
     "ticker": "PROL.ZW",
     "name": "Proplastics Limited",
     "change": 0,
-    "closingPrice": 1.3495,
-    "marketCap": 1019700000,
+    "closingPrice": 1.1575,
+    "marketCap": 874660000,
     "currency": "ZWG",
     "estimated": false
   },
   {
     "ticker": "RTG.ZW",
     "name": "Rainbow Tourism Group Limited",
-    "change": 0,
-    "closingPrice": 1.5984,
-    "marketCap": 405800000,
+    "change": 0.16,
+    "closingPrice": 1.6125,
+    "marketCap": 409370000,
     "currency": "ZWG",
     "estimated": false,
     "logoUrl": "/logos/zse/RTG.png"
@@ -219,8 +219,8 @@
     "ticker": "SEED.ZW",
     "name": "Seed Co Limited",
     "change": 0,
-    "closingPrice": 4.915,
-    "marketCap": 6529440000,
+    "closingPrice": 5.64,
+    "marketCap": 7492580000,
     "currency": "ZWG",
     "estimated": false,
     "logoUrl": "/logos/zse/SEED.png"
@@ -228,9 +228,9 @@
   {
     "ticker": "SACL.ZW",
     "name": "Starafricacorporation Limited",
-    "change": 0.38,
-    "closingPrice": 0.0371,
-    "marketCap": 9640000,
+    "change": 2.69,
+    "closingPrice": 0.038,
+    "marketCap": 10130000,
     "currency": "ZWG",
     "estimated": false,
     "logoUrl": "/logos/zse/SACL.png"
@@ -238,9 +238,9 @@
   {
     "ticker": "TANG.ZW",
     "name": "Tanganda Tea Company Limited",
-    "change": 0.47,
-    "closingPrice": 4.6,
-    "marketCap": 11532760000,
+    "change": 0,
+    "closingPrice": 4.5,
+    "marketCap": 11229730000,
     "currency": "ZWG",
     "estimated": false,
     "logoUrl": "/logos/zse/TANG.png"
@@ -248,9 +248,9 @@
   {
     "ticker": "TNCI.ZW",
     "name": "Tn Cybertech Investments Holdings Limited",
-    "change": 1.38,
-    "closingPrice": 0.3005,
-    "marketCap": 36670000,
+    "change": 2.63,
+    "closingPrice": 0.3105,
+    "marketCap": 37890000,
     "currency": "ZWG",
     "estimated": false,
     "logoUrl": "/logos/zse/TNCI.png"
@@ -267,9 +267,9 @@
   {
     "ticker": "UNIF.ZW",
     "name": "Unifreight Africa Limited",
-    "change": 0,
-    "closingPrice": 1.8,
-    "marketCap": 8487150000,
+    "change": 11.11,
+    "closingPrice": 2,
+    "marketCap": 9430170000,
     "currency": "ZWG",
     "estimated": false
   },
@@ -277,8 +277,8 @@
     "ticker": "WILD.ZW",
     "name": "Willdale Limited",
     "change": 0,
-    "closingPrice": 0.058,
-    "marketCap": 15140000,
+    "closingPrice": 0.0664,
+    "marketCap": 17330000,
     "currency": "ZWG",
     "estimated": false
   },
@@ -286,8 +286,8 @@
     "ticker": "ZBFH.ZW",
     "name": "Zb Financial Holdings Limited",
     "change": 0,
-    "closingPrice": 6.9771,
-    "marketCap": 29267710000,
+    "closingPrice": 6.815,
+    "marketCap": 28587550000,
     "currency": "ZWG",
     "estimated": false
   },
@@ -305,8 +305,8 @@
     "ticker": "ZIMP.ZW",
     "name": "Zimbabwe Newspapers (1980) Limited",
     "change": 0,
-    "closingPrice": 0.08,
-    "marketCap": 345260000,
+    "closingPrice": 0.072,
+    "marketCap": 310730000,
     "currency": "ZWG",
     "estimated": false,
     "logoUrl": "/logos/zse/ZIMP.png"
@@ -314,9 +314,9 @@
   {
     "ticker": "ZSEH.ZW",
     "name": "Zimbabwe Stock Exchange Holdings Limited",
-    "change": 9.05,
-    "closingPrice": 2.29,
-    "marketCap": 243830000,
+    "change": 0,
+    "closingPrice": 2.5196,
+    "marketCap": 268280000,
     "currency": "ZWG",
     "estimated": false,
     "logoUrl": "/logos/zse/ZSEH.webp"
@@ -324,9 +324,9 @@
   {
     "ticker": "ZIMR.ZW",
     "name": "Zimre Holdings Limited",
-    "change": 0,
-    "closingPrice": 0.95,
-    "marketCap": 1689100000,
+    "change": 0.03,
+    "closingPrice": 0.9225,
+    "marketCap": 1688640000,
     "currency": "ZWG",
     "estimated": false,
     "logoUrl": "/logos/zse/ZIMR.png"
