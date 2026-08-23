@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vfex-bubbles.onrender.com/sitemap.xml

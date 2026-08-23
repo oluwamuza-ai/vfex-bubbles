@@ -11,8 +11,25 @@ dotenv.config();
 
 const app = express();
 
-// Security headers (X-Content-Type-Options, X-Frame-Options, etc.)
-app.use(helmet());
+// Security headers (X-Content-Type-Options, X-Frame-Options, etc.). CSP is
+// customized (not just helmet's defaults) to allow the Umami analytics
+// script and its pageview beacon — helmet's default script-src/connect-src
+// are both 'self' only, which would silently block Umami with no visible
+// error beyond the browser console. The script itself is served from
+// cloud.umami.is, but it reports pageviews to a DIFFERENT subdomain,
+// gateway.umami.is — confirmed by actually loading the page and watching
+// the network tab; connect-src needs both.
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+        'script-src': ["'self'", 'https://cloud.umami.is'],
+        'connect-src': ["'self'", 'https://cloud.umami.is', 'https://gateway.umami.is'],
+      },
+    },
+  })
+);
 
 // Restrict cross-origin requests to your actual frontend, not "anyone".
 // Set FRONTEND_URL in your hosting platform's environment variables once
