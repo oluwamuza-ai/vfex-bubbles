@@ -20,6 +20,22 @@ const CHART = {
   bubbleGap: 2.5,
   wallGap: 0.2,
 
+  // The size range below is computed from the viewport alone — it has no
+  // idea whether it's sizing 14 bubbles (VFEX) or 34 (ZSE). Same range,
+  // 2.4x the bubbles, ~2.4x the total footprint on the same screen: this
+  // is what actually made ZSE feel cramped on small screens, not the
+  // range itself. countRefBubbles is the count this range was tuned
+  // against (VFEX's current size, left untouched); largest gets scaled
+  // down by sqrt(countRefBubbles / actualCount) for bigger datasets, since
+  // area (not radius) is what needs to shrink proportionally to the
+  // bubble count to keep total footprint roughly constant. Measured on
+  // real ZSE 1W data: cuts total bubble area from ~53% of viewport down
+  // to ~34% at 34 bubbles, while leaving VFEX's 14 exactly as before.
+  // Floored at 0.55 so a much larger future dataset can't shrink bubbles
+  // into illegibility.
+  countRefBubbles: 14,
+  countScaleFloor: 0.55,
+
   // Zero ambient friction — bubbles must coast at truly constant velocity
   // between hits, direction changing ONLY on a wall or bubble collision.
   // There is no wander/charge/centre force in this model, so anything but
@@ -138,10 +154,15 @@ function computeRadiusScale(items, size, sizeBy = 'change') {
   const magnitudes = items.map(magnitudeOf);
   const minimumMagnitude = Math.min(...magnitudes);
   const maximumMagnitude = Math.max(...magnitudes);
+  const countScale = clamp(
+    Math.sqrt(CHART.countRefBubbles / Math.max(items.length, 1)),
+    CHART.countScaleFloor,
+    1
+  );
   const smallest = Math.max(CHART.smallestBubble, Math.min(size.width, size.height) * 0.022);
   const largest = Math.max(
     smallest + 8,
-    Math.min(size.height * CHART.largestBubbleRatio, size.width * 0.15)
+    Math.min(size.height * CHART.largestBubbleRatio, size.width * 0.15) * countScale
   );
   const sizeScale = d3
     .scaleSqrt()
