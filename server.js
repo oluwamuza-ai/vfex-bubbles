@@ -7,9 +7,26 @@ import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-dotenv.config();
+// quiet: true suppresses dotenv's own startup log line, which as of v17
+// randomly prints a self-promotional "tip" referencing the maintainer's
+// other products (e.g. "auth for agents [www.vestauth.com]") — confirmed
+// harmless (just a hardcoded string array, no network calls), but noisy
+// and confusing to see an unrecognized external domain in production logs.
+dotenv.config({ quiet: true });
 
 const app = express();
+
+// Render (and Cloudflare in front of it) terminates the real connection and
+// proxies to this app over an internal network — without this, Express
+// ignores the X-Forwarded-For header entirely and reads the raw socket
+// address, which is the PROXY's IP for every single visitor. That collapses
+// the per-visitor rate limit below into one shared bucket across all of the
+// site's traffic (busy legitimate usage could rate-limit innocent users,
+// and a real abuser's requests become indistinguishable from anyone
+// else's). `1` trusts exactly one proxy hop, matching Render's setup —
+// trusting more than actually exists would let a client spoof its own
+// X-Forwarded-For to fake a different IP and dodge the limit.
+app.set('trust proxy', 1);
 
 // Security headers (X-Content-Type-Options, X-Frame-Options, etc.). CSP is
 // customized (not just helmet's defaults) to allow the Umami analytics
