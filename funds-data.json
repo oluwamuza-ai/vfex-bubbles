@@ -1,0 +1,101 @@
+[
+  {
+    "ticker": "CASS.ETF",
+    "name": "Cass Saddle Agriculture Exchange Traded Fund",
+    "change": 0,
+    "closingPrice": 0.113,
+    "marketCap": 5130000,
+    "currency": "ZWG",
+    "estimated": false,
+    "instrumentType": "ETF",
+    "market": "ZSE"
+  },
+  {
+    "ticker": "DATVE.ETF",
+    "name": "Datvest Modified Consumer Staples Exchange Traded Fund",
+    "change": 0,
+    "closingPrice": 0.08,
+    "marketCap": 10890000,
+    "currency": "ZWG",
+    "estimated": false,
+    "instrumentType": "ETF",
+    "market": "ZSE"
+  },
+  {
+    "ticker": "MORGA.ETF",
+    "name": "Morgan & Co Made In Zimbabwe Exchange Traded Fund",
+    "change": 0,
+    "closingPrice": 0.13,
+    "marketCap": 64270000,
+    "currency": "ZWG",
+    "estimated": false,
+    "instrumentType": "ETF",
+    "market": "ZSE"
+  },
+  {
+    "ticker": "MORGA2.ETF",
+    "name": "Morgan & Co Multi Sector Exchange Traded Fund Trust",
+    "change": 0,
+    "closingPrice": 1.7,
+    "marketCap": 69970000,
+    "currency": "ZWG",
+    "estimated": false,
+    "instrumentType": "ETF",
+    "market": "ZSE"
+  },
+  {
+    "ticker": "REVIT.REIT",
+    "name": "Revitus Property Opportunities",
+    "change": 0,
+    "closingPrice": 1.9825,
+    "marketCap": 730210000,
+    "currency": "ZWG",
+    "estimated": false,
+    "instrumentType": "REIT",
+    "market": "ZSE"
+  },
+  {
+    "ticker": "TIGER.REIT",
+    "name": "Tigere Real Estate Investment Trust",
+    "change": -0.45,
+    "closingPrice": 1.1,
+    "marketCap": 1177670000,
+    "currency": "ZWG",
+    "estimated": false,
+    "instrumentType": "REIT",
+    "market": "ZSE"
+  },
+  {
+    "ticker": "FIRST.ETF",
+    "name": "First Mutual Wealth Gold Exchange Traded Fund",
+    "change": 0,
+    "closingPrice": 0.11,
+    "marketCap": 2479320000,
+    "currency": "USD",
+    "estimated": true,
+    "instrumentType": "ETF",
+    "market": "VFEX"
+  },
+  {
+    "ticker": "EAGLE.REIT",
+    "name": "Eagle Real Estate Investment Trust Fund",
+    "change": -15.15,
+    "closingPrice": 0.28,
+    "marketCap": 390000,
+    "currency": "USD",
+    "estimated": false,
+    "instrumentType": "REIT",
+    "market": "VFEX"
+  },
+  {
+    "ticker": "PFUMA.REIT",
+    "name": "Pfuma Fund Real Estate Investment Trust",
+    "change": 0,
+    "closingPrice": 0.144,
+    "marketCap": 2823100000,
+    "currency": "USD",
+    "estimated": true,
+    "instrumentType": "REIT",
+    "market": "VFEX"
+  }
+]

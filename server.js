@@ -35,12 +35,25 @@ const dataLimiter = rateLimit({
   legacyHeaders: false,
 });
 
+// ETFs and REITs (from both exchanges) live in a separate 'funds' market —
+// a different instrument type from operating-company equities, so mixing
+// them into VFEX/ZSE would be misleading in a %-change or market-cap sort.
+function dataFileFor(market) {
+  if (market === 'zse') return 'zse-data.json';
+  if (market === 'funds') return 'funds-data.json';
+  return 'vfex-data.json';
+}
+function historyFileFor(market) {
+  if (market === 'zse') return 'zse-history.json';
+  if (market === 'funds') return 'funds-history.json';
+  return 'vfex-history.json';
+}
+
 app.get('/api/signals', dataLimiter, async (req, res) => {
   try {
     const market = String(req.query.market || 'vfex').toLowerCase();
     const range = String(req.query.range || 'daily').toLowerCase();
-    const fileName = market === 'zse' ? 'zse-data.json' : 'vfex-data.json';
-    const raw = await readFile(path.join(__dirname, fileName), 'utf8');
+    const raw = await readFile(path.join(__dirname, dataFileFor(market)), 'utf8');
     const records = JSON.parse(raw);
 
     // "Daily" is just today's snapshot as-is — the change field already
@@ -55,7 +68,7 @@ app.get('/api/signals', dataLimiter, async (req, res) => {
     // math would land on weekends/holidays with no data. Falls back to
     // the daily change (flagged) for any company without enough history
     // yet, e.g. anything newly added.
-    const historyFile = market === 'zse' ? 'zse-history.json' : 'vfex-history.json';
+    const historyFile = historyFileFor(market);
     const historyRaw = await readFile(path.join(__dirname, historyFile), 'utf8');
     const history = JSON.parse(historyRaw);
 
@@ -122,8 +135,7 @@ app.get('/api/history', dataLimiter, async (req, res) => {
       return res.status(400).json({ error: 'ticker query param is required' });
     }
 
-    const historyFile = market === 'zse' ? 'zse-history.json' : 'vfex-history.json';
-    const raw = await readFile(path.join(__dirname, historyFile), 'utf8');
+    const raw = await readFile(path.join(__dirname, historyFileFor(market)), 'utf8');
     const history = JSON.parse(raw);
 
     const tickerHistory = history

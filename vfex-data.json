@@ -91,7 +91,7 @@
     "ticker": "NED.VX",
     "name": "Nedbank Group Limited Depository Receipts",
     "change": 0,
-    "closingPrice": 18,
+    "closingPrice": 14.5982,
     "marketCap": 117530000,
     "currency": "USD",
     "estimated": false,
@@ -138,7 +138,7 @@
     "closingPrice": 0.72,
     "marketCap": 1885340000,
     "currency": "USD",
-    "estimated": false,
+    "estimated": true,
     "logoUrl": "/logos/std/SIM.png",
     "description": "Fast food restaurant operator running chains including Chicken Inn, Pizza Inn, Creamy Inn and Bakers Inn."
   },

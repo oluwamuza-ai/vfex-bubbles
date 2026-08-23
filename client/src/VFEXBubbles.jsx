@@ -81,7 +81,9 @@ export function formatMarketCap(value, currency = 'USD') {
 export function tickerFor(item) {
   return String(item.ticker || '')
     .replace(/\.vx$/i, '')
-    .replace(/\.zw$/i, '');
+    .replace(/\.zw$/i, '')
+    .replace(/\.etf$/i, '')
+    .replace(/\.reit$/i, '');
 }
 
 export function formatChange(change) {

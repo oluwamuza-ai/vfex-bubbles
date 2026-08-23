@@ -13382,5 +13382,103 @@
     "closingPrice": 0.22,
     "marketCap": 760000,
     "change": 0
+  },
+  {
+    "ticker": "AXIA.VX",
+    "date": "2026-08-23",
+    "closingPrice": 0.145,
+    "marketCap": 2140000,
+    "change": -0.55
+  },
+  {
+    "ticker": "CMCL.VX",
+    "date": "2026-08-23",
+    "closingPrice": 37,
+    "marketCap": 206130000,
+    "change": -7.01
+  },
+  {
+    "ticker": "INFR.VX",
+    "date": "2026-08-23",
+    "closingPrice": 0.215,
+    "marketCap": 0,
+    "change": -0.18
+  },
+  {
+    "ticker": "EDGR.VX",
+    "date": "2026-08-23",
+    "closingPrice": 0.0225,
+    "marketCap": 140000,
+    "change": 0
+  },
+  {
+    "ticker": "FCA.VX",
+    "date": "2026-08-23",
+    "closingPrice": 0.144,
+    "marketCap": 2980000,
+    "change": -2.27
+  },
+  {
+    "ticker": "INN.VX",
+    "date": "2026-08-23",
+    "closingPrice": 1.5,
+    "marketCap": 8520000,
+    "change": 3.9
+  },
+  {
+    "ticker": "INV.VX",
+    "date": "2026-08-23",
+    "closingPrice": 0.15,
+    "marketCap": 280000,
+    "change": -0.27
+  },
+  {
+    "ticker": "KAV.VX",
+    "date": "2026-08-23",
+    "closingPrice": 0.02,
+    "marketCap": 0,
+    "change": -7
+  },
+  {
+    "ticker": "NED.VX",
+    "date": "2026-08-23",
+    "closingPrice": 14.5982,
+    "marketCap": 117530000,
+    "change": 0
+  },
+  {
+    "ticker": "OLD.VX",
+    "date": "2026-08-23",
+    "closingPrice": 0.9,
+    "marketCap": 2350000,
+    "change": -5.38
+  },
+  {
+    "ticker": "PHL.VX",
+    "date": "2026-08-23",
+    "closingPrice": 1.3125,
+    "marketCap": 7350000,
+    "change": 0.57
+  },
+  {
+    "ticker": "SCIL.VX",
+    "date": "2026-08-23",
+    "closingPrice": 0.38,
+    "marketCap": 110000,
+    "change": -13.64
+  },
+  {
+    "ticker": "SIM.VX",
+    "date": "2026-08-23",
+    "closingPrice": 0.72,
+    "marketCap": 1885340000,
+    "change": 0
+  },
+  {
+    "ticker": "TSL.VX",
+    "date": "2026-08-23",
+    "closingPrice": 0.22,
+    "marketCap": 760000,
+    "change": 0
   }
 ]

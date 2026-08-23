@@ -25,8 +25,8 @@ const RANGE_LABELS = { daily: '1D', week: '1W', month: '1M' };
 const SIZE_OPTIONS = ['change', 'marketCap'];
 const SIZE_LABELS = { change: '% Chg', marketCap: 'Mkt Cap' };
 
-const MARKET_OPTIONS = ['vfex', 'zse'];
-const MARKET_LABELS = { vfex: 'VFEX', zse: 'ZSE' };
+const MARKET_OPTIONS = ['vfex', 'zse', 'funds'];
+const MARKET_LABELS = { vfex: 'VFEX', zse: 'ZSE', funds: 'ETFs & REITs' };
 
 function nextOption(options, current) {
   return options[(options.indexOf(current) + 1) % options.length];
@@ -212,7 +212,7 @@ function App() {
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           <img src="/logo-256.png" alt="" width="32" height="32" style={{ display: 'block' }} />
-          <h1 style={{ margin: 0 }}>{market === 'zse' ? 'ZSE Bubbles' : 'VFEX Bubbles'}</h1>
+          <h1 style={{ margin: 0 }}>{MARKET_LABELS[market]} Bubbles</h1>
         </div>
 
         {/* ===== DESKTOP CONTROLS — unchanged, hidden on phones ===== */}
@@ -282,6 +282,7 @@ function App() {
             >
               <option value="vfex">VFEX</option>
               <option value="zse">ZSE</option>
+              <option value="funds">ETFs &amp; REITs</option>
             </select>
           </label>
 

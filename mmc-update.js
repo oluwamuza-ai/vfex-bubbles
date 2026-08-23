@@ -12,9 +12,13 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 //    as "today-pricesheet.pdf" (replacing yesterday's).
 // 2. Run:   node mmc-update.js
 //
-// It reads the PDF directly — no copy-pasting needed — and updates BOTH:
-//   - vfex-data.json / vfex-history.json   (the VFEX US$m section)
-//   - zse-data.json  / zse-history.json    (the main ZSE equities section)
+// It reads the PDF directly — no copy-pasting needed — and updates:
+//   - vfex-data.json  / vfex-history.json   (the VFEX US$m section)
+//   - zse-data.json   / zse-history.json    (the main ZSE equities section)
+//   - funds-data.json / funds-history.json  (ETFs + REITs from BOTH
+//     exchanges, combined — a separate category from operating-company
+//     equities since they're a different instrument type; each record is
+//     tagged instrumentType: 'ETF'|'REIT' and market: 'ZSE'|'VFEX')
 //
 // This source gives REAL market caps (reported by MMC), not the old
 // price-based placeholder — so records from this script are marked
@@ -34,13 +38,23 @@ const VFEX_DATA_FILE = path.join(__dirname, 'vfex-data.json');
 const VFEX_HISTORY_FILE = path.join(__dirname, 'vfex-history.json');
 const ZSE_DATA_FILE = path.join(__dirname, 'zse-data.json');
 const ZSE_HISTORY_FILE = path.join(__dirname, 'zse-history.json');
+const FUNDS_DATA_FILE = path.join(__dirname, 'funds-data.json');
+const FUNDS_HISTORY_FILE = path.join(__dirname, 'funds-history.json');
 
-// Section start/end markers as they appear verbatim in the PDF text.
+// Section start/end markers as they appear verbatim in the PDF text. Note
+// the ZSE and VFEX ETF headings are inconsistently cased/worded in MMC's
+// own PDF ("Exchange Traded Funds (ETFs)" vs "Exchange traded funds
+// (ETFS) VFEX") — these are exact strings observed in real price sheets,
+// not a typo here.
 const SECTION_MARKERS = {
   zseStart: 'Market Cap ($m)',       // last line of the (wrapped) ZSE header — equities start right after
   zseEnd: 'Exchange Traded Funds (ETFs)',
+  zseEtfEnd: 'Real Estate Investment Trust (REIT)',
+  zseReitEnd: 'VFEX US$m',
   vfexStart: 'VFEX US$m',
   vfexEnd: 'Exchange traded funds (ETFS) VFEX',
+  vfexEtfEnd: 'Real Estate Investment Trust (REIT) VFEX',
+  vfexReitEnd: 'Indices',
 };
 
 function isNumericToken(token) {
@@ -74,12 +88,28 @@ function parseCompanyRow(line) {
   const name = tokens.slice(0, splitIndex).join(' ').trim();
   if (!name || values.length < 5) return null; // not a real company row (e.g. a totals line)
 
+  // At exactly 5 tokens the row shape is genuinely ambiguous: the "last
+  // token = Market Cap" assumption below breaks for a row that dropped
+  // Market Cap itself rather than the Change columns (confirmed against a
+  // real PDF row: "... 0.112 0.11 0.111 22417 2,479.32" is actually
+  // [Opening, LastTraded, VWAP, Volume, ValueTraded] with NO market cap at
+  // all — treating 2,479.32 as "$m market cap" was 1000x too high). Flagged
+  // so buildRecords can mark the record estimated rather than trust it.
+  const lowConfidence = values.length === 5;
+
   const marketCapM = parseNumber(values[values.length - 1]);
   const withoutCap = values.slice(0, -1);
 
   const opening = parseNumber(withoutCap[0]);
-  const lastTraded = parseNumber(withoutCap[1]);
-  // withoutCap[2] = VWAP, withoutCap[3] = Volume — not currently used downstream
+  // MMC doesn't always print "-" for a no-trade day — some instruments
+  // (confirmed on Nedbank's depository receipt) print a literal "0.0000"
+  // Last Traded instead, which looks like a valid price to `??` (0 isn't
+  // nullish). Volume Traded is the reliable signal either way: real
+  // trading volume means LastTraded is a genuine price, zero volume means
+  // it isn't, whatever digits happen to be printed there.
+  const volume = parseNumber(withoutCap[3]);
+  const lastTraded = volume ? parseNumber(withoutCap[1]) : null;
+  // withoutCap[2] = VWAP — not currently used downstream
   // withoutCap[4] = Value traded — not currently used downstream
 
   const trailing = withoutCap.slice(5); // 0, 1, or 2 entries: [AbsChange?, PctChange?]
@@ -111,6 +141,7 @@ function parseCompanyRow(line) {
     closingPrice,
     change,
     marketCap: Math.round(marketCapM * 1_000_000), // "$m" -> raw dollar figure
+    lowConfidence,
   };
 }
 
@@ -175,7 +206,7 @@ function loadExistingLookup(dataFile) {
     const lookup = {};
     for (const record of existing) {
       const key = normalizeNameKey(record.name);
-      lookup[key] = { ticker: record.ticker, logoUrl: record.logoUrl, closingPrice: record.closingPrice };
+      lookup[key] = { ticker: record.ticker, logoUrl: record.logoUrl, description: record.description, closingPrice: record.closingPrice, marketCap: record.marketCap };
     }
     return lookup;
   } catch (error) {
@@ -184,7 +215,12 @@ function loadExistingLookup(dataFile) {
   }
 }
 
-function buildRecords(parsedRows, dataFile, tickerSuffix) {
+// isZse controls the ZWG-cents currency conversion below — decoupled from
+// tickerSuffix (which is just cosmetic, e.g. 'ZW'/'VX'/'ETF'/'REIT') so
+// funds sourced from the ZSE side of the PDF still get converted correctly
+// even though their ticker suffix is 'ETF'/'REIT', not 'ZW'. extraFields
+// gets merged into every record — used to tag funds with instrumentType/market.
+function buildRecords(parsedRows, dataFile, tickerSuffix, { isZse, extraFields = {} } = {}) {
   const lookup = loadExistingLookup(dataFile);
   const unmatched = [];
   const usedTickers = new Set(
@@ -217,26 +253,38 @@ function buildRecords(parsedRows, dataFile, tickerSuffix) {
     // ~100x too high). VFEX is already in whole USD, no conversion needed.
     // Market cap is NOT touched here — MMC's "$m" column is already in
     // proper millions, not cents, for both markets.
-    const isZse = tickerSuffix === 'ZW';
     // row.closingPrice is null when the counter didn't trade today (both
-    // Opening and Last Traded were "-" in the PDF) — carry forward the
-    // last known real price instead of showing a fabricated $0. existing's
-    // closingPrice is already in final display units (previously
-    // converted), so it's used as-is, unlike row.closingPrice which still
-    // needs the cents conversion below.
+    // Opening and Last Traded were "-", or Volume was 0, in the PDF) —
+    // carry forward the last known real price instead of showing a
+    // fabricated $0. existing's closingPrice is already in final display
+    // units (previously converted), so it's used as-is, unlike
+    // row.closingPrice which still needs the cents conversion below.
+    // 6 decimal places, not 4: a handful of ZSE penny stocks (confirmed on
+    // Zeco) have a raw cents price small enough that /100 rounds to
+    // exactly 0.0000 at 4dp despite being genuinely non-zero — losing that
+    // distinction is worse than an ugly extra couple of trailing digits.
     const closingPrice = row.closingPrice !== null
-      ? (isZse ? Number((row.closingPrice / 100).toFixed(4)) : row.closingPrice)
+      ? (isZse ? Number((row.closingPrice / 100).toFixed(6)) : row.closingPrice)
       : (existing?.closingPrice ?? 0);
+
+    // row.lowConfidence means the source row had too few columns to be
+    // sure "last token = Market Cap" was even correct (see parseCompanyRow)
+    // — prefer carrying forward the last trustworthy market cap over a
+    // possibly-wrong freshly-parsed one, and flag the record as estimated
+    // either way so the UI shows reduced confidence.
+    const marketCap = row.lowConfidence && existing?.marketCap != null ? existing.marketCap : row.marketCap;
 
     return {
       ticker,
       name: titleCase(row.name),
       change: row.change,
       closingPrice,
-      marketCap: row.marketCap,
+      marketCap,
       currency: isZse ? 'ZWG' : 'USD',
-      estimated: false, // real reported market cap from MMC, not our old placeholder
+      estimated: Boolean(row.lowConfidence), // real reported market cap from MMC unless the source row was ambiguous
+      ...extraFields,
       ...(existing?.logoUrl ? { logoUrl: existing.logoUrl } : {}),
+      ...(existing?.description ? { description: existing.description } : {}),
     };
   });
 
@@ -283,20 +331,34 @@ async function main() {
 
   const zseRows = extractSection(lines, SECTION_MARKERS.zseStart, SECTION_MARKERS.zseEnd);
   const vfexRows = extractSection(lines, SECTION_MARKERS.vfexStart, SECTION_MARKERS.vfexEnd);
+  const zseEtfRows = extractSection(lines, SECTION_MARKERS.zseEnd, SECTION_MARKERS.zseEtfEnd);
+  const zseReitRows = extractSection(lines, SECTION_MARKERS.zseEtfEnd, SECTION_MARKERS.zseReitEnd);
+  const vfexEtfRows = extractSection(lines, SECTION_MARKERS.vfexEnd, SECTION_MARKERS.vfexEtfEnd);
+  const vfexReitRows = extractSection(lines, SECTION_MARKERS.vfexEtfEnd, SECTION_MARKERS.vfexReitEnd);
 
   console.log(`Parsed ${zseRows.length} ZSE companies and ${vfexRows.length} VFEX companies from ${path.basename(PDF_FILE)}.`);
+  console.log(`Parsed ${zseEtfRows.length} ZSE ETFs, ${zseReitRows.length} ZSE REITs, ${vfexEtfRows.length} VFEX ETFs, ${vfexReitRows.length} VFEX REITs.`);
 
-  const { records: zseRecords, unmatched: zseUnmatched } = buildRecords(zseRows, ZSE_DATA_FILE, 'ZW');
-  const { records: vfexRecords, unmatched: vfexUnmatched } = buildRecords(vfexRows, VFEX_DATA_FILE, 'VX');
+  const { records: zseRecords, unmatched: zseUnmatched } = buildRecords(zseRows, ZSE_DATA_FILE, 'ZW', { isZse: true });
+  const { records: vfexRecords, unmatched: vfexUnmatched } = buildRecords(vfexRows, VFEX_DATA_FILE, 'VX', { isZse: false });
+
+  const { records: zseEtfRecords } = buildRecords(zseEtfRows, FUNDS_DATA_FILE, 'ETF', { isZse: true, extraFields: { instrumentType: 'ETF', market: 'ZSE' } });
+  const { records: zseReitRecords } = buildRecords(zseReitRows, FUNDS_DATA_FILE, 'REIT', { isZse: true, extraFields: { instrumentType: 'REIT', market: 'ZSE' } });
+  const { records: vfexEtfRecords } = buildRecords(vfexEtfRows, FUNDS_DATA_FILE, 'ETF', { isZse: false, extraFields: { instrumentType: 'ETF', market: 'VFEX' } });
+  const { records: vfexReitRecords } = buildRecords(vfexReitRows, FUNDS_DATA_FILE, 'REIT', { isZse: false, extraFields: { instrumentType: 'REIT', market: 'VFEX' } });
+  const fundsRecords = [...zseEtfRecords, ...zseReitRecords, ...vfexEtfRecords, ...vfexReitRecords];
 
   fs.writeFileSync(ZSE_DATA_FILE, JSON.stringify(zseRecords, null, 2) + '\n');
   fs.writeFileSync(VFEX_DATA_FILE, JSON.stringify(vfexRecords, null, 2) + '\n');
+  fs.writeFileSync(FUNDS_DATA_FILE, JSON.stringify(fundsRecords, null, 2) + '\n');
 
   const zseHistoryCount = appendHistory(ZSE_HISTORY_FILE, zseRecords);
   const vfexHistoryCount = appendHistory(VFEX_HISTORY_FILE, vfexRecords);
+  const fundsHistoryCount = appendHistory(FUNDS_HISTORY_FILE, fundsRecords);
 
   console.log(`\nZSE: wrote ${zseRecords.length} companies, recorded ${zseHistoryCount} history points.`);
   console.log(`VFEX: wrote ${vfexRecords.length} companies, recorded ${vfexHistoryCount} history points.`);
+  console.log(`Funds: wrote ${fundsRecords.length} ETFs/REITs, recorded ${fundsHistoryCount} history points.`);
 
   if (zseUnmatched.length > 0) {
     console.log(`\nNew/unmatched ZSE tickers (guessed — verify these):\n  ${zseUnmatched.join('\n  ')}`);
