@@ -539,13 +539,37 @@ function App() {
               color: '#f7f7f7',
             }}
           >
-            {/* Compact header: name/ticker + close, all on one line */}
+            {/* Compact header: logo + name/ticker + close, all on one line */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '12px' }}>
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', flexWrap: 'wrap', minWidth: 0 }}>
-                <h2 style={{ margin: 0, fontSize: '19px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                  {selectedCompany.name}
-                </h2>
-                <span style={{ fontSize: '12px', color: '#9a9a9a', flexShrink: 0 }}>{selectedCompany.ticker}</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0 }}>
+                {selectedCompany.logoUrl && (
+                  <div
+                    style={{
+                      width: '40px',
+                      height: '40px',
+                      borderRadius: '50%',
+                      background: '#1c1c1c',
+                      border: '1px solid #2b2b2b',
+                      flexShrink: 0,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      overflow: 'hidden',
+                    }}
+                  >
+                    <img
+                      src={selectedCompany.logoUrl}
+                      alt=""
+                      style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                    />
+                  </div>
+                )}
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', flexWrap: 'wrap', minWidth: 0 }}>
+                  <h2 style={{ margin: 0, fontSize: '19px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    {selectedCompany.name}
+                  </h2>
+                  <span style={{ fontSize: '12px', color: '#9a9a9a', flexShrink: 0 }}>{selectedCompany.ticker}</span>
+                </div>
               </div>
               <button
                 onClick={() => setSelectedCompany(null)}

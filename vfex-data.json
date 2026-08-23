@@ -7,7 +7,8 @@
     "marketCap": 2140000,
     "currency": "USD",
     "estimated": false,
-    "logoUrl": "/logos/axia.png"
+    "logoUrl": "/logos/std/AXIA.png",
+    "description": "Retail and distribution conglomerate selling furniture, appliances and electronics across Zimbabwe, through brands including TV Sales & Home and Distribution Group Africa."
   },
   {
     "ticker": "CMCL.VX",
@@ -17,7 +18,8 @@
     "marketCap": 206130000,
     "currency": "USD",
     "estimated": false,
-    "logoUrl": "/logos/cmcl.png"
+    "logoUrl": "/logos/std/CMCL.png",
+    "description": "Gold mining company; operates the Blanket Mine in Zimbabwe, one of the country's largest gold producers."
   },
   {
     "ticker": "INFR.VX",
@@ -27,7 +29,8 @@
     "marketCap": 0,
     "currency": "USD",
     "estimated": false,
-    "logoUrl": "/logos/infr.png"
+    "logoUrl": "/logos/std/INFR.png",
+    "description": "Builds and leases telecommunications towers and infrastructure; part of the Econet group of companies."
   },
   {
     "ticker": "EDGR.VX",
@@ -37,7 +40,8 @@
     "marketCap": 140000,
     "currency": "USD",
     "estimated": false,
-    "logoUrl": "/logos/edgr.png"
+    "logoUrl": "/logos/std/EDGR.png",
+    "description": "Clothing and footwear retail chain with stores across Zimbabwe."
   },
   {
     "ticker": "FCA.VX",
@@ -47,7 +51,8 @@
     "marketCap": 2980000,
     "currency": "USD",
     "estimated": false,
-    "logoUrl": "/logos/fca.png"
+    "logoUrl": "/logos/std/FCA.png",
+    "description": "Commercial bank offering retail, corporate and investment banking services in Zimbabwe."
   },
   {
     "ticker": "INN.VX",
@@ -57,7 +62,8 @@
     "marketCap": 8520000,
     "currency": "USD",
     "estimated": false,
-    "logoUrl": "/logos/inn.png"
+    "logoUrl": "/logos/std/INN.png",
+    "description": "Diversified food and FMCG group — bakeries (Bakers Inn), meat processing (Colcom), packaging and other consumer brands; also the parent company of Simbisa Brands."
   },
   {
     "ticker": "INV.VX",
@@ -67,7 +73,8 @@
     "marketCap": 280000,
     "currency": "USD",
     "estimated": false,
-    "logoUrl": "/logos/inv.png"
+    "logoUrl": "/logos/std/INV.png",
+    "description": "Oil and gas exploration company focused on the Cabora Bassa Basin in northern Zimbabwe."
   },
   {
     "ticker": "KAV.VX",
@@ -77,7 +84,8 @@
     "marketCap": 0,
     "currency": "USD",
     "estimated": false,
-    "logoUrl": "/logos/kav.png"
+    "logoUrl": "/logos/std/KAV.png",
+    "description": "Mineral exploration company searching for copper, nickel and gold deposits in Botswana."
   },
   {
     "ticker": "NED.VX",
@@ -87,7 +95,8 @@
     "marketCap": 117530000,
     "currency": "USD",
     "estimated": false,
-    "logoUrl": "/logos/ned.png"
+    "logoUrl": "/logos/std/NED.png",
+    "description": "South African banking group; these are depository receipts giving VFEX investors exposure to Nedbank shares."
   },
   {
     "ticker": "OLD.VX",
@@ -96,7 +105,9 @@
     "closingPrice": 0.9,
     "marketCap": 2350000,
     "currency": "USD",
-    "estimated": false
+    "estimated": false,
+    "logoUrl": "/logos/std/OLD.png",
+    "description": "Pan-African financial services group offering insurance, savings, investment, banking and lending; VFEX-listed via a secondary listing alongside its primary JSE listing."
   },
   {
     "ticker": "PHL.VX",
@@ -106,7 +117,8 @@
     "marketCap": 7350000,
     "currency": "USD",
     "estimated": false,
-    "logoUrl": "/logos/phl.png"
+    "logoUrl": "/logos/std/PHL.png",
+    "description": "Nile crocodile farming operation producing skins and meat for export, with a separate gold mining division."
   },
   {
     "ticker": "SCIL.VX",
@@ -116,7 +128,8 @@
     "marketCap": 110000,
     "currency": "USD",
     "estimated": false,
-    "logoUrl": "/logos/scil.png"
+    "logoUrl": "/logos/std/SCIL.png",
+    "description": "Certified seed producer supplying maize and other crop seed to markets across Africa, outside Zimbabwe itself."
   },
   {
     "ticker": "SIM.VX",
@@ -126,7 +139,8 @@
     "marketCap": 1885340000,
     "currency": "USD",
     "estimated": false,
-    "logoUrl": "/logos/sim.png"
+    "logoUrl": "/logos/std/SIM.png",
+    "description": "Fast food restaurant operator running chains including Chicken Inn, Pizza Inn, Creamy Inn and Bakers Inn."
   },
   {
     "ticker": "TSL.VX",
@@ -136,6 +150,7 @@
     "marketCap": 760000,
     "currency": "USD",
     "estimated": false,
-    "logoUrl": "/logos/tsl.png"
+    "logoUrl": "/logos/std/TSL.png",
+    "description": "Agricultural services group operating tobacco auction floors and agri-logistics in Zimbabwe."
   }
 ]

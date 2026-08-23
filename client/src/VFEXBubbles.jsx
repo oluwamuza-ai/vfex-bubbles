@@ -481,49 +481,82 @@ function drawBubble(context, node, selectedTicker, hoveredTicker, imageCache, re
     nextImage.src = logoUrl;
   }
 
+  // Contrast (a white backing circle for logos too dark to read against
+  // this near-black fill) is baked into the standardized logo files
+  // themselves (see standardize-logos.mjs) — every logo is already a
+  // consistent square with the real artwork centered inside it, so this
+  // just clips to a plain circle. No per-ticker hacks needed here.
   const hasLogo = Boolean(image?.complete && image.naturalWidth);
-  if (hasLogo && r >= 16) {
-    const logoSize = clamp(r * 0.58, 22, 58);
-    const logoX = 0;
-    const logoY = -r * 0.32;
-    const needsWhiteBadge = String(node.ticker || '').toLowerCase().includes('inv');
+  const logoSize = hasLogo && r >= 16 ? clamp(r * 0.58, 22, 58) : 0;
 
+  const ticker = tickerFor(node);
+  const showTicker = r >= 12;
+  const showChange = r >= 24;
+
+  // Ticker font size (shrink-to-fit against available width) has to be
+  // resolved before the stack layout below, since its height feeds into it.
+  let tickerFontSize = 0;
+  if (showTicker) {
+    tickerFontSize = clamp(r * 0.45, 9, 52);
+    context.font = `700 ${tickerFontSize}px Inter, ui-sans-serif, system-ui, sans-serif`;
+    const maxWidth = hasLogo ? r * 1.25 : r * 1.58;
+    while (tickerFontSize > 8 && context.measureText(ticker).width > maxWidth) {
+      tickerFontSize -= 1;
+      context.font = `700 ${tickerFontSize}px Inter, ui-sans-serif, system-ui, sans-serif`;
+    }
+  }
+  const changeFontSize = showChange ? clamp(r * 0.23, 8, 27) : 0;
+
+  // Stack the logo/ticker/change vertically with a guaranteed gap between
+  // each, then center the whole stack on the bubble's middle — this is
+  // what actually prevents the logo and text from ever overlapping,
+  // regardless of bubble radius (fixed-offset positioning here previously
+  // let them collide at several r values).
+  const gap = Math.max(2, r * 0.05);
+  const tickerHeight = showTicker ? tickerFontSize * 0.72 : 0;
+  const changeHeight = showChange ? changeFontSize * 0.72 : 0;
+
+  let stackHeight = logoSize;
+  if (showTicker) stackHeight += (stackHeight > 0 ? gap : 0) + tickerHeight;
+  if (showChange) stackHeight += (stackHeight > 0 ? gap : 0) + changeHeight;
+
+  let cursorY = -stackHeight / 2;
+  let logoY = 0;
+  if (logoSize > 0) {
+    logoY = cursorY + logoSize / 2;
+    cursorY += logoSize + gap;
+  }
+  let tickerY = 0;
+  if (showTicker) {
+    tickerY = cursorY + tickerHeight / 2;
+    cursorY += tickerHeight + gap;
+  }
+  let changeY = 0;
+  if (showChange) {
+    changeY = cursorY + changeHeight / 2;
+  }
+
+  if (logoSize > 0) {
     context.save();
     context.beginPath();
-    context.arc(logoX, logoY, logoSize / 2 + (needsWhiteBadge ? 4 : 0), 0, Math.PI * 2);
+    context.arc(0, logoY, logoSize / 2, 0, Math.PI * 2);
     context.clip();
-
-    if (needsWhiteBadge) {
-      context.fillStyle = '#ffffff';
-      context.beginPath();
-      context.arc(logoX, logoY, logoSize / 2 + 3, 0, Math.PI * 2);
-      context.fill();
-    }
-
-    context.drawImage(image, logoX - logoSize / 2, logoY - logoSize / 2, logoSize, logoSize);
+    context.drawImage(image, -logoSize / 2, logoY - logoSize / 2, logoSize, logoSize);
     context.restore();
   }
 
-  const ticker = tickerFor(node);
-  if (r >= 12) {
-    const preferredSize = clamp(r * 0.45, 9, 52);
-    let fontSize = preferredSize;
+  if (showTicker) {
     context.textAlign = 'center';
     context.textBaseline = 'middle';
-    context.font = `700 ${fontSize}px Inter, ui-sans-serif, system-ui, sans-serif`;
-    const maxWidth = hasLogo ? r * 1.25 : r * 1.58;
-    while (fontSize > 8 && context.measureText(ticker).width > maxWidth) {
-      fontSize -= 1;
-      context.font = `700 ${fontSize}px Inter, ui-sans-serif, system-ui, sans-serif`;
-    }
+    context.font = `700 ${tickerFontSize}px Inter, ui-sans-serif, system-ui, sans-serif`;
     context.fillStyle = COLORS.text;
-    context.fillText(ticker, 0, hasLogo ? r * 0.06 : (r >= 25 ? -r * 0.1 : 0));
+    context.fillText(ticker, 0, tickerY);
+  }
 
-    if (r >= 24) {
-      context.font = `500 ${clamp(r * 0.23, 8, 27)}px Inter, ui-sans-serif, system-ui, sans-serif`;
-      context.fillStyle = COLORS.mutedText;
-      context.fillText(formatChange(node.change), 0, hasLogo ? r * 0.48 : r * 0.38);
-    }
+  if (showChange) {
+    context.font = `500 ${changeFontSize}px Inter, ui-sans-serif, system-ui, sans-serif`;
+    context.fillStyle = COLORS.mutedText;
+    context.fillText(formatChange(node.change), 0, changeY);
   }
 
   context.restore();

@@ -7,7 +7,8 @@
     "marketCap": 2089530000,
     "currency": "ZWG",
     "estimated": false,
-    "logoUrl": "/logos/zse/AFDS.png"
+    "logoUrl": "/logos/std/AFDS.png",
+    "description": "Producer of spirits and wines, one of Zimbabwe's main alcoholic beverage manufacturers."
   },
   {
     "ticker": "ARTD.ZW",
@@ -17,7 +18,8 @@
     "marketCap": 96140000,
     "currency": "ZWG",
     "estimated": false,
-    "logoUrl": "/logos/zse/ARTD.png"
+    "logoUrl": "/logos/std/ARTD.png",
+    "description": "Motor vehicle and equipment dealership group operating across Zimbabwe."
   },
   {
     "ticker": "ARIS.ZW",
@@ -26,7 +28,9 @@
     "closingPrice": 0.075,
     "marketCap": 122050000,
     "currency": "ZWG",
-    "estimated": false
+    "estimated": false,
+    "logoUrl": "/logos/std/ARIS.png",
+    "description": "Agricultural producer growing tea, coffee, macadamia nuts and horticultural crops."
   },
   {
     "ticker": "BAT.ZW",
@@ -36,7 +40,8 @@
     "marketCap": 3796570000,
     "currency": "ZWG",
     "estimated": false,
-    "logoUrl": "/logos/zse/BAT.png"
+    "logoUrl": "/logos/std/BAT.png",
+    "description": "Manufactures and markets tobacco products; the Zimbabwean arm of British American Tobacco."
   },
   {
     "ticker": "CAFCA.ZW",
@@ -46,7 +51,8 @@
     "marketCap": 205710000,
     "currency": "ZWG",
     "estimated": false,
-    "logoUrl": "/logos/zse/CAFCA.png"
+    "logoUrl": "/logos/std/CAFCA.png",
+    "description": "Manufactures power cables and related electrical products for the Zimbabwean and regional market."
   },
   {
     "ticker": "CBZ.ZW",
@@ -56,7 +62,8 @@
     "marketCap": 20901230000,
     "currency": "ZWG",
     "estimated": false,
-    "logoUrl": "/logos/zse/CBZ.png"
+    "logoUrl": "/logos/std/CBZ.png",
+    "description": "Zimbabwe's largest banking and financial services group, spanning banking, insurance, asset management and wealth management."
   },
   {
     "ticker": "CFI.ZW",
@@ -66,7 +73,8 @@
     "marketCap": 731680000,
     "currency": "ZWG",
     "estimated": false,
-    "logoUrl": "/logos/zse/CFI.png"
+    "logoUrl": "/logos/std/CFI.png",
+    "description": "Agricultural inputs and retail group, operating the Farm & City chain of stores."
   },
   {
     "ticker": "DZL.ZW",
@@ -76,7 +84,8 @@
     "marketCap": 1381060000,
     "currency": "ZWG",
     "estimated": false,
-    "logoUrl": "/logos/zse/DZL.png"
+    "logoUrl": "/logos/std/DZL.png",
+    "description": "Dairy and beverage producer — milk, yoghurt, juices and related consumer products."
   },
   {
     "ticker": "DLTA.ZW",
@@ -86,7 +95,8 @@
     "marketCap": 41296070000,
     "currency": "ZWG",
     "estimated": false,
-    "logoUrl": "/logos/zse/DLTA.png"
+    "logoUrl": "/logos/std/DLTA.png",
+    "description": "Zimbabwe's largest beverages producer, making beer and soft drinks (including local Coca-Cola bottling)."
   },
   {
     "ticker": "FBC.ZW",
@@ -96,7 +106,8 @@
     "marketCap": 40394200000,
     "currency": "ZWG",
     "estimated": false,
-    "logoUrl": "/logos/zse/FBC.png"
+    "logoUrl": "/logos/std/FBC.png",
+    "description": "Diversified financial services group spanning banking, insurance and a building society."
   },
   {
     "ticker": "FIDL.ZW",
@@ -106,7 +117,8 @@
     "marketCap": 540920000,
     "currency": "ZWG",
     "estimated": false,
-    "logoUrl": "/logos/zse/FIDL.png"
+    "logoUrl": "/logos/std/FIDL.png",
+    "description": "Life insurance and pensions provider."
   },
   {
     "ticker": "FML.ZW",
@@ -116,7 +128,8 @@
     "marketCap": 364890000,
     "currency": "ZWG",
     "estimated": false,
-    "logoUrl": "/logos/zse/FML.png"
+    "logoUrl": "/logos/std/FML.png",
+    "description": "Insurance, property and investment group."
   },
   {
     "ticker": "GBH.ZW",
@@ -126,7 +139,8 @@
     "marketCap": 72470000,
     "currency": "ZWG",
     "estimated": false,
-    "logoUrl": "/logos/zse/GBH.png"
+    "logoUrl": "/logos/std/GBH.png",
+    "description": "Manufactures conveyor belting and industrial rubber products, based in Bulawayo."
   },
   {
     "ticker": "HIPO.ZW",
@@ -135,7 +149,9 @@
     "closingPrice": 10.7504,
     "marketCap": 13288310000,
     "currency": "ZWG",
-    "estimated": false
+    "estimated": false,
+    "logoUrl": "/logos/std/HIPO.png",
+    "description": "Grows and mills sugar cane; one of Zimbabwe's two major sugar producers."
   },
   {
     "ticker": "MASH.ZW",
@@ -145,7 +161,8 @@
     "marketCap": 911930000,
     "currency": "ZWG",
     "estimated": false,
-    "logoUrl": "/logos/zse/MASH.png"
+    "logoUrl": "/logos/std/MASH.png",
+    "description": "Property investment and management company owning commercial and industrial real estate."
   },
   {
     "ticker": "MSHL.ZW",
@@ -155,7 +172,8 @@
     "marketCap": 443950000,
     "currency": "ZWG",
     "estimated": false,
-    "logoUrl": "/logos/zse/MSHL.png"
+    "logoUrl": "/logos/std/MSHL.png",
+    "description": "Construction and civil engineering group."
   },
   {
     "ticker": "MEIK.ZW",
@@ -165,7 +183,8 @@
     "marketCap": 4144710000,
     "currency": "ZWG",
     "estimated": false,
-    "logoUrl": "/logos/zse/MEIK.png"
+    "logoUrl": "/logos/std/MEIK.png",
+    "description": "Hospitality and retail conglomerate, historically linked to Meikles Hotel and major Zimbabwean supermarket chains."
   },
   {
     "ticker": "NPKZ.ZW",
@@ -174,7 +193,9 @@
     "closingPrice": 1,
     "marketCap": 239390000,
     "currency": "ZWG",
-    "estimated": false
+    "estimated": false,
+    "logoUrl": "/logos/std/NPKZ.png",
+    "description": "Manufactures paper, plastic and metal packaging products."
   },
   {
     "ticker": "NMB.ZW",
@@ -184,7 +205,8 @@
     "marketCap": 1524100000,
     "currency": "ZWG",
     "estimated": false,
-    "logoUrl": "/logos/zse/NMB.png"
+    "logoUrl": "/logos/std/NMB.png",
+    "description": "Banking group; parent company of NMB Bank."
   },
   {
     "ticker": "PROL.ZW",
@@ -193,7 +215,9 @@
     "closingPrice": 1.1575,
     "marketCap": 874660000,
     "currency": "ZWG",
-    "estimated": false
+    "estimated": false,
+    "logoUrl": "/logos/std/PROL.png",
+    "description": "Manufactures PVC pipes and plastic products for construction and plumbing."
   },
   {
     "ticker": "RTG.ZW",
@@ -203,7 +227,8 @@
     "marketCap": 409370000,
     "currency": "ZWG",
     "estimated": false,
-    "logoUrl": "/logos/zse/RTG.png"
+    "logoUrl": "/logos/std/RTG.png",
+    "description": "Hotel and hospitality operator running a chain of hotels across Zimbabwe."
   },
   {
     "ticker": "RIOZ.ZW",
@@ -213,7 +238,8 @@
     "marketCap": 344560000,
     "currency": "ZWG",
     "estimated": false,
-    "logoUrl": "/logos/zse/RIOZ.png"
+    "logoUrl": "/logos/std/RIOZ.png",
+    "description": "Mining company producing gold and other minerals."
   },
   {
     "ticker": "SEED.ZW",
@@ -223,7 +249,8 @@
     "marketCap": 7492580000,
     "currency": "ZWG",
     "estimated": false,
-    "logoUrl": "/logos/zse/SEED.png"
+    "logoUrl": "/logos/std/SEED.png",
+    "description": "Certified seed producer supplying the domestic Zimbabwean agricultural market."
   },
   {
     "ticker": "SACL.ZW",
@@ -233,7 +260,8 @@
     "marketCap": 10130000,
     "currency": "ZWG",
     "estimated": false,
-    "logoUrl": "/logos/zse/SACL.png"
+    "logoUrl": "/logos/std/SACL.png",
+    "description": "Sugar refining company producing granulated sugar and specialty sugar products under the Goldstar brand."
   },
   {
     "ticker": "TANG.ZW",
@@ -243,7 +271,8 @@
     "marketCap": 11229730000,
     "currency": "ZWG",
     "estimated": false,
-    "logoUrl": "/logos/zse/TANG.png"
+    "logoUrl": "/logos/std/TANG.png",
+    "description": "Grows and processes tea; one of Zimbabwe's major tea producers."
   },
   {
     "ticker": "TNCI.ZW",
@@ -253,7 +282,8 @@
     "marketCap": 37890000,
     "currency": "ZWG",
     "estimated": false,
-    "logoUrl": "/logos/zse/TNCI.png"
+    "logoUrl": "/logos/std/TNCI.png",
+    "description": "Digital and banking technology group, formerly EcoCash Holdings; now the parent of TN CyberTech Bank, focused on digital-first banking."
   },
   {
     "ticker": "TURN.ZW",
@@ -262,7 +292,9 @@
     "closingPrice": 0.125,
     "marketCap": 31690000,
     "currency": "ZWG",
-    "estimated": false
+    "estimated": false,
+    "logoUrl": "/logos/std/TURN.png",
+    "description": "Manufactures fibre-cement roofing sheets, pipes and building materials."
   },
   {
     "ticker": "UNIF.ZW",
@@ -271,7 +303,9 @@
     "closingPrice": 2,
     "marketCap": 9430170000,
     "currency": "ZWG",
-    "estimated": false
+    "estimated": false,
+    "logoUrl": "/logos/std/UNIF.png",
+    "description": "Road freight and logistics operator."
   },
   {
     "ticker": "WILD.ZW",
@@ -280,7 +314,9 @@
     "closingPrice": 0.0664,
     "marketCap": 17330000,
     "currency": "ZWG",
-    "estimated": false
+    "estimated": false,
+    "logoUrl": "/logos/std/WILD.png",
+    "description": "Manufactures clay bricks and related building products."
   },
   {
     "ticker": "ZBFH.ZW",
@@ -289,7 +325,9 @@
     "closingPrice": 6.815,
     "marketCap": 28587550000,
     "currency": "ZWG",
-    "estimated": false
+    "estimated": false,
+    "logoUrl": "/logos/std/ZBFH.png",
+    "description": "Banking, insurance and asset management group."
   },
   {
     "ticker": "ZECO.ZW",
@@ -299,7 +337,8 @@
     "marketCap": 10000,
     "currency": "ZWG",
     "estimated": false,
-    "logoUrl": "/logos/zse/ZECO.png"
+    "logoUrl": "/logos/std/ZECO.png",
+    "description": "Manufactures rail wagons and locomotives for regional utilities, plus steel products like roller shutters and garage doors."
   },
   {
     "ticker": "ZIMP.ZW",
@@ -309,7 +348,8 @@
     "marketCap": 310730000,
     "currency": "ZWG",
     "estimated": false,
-    "logoUrl": "/logos/zse/ZIMP.png"
+    "logoUrl": "/logos/std/ZIMP.png",
+    "description": "Publisher of The Herald and other major national newspapers in Zimbabwe."
   },
   {
     "ticker": "ZSEH.ZW",
@@ -319,7 +359,8 @@
     "marketCap": 268280000,
     "currency": "ZWG",
     "estimated": false,
-    "logoUrl": "/logos/zse/ZSEH.webp"
+    "logoUrl": "/logos/std/ZSEH.png",
+    "description": "Operates the Zimbabwe Stock Exchange itself — the main board this list of companies is drawn from."
   },
   {
     "ticker": "ZIMR.ZW",
@@ -329,6 +370,7 @@
     "marketCap": 1688640000,
     "currency": "ZWG",
     "estimated": false,
-    "logoUrl": "/logos/zse/ZIMR.png"
+    "logoUrl": "/logos/std/ZIMR.png",
+    "description": "Insurance and reinsurance group."
   }
 ]
