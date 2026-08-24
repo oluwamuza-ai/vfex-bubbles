@@ -502,11 +502,17 @@ function App() {
         </div>
       </div>
 
-      {showList && (
-        <div ref={listRef}>
-          <CompanyList data={filteredSignals} onSelect={setSelectedCompany} />
-        </div>
-      )}
+      {/* Always rendered (not conditionally mounted) so this real HTML
+          text — company names, tickers, prices — exists in the page for
+          search engines and screen readers even before anyone clicks
+          "show list". The canvas bubble chart above has no crawlable text
+          of its own; this is the only part of the page that does. Visually
+          collapsed via display:none when toggled off, which is a normal,
+          well-tolerated pattern (same as an accordion/tab panel) rather
+          than the "unmount entirely" approach this replaced. */}
+      <div ref={listRef} style={{ display: showList ? 'block' : 'none' }}>
+        <CompanyList data={filteredSignals} onSelect={setSelectedCompany} />
+      </div>
 
       {selectedCompany && (
         <div
