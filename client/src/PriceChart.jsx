@@ -65,9 +65,51 @@ export default function PriceChart({ points = [], color = '#4ade80', currency = 
   const touchStartPosRef = useRef(null);
   const TOUCH_DRAG_THRESHOLD = 10; // px of finger movement before a touch becomes a pan instead of a tooltip scrub
 
+  // ---------------------------------------------------------------------
+  // DRAW-IN ANIMATION — the line strokes itself in left-to-right on first
+  // load and on any genuinely new dataset (range switch, different
+  // company), instead of just appearing. Classic SVG technique: set
+  // stroke-dasharray to the path's own real length (measured via
+  // getTotalLength(), not guessed — a guessed value either cuts the line
+  // off early or leaves a long dead pause before anything's visible),
+  // start stroke-dashoffset at that same length (fully hidden), then
+  // transition it to 0. Deliberately keyed on `points`, NOT
+  // `visiblePoints` — the latter also changes during interactive
+  // zoom/pan, which should never replay this.
+  //
+  // This writes directly to the path's DOM style via the ref rather than
+  // through React state/JSX style props — tried that first, and the two
+  // state updates (set the hidden length, then flip to revealed) got
+  // batched into a single commit, so the browser never registered an
+  // intermediate "hidden" frame to transition FROM and the animation just
+  // snapped straight to its end state. Confirmed by directly polling
+  // getComputedStyle() through the transition window — no intermediate
+  // value ever appeared, only the start and end. The manual reflow below
+  // (reading getBoundingClientRect between the two style writes) is what
+  // actually forces the browser to commit the hidden state first.
+  // ---------------------------------------------------------------------
+  const pathRef = useRef(null);
+
   useEffect(() => {
     setViewRange(null);
     hideTooltip();
+
+    // Waits one frame for the viewRange-reset render above to actually
+    // paint, so what gets measured below is the new full-range path —
+    // not a stale zoomed-in one left over from before this data change.
+    const raf = requestAnimationFrame(() => {
+      const path = pathRef.current;
+      if (!path) return;
+      const length = path.getTotalLength();
+
+      path.style.transition = 'none';
+      path.style.strokeDasharray = String(length);
+      path.style.strokeDashoffset = String(length);
+      path.getBoundingClientRect(); // force the reflow described above
+      path.style.transition = 'stroke-dashoffset 650ms ease-out';
+      path.style.strokeDashoffset = '0';
+    });
+    return () => cancelAnimationFrame(raf);
   }, [points, hideTooltip]);
 
   const visiblePoints = useMemo(() => {
@@ -369,8 +411,12 @@ export default function PriceChart({ points = [], color = '#4ade80', currency = 
         />
 
         {/* The price line — curveLinear gives straight segments between
-            points (the "spiked" look), not a smoothed curve. */}
+            points (the "spiked" look), not a smoothed curve. The draw-in
+            reveal (see the effect above) is applied imperatively via
+            pathRef, not through a style prop here — deliberately, see that
+            effect's comment for why. */}
         <LinePath
+          innerRef={pathRef}
           data={visiblePoints}
           x={getX}
           y={getY}

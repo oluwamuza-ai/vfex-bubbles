@@ -68,6 +68,15 @@ const CHART = {
   // creation; a fast/abrupt radius change here disturbs collision
   // resolution more than the existing damping can smoothly absorb.
   radiusEase: 0.025,
+
+  // Click-on-empty-space "wave energy" pulse (see makeShockwaveForce below).
+  // waveStrength is the push power — same units as the collision impulse,
+  // so compare it against wallRestitution/bubbleRestitution above to judge
+  // how hard a hit feels. waveVisible toggles the expanding ring graphic
+  // on/off; the physics push happens either way, this only controls
+  // whether you can SEE the wave front as it travels outward.
+  waveStrength: 1,
+  waveVisible: false,
 };
 
 // ============================================================================
@@ -433,6 +442,68 @@ function makeRadiusEaseForce() {
   return force;
 }
 
+// Click-triggered "wave energy" pulse: an expanding ring from the click
+// point that nudges nearby bubbles outward once as the front passes them,
+// then fades out and disappears. It's a one-shot impulse rather than an
+// ambient force — each bubble only ever gets pushed once per wave (tracked
+// via wave.hit) — so it doesn't violate the "direction changes only on an
+// actual collision" model the rest of this file follows; a wave is just
+// treated as a collision with an expanding circular wall instead of a
+// static one.
+function makeShockwaveForce() {
+  let nodes = [];
+  let waves = [];
+
+  function force() {
+    if (waves.length === 0) return;
+    const now = performance.now();
+
+    waves = waves.filter((wave) => {
+      const elapsed = now - wave.start;
+      if (elapsed >= wave.duration) return false;
+
+      const radius = (elapsed / wave.duration) * wave.maxRadius;
+      const bandwidth = Math.max(24, wave.maxRadius * 0.06);
+
+      for (const node of nodes) {
+        if (wave.hit.has(node.ticker)) continue;
+        const dx = node.x - wave.x;
+        const dy = node.y - wave.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        if (distance > radius + bandwidth) continue;
+
+        wave.hit.add(node.ticker);
+        if (distance < 0.001) continue;
+
+        const nx = dx / distance;
+        const ny = dy / distance;
+        const falloff = clamp(1 - distance / wave.maxRadius, 0.15, 1);
+        // Same mass-scaling idea as bubble-bubble collisions (area, not
+        // radius) — small bubbles visibly fling away, big ones barely budge.
+        const massFactor = Math.max((node.r * node.r) / 900, 0.35);
+        const impulse = (wave.strength * falloff) / massFactor;
+
+        node.vx += nx * impulse;
+        node.vy += ny * impulse;
+      }
+
+      return true;
+    });
+  }
+
+  force.initialize = (nextNodes) => {
+    nodes = nextNodes;
+  };
+
+  force.addWave = (wave) => {
+    waves.push(wave);
+  };
+
+  force.getWaves = () => waves;
+
+  return force;
+}
+
 function bubbleImageUrl(node) {
   const candidate = node.logoUrl || node.logo || node.iconUrl || node.icon;
   return typeof candidate === 'string' ? candidate : null;
@@ -702,11 +773,29 @@ export default function VFEXBubbles({ data = defaultData, onBubbleSelect, sizeBy
         }
       }
       sorted.forEach((node) => drawBubble(context, node, selectedTicker, hoveredTicker, imageCache, queueRender));
+
+      const waves = shockwaveForce.getWaves();
+      if (CHART.waveVisible && waves.length) {
+        const now = performance.now();
+        context.save();
+        for (const wave of waves) {
+          const t = clamp((now - wave.start) / wave.duration, 0, 1);
+          const alpha = (1 - t) * 0.45;
+          context.beginPath();
+          context.arc(wave.x, wave.y, t * wave.maxRadius, 0, Math.PI * 2);
+          context.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
+          context.lineWidth = Math.max(1, 3 * (1 - t));
+          context.stroke();
+        }
+        context.restore();
+      }
     };
 
     const queueRender = () => {
       if (!frame) frame = window.requestAnimationFrame(render);
     };
+
+    const shockwaveForce = makeShockwaveForce();
 
     const simulation = d3
       .forceSimulation(nodesRef.current)
@@ -714,9 +803,11 @@ export default function VFEXBubbles({ data = defaultData, onBubbleSelect, sizeBy
       .alphaDecay(0)
       .velocityDecay(CHART.velocityDecay)
       // No ambient forces here on purpose — direction/speed must change
-      // ONLY from an actual wall or bubble collision, so the only forces
-      // registered are the two that fire strictly on contact.
+      // ONLY from an actual wall/bubble collision or a click-triggered
+      // shockwave, so the only forces registered are ones that fire
+      // strictly on contact.
       .force('bubbleBounce', makeCollisionBounceForce())
+      .force('shockwave', shockwaveForce)
       .force('radiusEase', makeRadiusEaseForce())
       .force('bounds', makeBoundsForce(size.width, size.height))
       .on('tick', queueRender);
@@ -784,7 +875,20 @@ export default function VFEXBubbles({ data = defaultData, onBubbleSelect, sizeBy
       if (node) {
         setSelected(node);
         onBubbleSelectRef.current?.(node);
+        return;
       }
+
+      // Empty space: spawn a dissipating shockwave from the click point.
+      const point = pointerPosition(event);
+      shockwaveForce.addWave({
+        x: point.x,
+        y: point.y,
+        start: performance.now(),
+        duration: 900,
+        maxRadius: Math.max(size.width, size.height) * 0.7,
+        strength: CHART.waveStrength,
+        hit: new Set(),
+      });
     };
 
     canvas.addEventListener('pointermove', handleMove);

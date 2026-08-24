@@ -187,7 +187,7 @@ function loadExistingLookup(dataFile) {
     const existing = JSON.parse(fs.readFileSync(dataFile, 'utf8'));
     const lookup = {};
     for (const record of existing) {
-      lookup[normalizeNameKey(record.name)] = { ticker: record.ticker, logoUrl: record.logoUrl };
+      lookup[normalizeNameKey(record.name)] = { ticker: record.ticker, logoUrl: record.logoUrl, description: record.description };
     }
     return lookup;
   } catch {
@@ -209,15 +209,18 @@ function buildRecords(parsedRows, lookup, usedTickers, tickerSuffix) {
         attempt += 1;
       }
       ticker = candidate;
-      lookup[key] = { ticker, logoUrl: existing?.logoUrl };
+      lookup[key] = { ticker, logoUrl: existing?.logoUrl, description: existing?.description };
     }
     usedTickers.add(ticker);
 
     // Same conversion as mmc-update.js: ZSE prices are in ZWG cents in the
     // source PDF, VFEX is already whole USD. Market cap needs no scaling
     // for either market — MMC's "$m" column is already proper millions.
+    // 6 decimal places, not 4: some ZSE penny stocks have a raw cents
+    // price small enough that /100 rounds to exactly 0.0000 at 4dp
+    // despite being genuinely non-zero (same fix as mmc-update.js).
     const isZse = tickerSuffix === 'ZW';
-    const closingPrice = isZse ? Number((row.closingPrice / 100).toFixed(4)) : row.closingPrice;
+    const closingPrice = isZse ? Number((row.closingPrice / 100).toFixed(6)) : row.closingPrice;
 
     return {
       ticker,
@@ -228,6 +231,7 @@ function buildRecords(parsedRows, lookup, usedTickers, tickerSuffix) {
       currency: isZse ? 'ZWG' : 'USD',
       estimated: false,
       ...(existing?.logoUrl ? { logoUrl: existing.logoUrl } : {}),
+      ...(existing?.description ? { description: existing.description } : {}),
     };
   });
 }
