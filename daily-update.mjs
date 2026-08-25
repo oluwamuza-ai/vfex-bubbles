@@ -21,6 +21,7 @@ const PDF_PATH = path.join(__dirname, 'today-pricesheet.pdf');
 
 const VFEX_DATA_FILE = path.join(__dirname, 'vfex-data.json');
 const ZSE_DATA_FILE = path.join(__dirname, 'zse-data.json');
+const VFEX_HISTORY_FILE = path.join(__dirname, 'vfex-history.json');
 
 // Sanity floors, not exact expected counts — just enough to catch a
 // catastrophic parse failure (MMC changes their PDF layout, section
@@ -39,15 +40,31 @@ const BROWSER_HEADERS = {
   Referer: 'https://www.mmccapitalzim.com/pricesheets',
 };
 
-// MMC Capital is in Harare (Africa/Harare — UTC+2 year-round, no DST).
-// "Today" must be computed in THEIR local date, not the CI runner's UTC
-// date, since the two can briefly disagree around midnight UTC.
-function harareTodayDDMMYYYY() {
-  const now = new Date(Date.now() + 2 * 60 * 60 * 1000);
-  const dd = String(now.getUTCDate()).padStart(2, '0');
-  const mm = String(now.getUTCMonth() + 1).padStart(2, '0');
-  const yyyy = now.getUTCFullYear();
-  return `${dd}-${mm}-${yyyy}`;
+// Pulls the trading day out of MMC's own filename ("Daily Price Sheet
+// 24-08-2026.pdf") rather than trusting the CI runner's clock. MMC posts
+// each day's sheet sometime AFTER this workflow's scheduled run time, so a
+// strict "is the newest file dated today" check was perpetually one day
+// late: by the time we check, the newest file is always dated yesterday
+// relative to whatever day the job happens to be running. Comparing
+// against the latest date we already have on file (see latestStoredDate)
+// is self-healing instead — it ingests whatever the newest sheet is, the
+// moment it's newer than what we've stored, regardless of run timing.
+function extractFileDate(name) {
+  const match = name.match(/(\d{2})-(\d{2})-(\d{4})/);
+  if (!match) return null;
+  const [, dd, mm, yyyy] = match;
+  return `${yyyy}-${mm}-${dd}`;
+}
+
+function latestStoredDate() {
+  if (!fs.existsSync(VFEX_HISTORY_FILE)) return null;
+  try {
+    const history = JSON.parse(fs.readFileSync(VFEX_HISTORY_FILE, 'utf8'));
+    const dates = history.map((entry) => entry.date).filter(Boolean).sort();
+    return dates.length ? dates[dates.length - 1] : null;
+  } catch {
+    return null;
+  }
 }
 
 function readRecordCount(file) {
@@ -68,14 +85,16 @@ async function main() {
 
   // The API already returns files newest-first.
   const newest = files[0];
-  const today = harareTodayDDMMYYYY();
+  const newestDate = extractFileDate(newest.name);
+  if (!newestDate) throw new Error(`Could not find a DD-MM-YYYY date in "${newest.name}".`);
 
-  if (!newest.name.includes(today)) {
-    console.log(`Newest price sheet on MMC's site is "${newest.name}" — not dated today (${today}) yet. Nothing to do.`);
+  const latestStored = latestStoredDate();
+  if (latestStored && newestDate <= latestStored) {
+    console.log(`Newest price sheet on MMC's site is "${newest.name}" (${newestDate}) — already have data through ${latestStored}. Nothing to do.`);
     return;
   }
 
-  console.log(`Downloading today's price sheet: ${newest.name}`);
+  console.log(`Downloading new price sheet: ${newest.name} (${newestDate}; latest stored: ${latestStored ?? 'none'})`);
   const pdfRes = await fetch(`${DOWNLOAD_URL}?file=${encodeURIComponent(newest.name)}`, { headers: BROWSER_HEADERS });
   if (!pdfRes.ok) throw new Error(`Failed to download "${newest.name}": HTTP ${pdfRes.status}`);
 
@@ -86,7 +105,7 @@ async function main() {
   fs.writeFileSync(PDF_PATH, buffer);
 
   console.log('Parsing it with mmc-update.js...');
-  const result = spawnSync(process.execPath, ['mmc-update.js'], { cwd: __dirname, stdio: 'inherit' });
+  const result = spawnSync(process.execPath, ['mmc-update.js', path.basename(PDF_PATH), newestDate], { cwd: __dirname, stdio: 'inherit' });
   if (result.status !== 0) throw new Error(`mmc-update.js exited with code ${result.status}`);
 
   // Refuse to let a broken parse (MMC changed their PDF layout, a section

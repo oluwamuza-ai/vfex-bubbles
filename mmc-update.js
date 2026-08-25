@@ -33,6 +33,11 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // ---------------------------------------------------------------------------
 
 const PDF_FILE = path.join(__dirname, process.argv[2] || 'today-pricesheet.pdf');
+// Optional third arg (YYYY-MM-DD): the trading day this PDF actually covers,
+// for callers (daily-update.mjs) that know it from the source filename.
+// Manual runs without this arg fall back to the system date, which is only
+// correct if you download+run same-day — see appendHistory below.
+const DATE_OVERRIDE = process.argv[3] || null;
 
 const VFEX_DATA_FILE = path.join(__dirname, 'vfex-data.json');
 const VFEX_HISTORY_FILE = path.join(__dirname, 'vfex-history.json');
@@ -292,7 +297,10 @@ function buildRecords(parsedRows, dataFile, tickerSuffix, { isZse, extraFields =
 }
 
 function appendHistory(historyFile, records) {
-  const today = new Date().toISOString().slice(0, 10);
+  // The PDF's actual trading day when known (see DATE_OVERRIDE above) —
+  // NOT necessarily the day this script happens to run. Falling back to
+  // "today" only makes sense for the manual same-day workflow.
+  const today = DATE_OVERRIDE || new Date().toISOString().slice(0, 10);
 
   let history = [];
   if (fs.existsSync(historyFile)) {
