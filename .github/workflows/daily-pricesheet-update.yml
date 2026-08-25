@@ -1,11 +1,22 @@
 name: Daily price sheet update
 
 # Runs entirely on GitHub's infrastructure — doesn't need any local machine
-# to be on. Fetches MMC Capital's latest daily price sheet, parses it via
-# daily-update.mjs (which wraps the existing mmc-update.js), and pushes the
-# resulting data files to main if anything changed. This repo's hosting
-# platform auto-deploys on push to main, so a successful run here is what
-# actually updates the live site.
+# to be on. Two data sources, in priority order:
+#   1. official-update.mjs — the ZSE/VFEX exchange operator's own public
+#      API (undocumented, found via their site's JS bundles). Same-day,
+#      more accurate than the PDF (has outstanding share counts, so market
+#      cap is computed rather than trusted from a column), covers both
+#      exchanges plus ETFs/REITs in one go. Allowed to fail without
+#      stopping the job (continue-on-error) — if the API changes shape or
+#      goes down, the next step below covers for it.
+#   2. daily-update.mjs — wraps the older MMC Capital PDF pipeline
+#      (mmc-update.js). Self-healing by design: it only writes when MMC's
+#      newest sheet is dated later than what's already stored, so on a
+#      normal day where step 1 already wrote today's date, this silently
+#      no-ops — it only actually does anything on a day step 1 failed,
+#      making it a true backup rather than a second write every day.
+# Either way, this repo's hosting platform auto-deploys on push to main,
+# so a successful run here is what actually updates the live site.
 on:
   schedule:
     # 18:00 Africa/Harare (UTC+2 year-round, no DST) = 16:00 UTC.
@@ -35,7 +46,11 @@ jobs:
         # just a build-reproducibility concern.
         run: npm ci
 
-      - name: Fetch and parse today's price sheet
+      - name: Fetch today's data from the official exchange API (primary)
+        run: node official-update.mjs
+        continue-on-error: true
+
+      - name: Fetch and parse MMC's price sheet PDF (backup, no-ops if already covered)
         run: node daily-update.mjs
 
       - name: Commit and push if data changed

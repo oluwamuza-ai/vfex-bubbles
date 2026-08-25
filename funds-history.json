@@ -117,5 +117,68 @@
     "closingPrice": 0.142,
     "marketCap": 2823100000,
     "change": 0
+  },
+  {
+    "ticker": "CASS.ETF",
+    "date": "2026-08-25",
+    "closingPrice": 0.12,
+    "marketCap": 5130000,
+    "change": 6.19
+  },
+  {
+    "ticker": "DATVE.ETF",
+    "date": "2026-08-25",
+    "closingPrice": 0.08,
+    "marketCap": 10890000,
+    "change": 0
+  },
+  {
+    "ticker": "MORGA.ETF",
+    "date": "2026-08-25",
+    "closingPrice": 0.120753,
+    "marketCap": 0,
+    "change": 0.63
+  },
+  {
+    "ticker": "MORGA3.ETF",
+    "date": "2026-08-25",
+    "closingPrice": 1.7,
+    "marketCap": 0,
+    "change": 0
+  },
+  {
+    "ticker": "REVIT.REIT",
+    "date": "2026-08-25",
+    "closingPrice": 2.128333,
+    "marketCap": 783920899.8712521,
+    "change": 0
+  },
+  {
+    "ticker": "TIGER.REIT",
+    "date": "2026-08-25",
+    "closingPrice": 1.119327,
+    "marketCap": 2060798536.335,
+    "change": 4.6
+  },
+  {
+    "ticker": "EAGLE.REIT",
+    "date": "2026-08-25",
+    "closingPrice": 0.3208,
+    "marketCap": 44687628.309599996,
+    "change": 0.25
+  },
+  {
+    "ticker": "FIRST.ETF",
+    "date": "2026-08-25",
+    "closingPrice": 0.1118,
+    "marketCap": 7182361.9218,
+    "change": -0.8
+  },
+  {
+    "ticker": "PFUMA.REIT",
+    "date": "2026-08-25",
+    "closingPrice": 0.1415,
+    "marketCap": 66696272.62499999,
+    "change": -0.49
   }
 ]
