@@ -129,16 +129,27 @@ function App() {
     setSelectedCompany(null);
     fetch(`/api/signals?market=${market}&range=${bubbleRange}`)
       .then((res) => res.json())
+      .then((data) => setSignals(Array.isArray(data) ? data : []))
+      .catch(() => setSignals([]));
+  }, [market, bubbleRange]);
+
+  // "Last updated" reflects when PRICES actually last changed on the
+  // server (the data file's own mtime — see /api/last-updated) rather
+  // than when this browser happened to load or refresh the page, which is
+  // what a client-side timestamp on fetch completion was showing before.
+  useEffect(() => {
+    fetch(`/api/last-updated?market=${market}`)
+      .then((res) => res.json())
       .then((data) => {
-        setSignals(Array.isArray(data) ? data : []);
-        const stamp = new Date().toLocaleString('en-US', {
+        if (!data.updatedAt) return;
+        const stamp = new Date(data.updatedAt).toLocaleString('en-US', {
           dateStyle: 'medium',
           timeStyle: 'short',
         });
         setLastUpdated(stamp);
       })
-      .catch(() => setSignals([]));
-  }, [market, bubbleRange]);
+      .catch(() => {});
+  }, [market]);
 
   useEffect(() => {
     if (showList && listRef.current) {

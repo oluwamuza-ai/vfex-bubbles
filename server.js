@@ -3,7 +3,7 @@ import cors from 'cors';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import dotenv from 'dotenv';
-import { readFile } from 'node:fs/promises';
+import { readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -186,6 +186,22 @@ app.get('/api/history', dataLimiter, async (req, res) => {
   } catch (error) {
     console.error('Error reading price history:', error);
     res.status(500).json({ error: 'Unable to load price history.' });
+  }
+});
+
+// Tells the frontend when prices actually last changed on the server —
+// the data file's own mtime, which is exactly when official-update.mjs or
+// mmc-update.js last wrote it, NOT whenever a visitor's browser happens to
+// load or refresh the page. Distinct from that visitor-local "as of"
+// clock, which was the bug this endpoint replaces.
+app.get('/api/last-updated', dataLimiter, async (req, res) => {
+  try {
+    const market = String(req.query.market || 'vfex').toLowerCase();
+    const { mtime } = await stat(path.join(__dirname, dataFileFor(market)));
+    res.json({ updatedAt: mtime.toISOString() });
+  } catch (error) {
+    console.error('Error reading data file mtime:', error);
+    res.status(500).json({ error: 'Unable to determine last-updated time.' });
   }
 });
 

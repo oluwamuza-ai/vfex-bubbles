@@ -19,9 +19,14 @@ name: Daily price sheet update
 # so a successful run here is what actually updates the live site.
 on:
   schedule:
-    # 18:00 Africa/Harare (UTC+2 year-round, no DST) = 16:00 UTC.
-    # Weekdays only — MMC has nothing new to publish on weekends.
-    - cron: '0 16 * * 1-5'
+    # ZSE's own posted trading hours (Pre-Open 09:00-09:30, Market Open
+    # 09:30-13:00, Post-Close 13:00-14:30, Mon-Fri, Africa/Harare = UTC+2
+    # year-round, no DST) put the close at 13:00 — this runs 10 minutes
+    # after that, 13:10 Harare = 11:10 UTC. Note this is 10 min into the
+    # post-close/settlement window, not 10 min after it ends at 14:30 — if
+    # official-update.mjs starts turning up not-yet-final numbers, push
+    # this later toward 14:40 UTC (16:40 Harare) instead.
+    - cron: '10 11 * * 1-5'
   # Lets you (or Claude, if asked) trigger a run on demand from the
   # Actions tab instead of waiting for the schedule — useful for testing.
   workflow_dispatch: {}
