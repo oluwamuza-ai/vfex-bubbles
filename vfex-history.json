@@ -14054,5 +14054,124 @@
     "closingPrice": 0.1135,
     "marketCap": 39109885.161,
     "change": -0.26
+  },
+  {
+    "ticker": "AXIA.VX",
+    "date": "2026-08-28",
+    "closingPrice": 0.1385,
+    "marketCap": 78432463.29900001,
+    "change": 2.97
+  },
+  {
+    "ticker": "CMCL.VX",
+    "date": "2026-08-28",
+    "closingPrice": 42.0929,
+    "marketCap": 46803348.0674,
+    "change": 9.67
+  },
+  {
+    "ticker": "INFR.VX",
+    "date": "2026-08-28",
+    "closingPrice": 0.2295,
+    "marketCap": 686701455.0885,
+    "change": 0
+  },
+  {
+    "ticker": "EDGR.VX",
+    "date": "2026-08-28",
+    "closingPrice": 0.024,
+    "marketCap": 14633782.632000001,
+    "change": 0
+  },
+  {
+    "ticker": "FCA.VX",
+    "date": "2026-08-28",
+    "closingPrice": 0.1429,
+    "marketCap": 309049248.2541,
+    "change": -4.48
+  },
+  {
+    "ticker": "INN.VX",
+    "date": "2026-08-28",
+    "closingPrice": 1.4975,
+    "marketCap": 862449858.875,
+    "change": 2.47
+  },
+  {
+    "ticker": "INV.VX",
+    "date": "2026-08-28",
+    "closingPrice": 0.1477,
+    "marketCap": 24253554.389399998,
+    "change": -1.53
+  },
+  {
+    "ticker": "KARO.VX",
+    "date": "2026-08-28",
+    "closingPrice": 100,
+    "marketCap": 0,
+    "change": 0
+  },
+  {
+    "ticker": "KAV.VX",
+    "date": "2026-08-28",
+    "closingPrice": 0.0205,
+    "marketCap": 20194322.983,
+    "change": 0.99
+  },
+  {
+    "ticker": "NED.VX",
+    "date": "2026-08-28",
+    "closingPrice": 14.5982,
+    "marketCap": 2354295.5086,
+    "change": 0
+  },
+  {
+    "ticker": "OLD.VX",
+    "date": "2026-08-28",
+    "closingPrice": 0.94,
+    "marketCap": 4228155044.14,
+    "change": 4.41
+  },
+  {
+    "ticker": "PHL.VX",
+    "date": "2026-08-28",
+    "closingPrice": 1.3005,
+    "marketCap": 1047020131.5254999,
+    "change": 0.04
+  },
+  {
+    "ticker": "SCIL.VX",
+    "date": "2026-08-28",
+    "closingPrice": 0.42,
+    "marketCap": 109500097.56,
+    "change": 12.09
+  },
+  {
+    "ticker": "SIM.VX",
+    "date": "2026-08-28",
+    "closingPrice": 0.7177,
+    "marketCap": 403480022.3476,
+    "change": 3.4
+  },
+  {
+    "ticker": "TSL.VX",
+    "date": "2026-08-28",
+    "closingPrice": 0.2305,
+    "marketCap": 84023251.06750001,
+    "change": -0.09
+  },
+  {
+    "ticker": "WPHL.VX",
+    "date": "2026-08-28",
+    "closingPrice": 10,
+    "marketCap": 300000000,
+    "change": 0
+  },
+  {
+    "ticker": "ZIMPL.VX",
+    "date": "2026-08-28",
+    "closingPrice": 0.114,
+    "marketCap": 39282175.404,
+    "change": 0.44
   }
 ]
