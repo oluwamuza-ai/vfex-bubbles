@@ -188,6 +188,10 @@ function App() {
     return historyData.map((entry) => ({
       label: new Date(entry.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
       value: Number(entry.closingPrice) || 0,
+      // Only recorded going forward from when volume tracking shipped —
+      // undefined (not 0) for older history, so PriceChart can tell "no
+      // trading that day" apart from "wasn't captured yet".
+      volume: entry.volume != null ? Number(entry.volume) : undefined,
     }));
   }, [historyData]);
 

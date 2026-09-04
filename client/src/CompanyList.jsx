@@ -18,7 +18,7 @@ const SORT_OPTIONS = [
   { key: 'marketCap', label: 'Market cap' },
   { key: 'name', label: 'Name' },
   { key: 'closingPrice', label: 'Price' },
-  { key: 'change', label: 'Change' },
+  { key: 'change', label: '1D Change' },
 ];
 
 export default function CompanyList({ data = [], onSelect }) {
@@ -85,7 +85,9 @@ export default function CompanyList({ data = [], onSelect }) {
               <th style={{ padding: '10px 18px' }}>Ticker</th>
               <th style={{ padding: '10px 18px', textAlign: 'right' }}>Price</th>
               <th style={{ padding: '10px 18px', textAlign: 'right' }}>Market cap</th>
-              <th style={{ padding: '10px 18px', textAlign: 'right' }}>Change</th>
+              <th style={{ padding: '10px 18px', textAlign: 'right' }}>1D</th>
+              <th style={{ padding: '10px 18px', textAlign: 'right' }}>1W</th>
+              <th style={{ padding: '10px 18px', textAlign: 'right' }}>1M</th>
             </tr>
           </thead>
           <tbody>
@@ -106,8 +108,8 @@ export default function CompanyList({ data = [], onSelect }) {
                         style={{ width: '28px', height: '28px', objectFit: 'contain', borderRadius: '6px', background: '#111' }}
                       />
                     ) : null}
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-                      <span>{item.name}</span>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: 0 }}>
+                      <span className="company-list-name">{item.name}</span>
                       {item.estimated && (
                         <span style={{ fontSize: '11px', color: '#fde68a' }} title="Market cap is estimated — no shares-in-issue on file">
                           ⚠
@@ -126,11 +128,17 @@ export default function CompanyList({ data = [], onSelect }) {
                 <td style={{ padding: '10px 18px', textAlign: 'right', fontWeight: 700, color: colorForChange(item.change) }}>
                   {formatChange(item.change)}
                 </td>
+                <td style={{ padding: '10px 18px', textAlign: 'right', fontWeight: 700, color: item.change1W == null ? LIST_STYLE.mutedTextColor : colorForChange(item.change1W) }}>
+                  {item.change1W == null ? '—' : formatChange(item.change1W)}
+                </td>
+                <td style={{ padding: '10px 18px', textAlign: 'right', fontWeight: 700, color: item.change1M == null ? LIST_STYLE.mutedTextColor : colorForChange(item.change1M) }}>
+                  {item.change1M == null ? '—' : formatChange(item.change1M)}
+                </td>
               </tr>
             ))}
             {rows.length === 0 && (
               <tr>
-                <td colSpan={5} style={{ padding: '18px', textAlign: 'center', color: LIST_STYLE.mutedTextColor }}>
+                <td colSpan={7} style={{ padding: '18px', textAlign: 'center', color: LIST_STYLE.mutedTextColor }}>
                   No data loaded yet.
                 </td>
               </tr>

@@ -147,6 +147,7 @@ function parseCompanyRow(line) {
     change,
     marketCap: Math.round(marketCapM * 1_000_000), // "$m" -> raw dollar figure
     lowConfidence,
+    volume, // shares traded — null on a no-trade day, same as closingPrice's null convention
   };
 }
 
@@ -287,6 +288,7 @@ function buildRecords(parsedRows, dataFile, tickerSuffix, { isZse, extraFields =
       marketCap,
       currency: isZse ? 'ZWG' : 'USD',
       estimated: Boolean(row.lowConfidence), // real reported market cap from MMC unless the source row was ambiguous
+      volume: row.volume, // shares traded — null on a no-trade day
       ...extraFields,
       ...(existing?.logoUrl ? { logoUrl: existing.logoUrl } : {}),
       ...(existing?.description ? { description: existing.description } : {}),
@@ -319,6 +321,7 @@ function appendHistory(historyFile, records) {
     closingPrice: record.closingPrice,
     marketCap: record.marketCap,
     change: record.change,
+    ...(record.volume != null ? { volume: record.volume } : {}),
   }));
 
   fs.writeFileSync(historyFile, JSON.stringify([...withoutToday, ...todayEntries], null, 2) + '\n');

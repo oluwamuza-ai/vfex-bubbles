@@ -12,6 +12,23 @@
   display: none;
 }
 
+/* Company-list table: a long company name wraps onto multiple lines by
+   default and collides with the row below it — nowrap forces it to stay
+   on one line instead. On mobile the table's five columns don't leave
+   enough room for a full name at the normal font size even with nowrap
+   (it'd just force the whole table wider and off-screen), so the
+   max-width query below also shrinks the font specifically for this
+   element rather than the whole table. */
+.company-list-name {
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .company-list-name {
+    font-size: 12px;
+  }
+}
+
 @media (max-width: 640px) {
   .site-header-bleed {
     margin: 0;

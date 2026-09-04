@@ -6,6 +6,7 @@ import { LinearGradient } from '@visx/gradient';
 import { useTooltip, TooltipWithBounds, defaultStyles as defaultTooltipStyles } from '@visx/tooltip';
 import { localPoint } from '@visx/event';
 import { clamp } from './utils';
+import { colorForChange } from './VFEXBubbles';
 
 // ============================================================================
 // 📈 CHART CONFIG — edit here for sizing/style tweaks
@@ -19,6 +20,13 @@ const CHART = {
   yLabelCount: 5, // number of horizontal gridlines / y-axis price labels
   minZoomPoints: 3,   // can't zoom in past showing this many points
   zoomStep: 1.15,     // wheel-zoom multiplier per scroll tick
+  // Volume bars only started being recorded going forward (see App.jsx's
+  // chartPoints comment) — this band is only carved out of the plot area
+  // when at least one currently-visible point actually has volume, so
+  // older date ranges with no volume data at all keep the original
+  // full-height price line instead of wasting space on an empty strip.
+  volumeBandHeight: 56,
+  volumeGap: 10,
 };
 
 function formatPrice(value, currency = 'USD') {
@@ -26,6 +34,12 @@ function formatPrice(value, currency = 'USD') {
   if (value >= 1000) return `${prefix}${value.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
   if (value >= 1) return `${prefix}${value.toFixed(2)}`;
   return `${prefix}${value.toFixed(4)}`;
+}
+
+function formatVolume(value) {
+  if (value >= 1_000_000) return `${(value / 1_000_000).toFixed(1)}M`;
+  if (value >= 1_000) return `${(value / 1_000).toFixed(1)}K`;
+  return String(Math.round(value));
 }
 
 const tooltipStyles = {
@@ -119,12 +133,17 @@ export default function PriceChart({ points = [], color = '#4ade80', currency = 
     return points.slice(startIdx, endIdx + 1);
   }, [points, viewRange]);
 
+  const hasVolume = useMemo(() => visiblePoints.some((p) => p.volume != null), [visiblePoints]);
+
   // visx scales — replace the old hand-rolled linear interpolation math.
   // xScale maps an array INDEX (0..n-1) to pixel space; yScale maps a
   // price value to pixel space (inverted, since SVG y grows downward).
-  const { xScale, yScale, minValue, maxValue } = useMemo(() => {
+  // priceBottom is the price plot's own bottom edge — the full chart
+  // height minus x-axis label space minus the volume band (if shown) —
+  // exposed separately so the volume bars below know exactly where to sit.
+  const { xScale, yScale, volumeScale, minValue, maxValue, priceBottom } = useMemo(() => {
     if (visiblePoints.length === 0) {
-      return { xScale: null, yScale: null, minValue: 0, maxValue: 0 };
+      return { xScale: null, yScale: null, volumeScale: null, minValue: 0, maxValue: 0, priceBottom: height - paddingY };
     }
     const values = visiblePoints.map((p) => p.value);
     const min = Math.min(...values);
@@ -133,17 +152,25 @@ export default function PriceChart({ points = [], color = '#4ade80', currency = 
     const paddedMin = min - spread * 0.02;
     const paddedMax = max + spread * 0.02;
 
+    const reservedForVolume = hasVolume ? CHART.volumeBandHeight + CHART.volumeGap : 0;
+    const bottom = height - paddingY - reservedForVolume;
+
     const x = scaleLinear({
       domain: [0, Math.max(1, visiblePoints.length - 1)],
       range: [paddingX, width - paddingX],
     });
     const y = scaleLinear({
       domain: [paddedMin, paddedMax],
-      range: [height - paddingY, paddingY],
+      range: [bottom, paddingY],
+    });
+    const maxVolume = hasVolume ? Math.max(...visiblePoints.map((p) => p.volume || 0), 1) : 1;
+    const volume = scaleLinear({
+      domain: [0, maxVolume],
+      range: [0, CHART.volumeBandHeight],
     });
 
-    return { xScale: x, yScale: y, minValue: min, maxValue: max };
-  }, [visiblePoints, width, height, paddingX, paddingY]);
+    return { xScale: x, yScale: y, volumeScale: volume, minValue: min, maxValue: max, priceBottom: bottom };
+  }, [visiblePoints, width, height, paddingX, paddingY, hasVolume]);
 
   // Index accessors — visx's LinePath/AreaClosed call x()/y() with
   // (datum, index), so using the index argument directly is both correct
@@ -151,6 +178,15 @@ export default function PriceChart({ points = [], color = '#4ade80', currency = 
   // would make rendering O(n²) for larger histories).
   const getX = useCallback((d, i) => xScale(i), [xScale]);
   const getY = useCallback((d) => yScale(d.value), [yScale]);
+
+  // Wide enough to read as distinct bars, narrow enough to leave a gap
+  // between them at any zoom level — scales with how far apart the points
+  // themselves are, same idea as a candlestick chart's bar width.
+  const volumeBarWidth = useMemo(() => {
+    if (visiblePoints.length <= 1) return 6;
+    const step = (width - paddingX * 2) / Math.max(1, visiblePoints.length - 1);
+    return Math.max(1.5, step * 0.6);
+  }, [visiblePoints.length, width, paddingX]);
 
   // Which x-axis labels to actually show — evenly spaced indices, capped
   // at maxXLabels regardless of how many data points are currently visible.
@@ -399,6 +435,33 @@ export default function PriceChart({ points = [], color = '#4ade80', currency = 
           </g>
         ))}
 
+        {/* Volume bars — only recorded going forward from when tracking
+            shipped, so a point with volume == null (older history) simply
+            draws no bar rather than a misleading zero-height one. Each
+            bar is colored by THAT day's own move (this point vs. the
+            previous visible one), not the overall period color the line
+            uses — matches how a real candlestick/volume chart reads day
+            by day. The very first visible point has no prior point to
+            compare against, so it falls back to the line's own color. */}
+        {hasVolume && visiblePoints.map((point, i) => {
+          if (point.volume == null) return null;
+          const barHeight = volumeScale(point.volume);
+          const prevValue = i > 0 ? visiblePoints[i - 1].value : null;
+          const barColor = prevValue == null ? color : colorForChange(point.value - prevValue);
+          return (
+            <rect
+              key={i}
+              x={xScale(i) - volumeBarWidth / 2}
+              y={priceBottom + CHART.volumeGap + (CHART.volumeBandHeight - barHeight)}
+              width={volumeBarWidth}
+              height={barHeight}
+              fill={barColor}
+              fillOpacity={0.5}
+              rx={1}
+            />
+          );
+        })}
+
         {/* Gradient area fill under the line */}
         <AreaClosed
           data={visiblePoints}
@@ -450,6 +513,9 @@ export default function PriceChart({ points = [], color = '#4ade80', currency = 
         <TooltipWithBounds left={tooltipLeft + 12} top={tooltipTop} style={tooltipStyles}>
           <div style={{ color: '#9a9a9a', fontSize: '10px' }}>{tooltipData.label}</div>
           <div style={{ fontWeight: 700 }}>{formatPrice(tooltipData.value, currency)}</div>
+          {tooltipData.volume != null && (
+            <div style={{ color: '#9a9a9a', fontSize: '10px', marginTop: '2px' }}>Vol: {formatVolume(tooltipData.volume)}</div>
+          )}
         </TooltipWithBounds>
       )}
 

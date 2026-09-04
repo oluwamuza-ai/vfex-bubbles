@@ -176,6 +176,7 @@ function buildExchangeRecords(priceSheetRows, mcapRows, { isZse, marketLabel, na
       marketCap,
       currency: isZse ? 'ZWG' : 'USD',
       estimated: !mcapMatch, // no fresh authoritative cap this cycle
+      volume: row.turnover ?? null, // shares traded — null (not 0) when the API doesn't say, so a real zero-volume day isn't confused with "unknown"
       ...(fundType ? { instrumentType: fundType, market: marketLabel } : {}),
       ...(existing?.logoUrl ? { logoUrl: existing.logoUrl } : {}),
       ...(existing?.description ? { description: existing.description } : {}),
@@ -211,6 +212,7 @@ function appendHistory(historyFile, entries) {
     closingPrice: record.closingPrice,
     marketCap: record.marketCap,
     change: record.change,
+    ...(record.volume != null ? { volume: record.volume } : {}),
   }));
 
   fs.writeFileSync(historyFile, JSON.stringify([...kept, ...fresh], null, 2) + '\n');

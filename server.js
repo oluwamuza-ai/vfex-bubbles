@@ -90,21 +90,20 @@ app.get('/api/signals', dataLimiter, async (req, res) => {
     const raw = await readFile(path.join(__dirname, dataFileFor(market)), 'utf8');
     const records = JSON.parse(raw);
 
-    // "Daily" is just today's snapshot as-is — the change field already
-    // reflects one day's move, straight from the source PDF.
-    if (range === 'daily') {
-      return res.json(records);
+    // Load history once — used for two independent things below: the
+    // `range`-driven `change`/`rangeChangeAvailable` fields the bubble
+    // view has always read, and the always-present change1W/change1M
+    // fields the company-list table reads to show daily/weekly/monthly
+    // side by side regardless of which `range` was requested. Missing
+    // history file (e.g. a market with none yet) just means neither
+    // range-based figure is available — not an error.
+    let history = [];
+    try {
+      const historyRaw = await readFile(path.join(__dirname, historyFileFor(market)), 'utf8');
+      history = JSON.parse(historyRaw);
+    } catch {
+      history = [];
     }
-
-    // For "week"/"month", recompute `change` from real recorded history
-    // instead of the daily figure. Uses TRADING-day offsets, not calendar
-    // days — 5 trading days ≈ 1 week, 21 ≈ 1 month — since calendar-day
-    // math would land on weekends/holidays with no data. Falls back to
-    // the daily change (flagged) for any company without enough history
-    // yet, e.g. anything newly added.
-    const historyFile = historyFileFor(market);
-    const historyRaw = await readFile(path.join(__dirname, historyFile), 'utf8');
-    const history = JSON.parse(historyRaw);
 
     const byTicker = {};
     for (const entry of history) {
@@ -115,29 +114,37 @@ app.get('/api/signals', dataLimiter, async (req, res) => {
       byTicker[ticker].sort((a, b) => a.date.localeCompare(b.date));
     }
 
-    const tradingDaysBack = range === 'month' ? 21 : 5;
-
-    const withRangeChange = records.map((record) => {
+    // Recomputes % change from real recorded history instead of the daily
+    // figure. Uses TRADING-day offsets, not calendar days — 5 trading
+    // days ≈ 1 week, 21 ≈ 1 month — since calendar-day math would land on
+    // weekends/holidays with no data. Returns null when a company doesn't
+    // have enough history yet (e.g. something newly added).
+    const rangeChangeFor = (record, tradingDaysBack) => {
       const tickerHistory = byTicker[record.ticker];
-      if (!tickerHistory || tickerHistory.length < 2) {
-        return { ...record, rangeChangeAvailable: false };
-      }
-
+      if (!tickerHistory || tickerHistory.length < 2) return null;
       const compareIndex = Math.max(0, tickerHistory.length - 1 - tradingDaysBack);
       const comparePrice = tickerHistory[compareIndex].closingPrice;
       const currentPrice = record.closingPrice;
+      if (!comparePrice) return null;
+      return Number((((currentPrice - comparePrice) / comparePrice) * 100).toFixed(2));
+    };
 
-      if (!comparePrice) {
-        return { ...record, rangeChangeAvailable: false };
-      }
+    const withRangeChanges = records.map((record) => ({
+      ...record,
+      change1W: rangeChangeFor(record, 5),
+      change1M: rangeChangeFor(record, 21),
+    }));
 
-      const change = ((currentPrice - comparePrice) / comparePrice) * 100;
-      return {
-        ...record,
-        change: Number(change.toFixed(2)),
-        rangeChangeAvailable: true,
-        rangeCompareDate: tickerHistory[compareIndex].date,
-      };
+    // "Daily" is just today's snapshot as-is — the change field already
+    // reflects one day's move, straight from the source PDF.
+    if (range === 'daily') {
+      return res.json(withRangeChanges);
+    }
+
+    const withRangeChange = withRangeChanges.map((record) => {
+      const rangeChange = range === 'month' ? record.change1M : record.change1W;
+      if (rangeChange == null) return { ...record, rangeChangeAvailable: false };
+      return { ...record, change: rangeChange, rangeChangeAvailable: true };
     });
 
     res.json(withRangeChange);
