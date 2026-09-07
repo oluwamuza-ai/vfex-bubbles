@@ -6,7 +6,6 @@ import { LinearGradient } from '@visx/gradient';
 import { useTooltip, TooltipWithBounds, defaultStyles as defaultTooltipStyles } from '@visx/tooltip';
 import { localPoint } from '@visx/event';
 import { clamp } from './utils';
-import { colorForChange } from './VFEXBubbles';
 
 // ============================================================================
 // 📈 CHART CONFIG — edit here for sizing/style tweaks
@@ -437,17 +436,13 @@ export default function PriceChart({ points = [], color = '#4ade80', currency = 
 
         {/* Volume bars — only recorded going forward from when tracking
             shipped, so a point with volume == null (older history) simply
-            draws no bar rather than a misleading zero-height one. Each
-            bar is colored by THAT day's own move (this point vs. the
-            previous visible one), not the overall period color the line
-            uses — matches how a real candlestick/volume chart reads day
-            by day. The very first visible point has no prior point to
-            compare against, so it falls back to the line's own color. */}
+            draws no bar rather than a misleading zero-height one. Flat
+            grey rather than colored by day's move — the price line
+            already carries the up/down story, so the bars stay a plain
+            secondary reference instead of competing for attention. */}
         {hasVolume && visiblePoints.map((point, i) => {
           if (point.volume == null) return null;
           const barHeight = volumeScale(point.volume);
-          const prevValue = i > 0 ? visiblePoints[i - 1].value : null;
-          const barColor = prevValue == null ? color : colorForChange(point.value - prevValue);
           return (
             <rect
               key={i}
@@ -455,7 +450,7 @@ export default function PriceChart({ points = [], color = '#4ade80', currency = 
               y={priceBottom + CHART.volumeGap + (CHART.volumeBandHeight - barHeight)}
               width={volumeBarWidth}
               height={barHeight}
-              fill={barColor}
+              fill="#9a9a9a"
               fillOpacity={0.5}
               rx={1}
             />
