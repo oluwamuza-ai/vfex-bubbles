@@ -37409,5 +37409,277 @@
     "marketCap": 1563668155.96,
     "change": 14.67,
     "volume": 29300
+  },
+  {
+    "ticker": "AFDS.ZW",
+    "date": "2026-09-11",
+    "closingPrice": 17.25,
+    "marketCap": 2174094072.75,
+    "change": 0,
+    "volume": 0
+  },
+  {
+    "ticker": "ARTD.ZW",
+    "date": "2026-09-11",
+    "closingPrice": 0.2175,
+    "marketCap": 95042575.5825,
+    "change": 0,
+    "volume": 0
+  },
+  {
+    "ticker": "ARIS.ZW",
+    "date": "2026-09-11",
+    "closingPrice": 0.054119,
+    "marketCap": 88073022.205805,
+    "change": 7.78,
+    "volume": 246000
+  },
+  {
+    "ticker": "BAT.ZW",
+    "date": "2026-09-11",
+    "closingPrice": 169.9995,
+    "marketCap": 3507687573.2415004,
+    "change": 0,
+    "volume": 0
+  },
+  {
+    "ticker": "CAFCA.ZW",
+    "date": "2026-09-11",
+    "closingPrice": 25,
+    "marketCap": 218377700,
+    "change": 0,
+    "volume": 0
+  },
+  {
+    "ticker": "CBZ.ZW",
+    "date": "2026-09-11",
+    "closingPrice": 38.9995,
+    "marketCap": 20383535804.267498,
+    "change": 0,
+    "volume": 100
+  },
+  {
+    "ticker": "CFI.ZW",
+    "date": "2026-09-11",
+    "closingPrice": 6.9005,
+    "marketCap": 731735057.9374999,
+    "change": 0,
+    "volume": 0
+  },
+  {
+    "ticker": "DZL.ZW",
+    "date": "2026-09-11",
+    "closingPrice": 5.995,
+    "marketCap": 2146215143.71,
+    "change": 0.08,
+    "volume": 800
+  },
+  {
+    "ticker": "DLTA.ZW",
+    "date": "2026-09-11",
+    "closingPrice": 28.0096,
+    "marketCap": 37750302384.752,
+    "change": 2.7,
+    "volume": 107600
+  },
+  {
+    "ticker": "FBC.ZW",
+    "date": "2026-09-11",
+    "closingPrice": 13.5,
+    "marketCap": 9071324014.5,
+    "change": 0,
+    "volume": 200
+  },
+  {
+    "ticker": "FIDL.ZW",
+    "date": "2026-09-11",
+    "closingPrice": 0.93,
+    "marketCap": 101298660.63000001,
+    "change": 0,
+    "volume": 0
+  },
+  {
+    "ticker": "FML.ZW",
+    "date": "2026-09-11",
+    "closingPrice": 2.985,
+    "marketCap": 2060077034.1,
+    "change": 0,
+    "volume": 0
+  },
+  {
+    "ticker": "GBH.ZW",
+    "date": "2026-09-11",
+    "closingPrice": 0.1,
+    "marketCap": 53658862.300000004,
+    "change": 0,
+    "volume": 1400
+  },
+  {
+    "ticker": "HIPO.ZW",
+    "date": "2026-09-11",
+    "closingPrice": 9.267273,
+    "marketCap": 1788774261.201972,
+    "change": 0,
+    "volume": 0
+  },
+  {
+    "ticker": "MASH.ZW",
+    "date": "2026-09-11",
+    "closingPrice": 1.6,
+    "marketCap": 2700134414.4,
+    "change": -3.1,
+    "volume": 2500
+  },
+  {
+    "ticker": "MSHL.ZW",
+    "date": "2026-09-11",
+    "closingPrice": 2.99,
+    "marketCap": 715770439.9300001,
+    "change": 15,
+    "volume": 1600
+  },
+  {
+    "ticker": "MEIK.ZW",
+    "date": "2026-09-11",
+    "closingPrice": 2.4025,
+    "marketCap": 615402155.2524999,
+    "change": 0.1,
+    "volume": 100
+  },
+  {
+    "ticker": "NPKZ.ZW",
+    "date": "2026-09-11",
+    "closingPrice": 0.9,
+    "marketCap": 680083290.9,
+    "change": 0,
+    "volume": 0
+  },
+  {
+    "ticker": "NMB.ZW",
+    "date": "2026-09-11",
+    "closingPrice": 6.81,
+    "marketCap": 3058572698.58,
+    "change": 0,
+    "volume": 4700
+  },
+  {
+    "ticker": "PROL.ZW",
+    "date": "2026-09-11",
+    "closingPrice": 1.540039,
+    "marketCap": 400204190.58453,
+    "change": 0,
+    "volume": 41500
+  },
+  {
+    "ticker": "RTG.ZW",
+    "date": "2026-09-11",
+    "closingPrice": 1.29,
+    "marketCap": 3219189250.4700003,
+    "change": -9.17,
+    "volume": 200
+  },
+  {
+    "ticker": "RIOZ.ZW",
+    "date": "2026-09-11",
+    "closingPrice": 0.98,
+    "marketCap": 119588880.6,
+    "change": 0,
+    "volume": 0
+  },
+  {
+    "ticker": "SEED.ZW",
+    "date": "2026-09-11",
+    "closingPrice": 4.512404,
+    "marketCap": 1143862750.461132,
+    "change": 2.27,
+    "volume": 181400
+  },
+  {
+    "ticker": "SACL.ZW",
+    "date": "2026-09-11",
+    "closingPrice": 0.052807,
+    "marketCap": 248989443.74519202,
+    "change": 0,
+    "volume": 0
+  },
+  {
+    "ticker": "TANG.ZW",
+    "date": "2026-09-11",
+    "closingPrice": 3.520536,
+    "marketCap": 1848601744.1322482,
+    "change": 0,
+    "volume": 0
+  },
+  {
+    "ticker": "TNCI.ZW",
+    "date": "2026-09-11",
+    "closingPrice": 0.401801,
+    "marketCap": 1685474002.670129,
+    "change": 0.45,
+    "volume": 333300
+  },
+  {
+    "ticker": "TURN.ZW",
+    "date": "2026-09-11",
+    "closingPrice": 0.1405,
+    "marketCap": 606359573.1095,
+    "change": 0.92,
+    "volume": 99600
+  },
+  {
+    "ticker": "UNIF.ZW",
+    "date": "2026-09-11",
+    "closingPrice": 2,
+    "marketCap": 212948474,
+    "change": 0,
+    "volume": 0
+  },
+  {
+    "ticker": "WILD.ZW",
+    "date": "2026-09-11",
+    "closingPrice": 0.072,
+    "marketCap": 128016102.81600001,
+    "change": 2.27,
+    "volume": 7900
+  },
+  {
+    "ticker": "ZBFH.ZW",
+    "date": "2026-09-11",
+    "closingPrice": 7,
+    "marketCap": 1226334494,
+    "change": 0,
+    "volume": 0
+  },
+  {
+    "ticker": "ZECO.ZW",
+    "date": "2026-09-11",
+    "closingPrice": 0.000018,
+    "marketCap": 8340.077898,
+    "change": 0,
+    "volume": 0
+  },
+  {
+    "ticker": "ZIMP.ZW",
+    "date": "2026-09-11",
+    "closingPrice": 0.072,
+    "marketCap": 41472000.00000001,
+    "change": 0,
+    "volume": 0
+  },
+  {
+    "ticker": "ZSEH.ZW",
+    "date": "2026-09-11",
+    "closingPrice": 3.54,
+    "marketCap": 363602320.8,
+    "change": -6.23,
+    "volume": 1400
+  },
+  {
+    "ticker": "ZIMR.ZW",
+    "date": "2026-09-11",
+    "closingPrice": 0.86,
+    "marketCap": 1563668155.96,
+    "change": 0,
+    "volume": 200
   }
 ]
