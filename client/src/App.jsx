@@ -670,8 +670,11 @@ function App() {
               </div>
             )}
 
-            {/* Chart toolbar sits directly above the chart it controls */}
-            <div style={{ marginTop: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px', flexWrap: 'wrap' }}>
+            {/* Chart toolbar sits directly above the chart it controls. The
+                period's % change sits right inside the toggle group, next
+                to whichever button is selected, instead of floating on
+                the opposite side of the row disconnected from it. */}
+            <div style={{ marginTop: '16px', display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
               <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
                 {HISTORY_RANGES.map((option) => (
                   <button
@@ -701,7 +704,7 @@ function App() {
                   }}
                   title={`Change over the selected ${historyRangeLabel} period`}
                 >
-                  {periodChange > 0 ? '+' : ''}{periodChange.toFixed(2)}% over {historyRangeLabel}
+                  {periodChange > 0 ? '+' : ''}{periodChange.toFixed(2)}%
                 </div>
               )}
             </div>
