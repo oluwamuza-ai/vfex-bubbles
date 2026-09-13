@@ -256,21 +256,46 @@ async function fetchDocsArray(url) {
   return body;
 }
 
+// When ZSE Holdings stood this docs system up, they bulk-imported a large
+// batch of pre-existing historical announcements in one sitting — those
+// rows all carry that import moment as created_at, not each document's
+// real original publish date (confirmed: of 172 tracked-ticker items,
+// 142 shared the exact same date, every other date had 1-2). There's no
+// field anywhere in this API that recovers the true date for that batch,
+// so rather than show a fabricated one, dropProbablyMigrated below
+// excludes any date an anomalous fraction of all documents shares —
+// adapts automatically if this happens again, instead of hardcoding
+// today's specific bad date forever.
+function dropProbablyMigrated(items) {
+  const counts = new Map();
+  for (const item of items) counts.set(item.date, (counts.get(item.date) || 0) + 1);
+  const suspect = new Set(
+    [...counts.entries()]
+      .filter(([, count]) => count >= 10 && count / items.length > 0.2)
+      .map(([date]) => date)
+  );
+  if (suspect.size > 0) {
+    console.log(`Dropping ${items.filter((i) => suspect.has(i.date)).length} announcement(s) dated ${[...suspect].join(', ')} — looks like a bulk-import stamp, not a real publish date.`);
+  }
+  return items.filter((item) => !suspect.has(item.date));
+}
+
 async function fetchAnnouncements(knownTickers) {
   const [zseDocs, vfexDocs] = await Promise.all([
     fetchDocsArray(`${DOCS_BASE}?exchange=ZSE&category=announcements`),
     fetchDocsArray(`${DOCS_BASE}?exchange=VFEX&category=announcements`),
   ]);
 
-  return [...zseDocs, ...vfexDocs]
+  const items = [...zseDocs, ...vfexDocs]
     .map((doc) => ({
       ticker: extractTicker(doc.doc_name, knownTickers),
       title: doc.doc_name,
       date: doc.created_at.slice(0, 10),
       url: doc.download_url,
     }))
-    .filter((item) => item.ticker)
-    .sort((a, b) => b.date.localeCompare(a.date));
+    .filter((item) => item.ticker);
+
+  return dropProbablyMigrated(items).sort((a, b) => b.date.localeCompare(a.date));
 }
 
 async function main() {
