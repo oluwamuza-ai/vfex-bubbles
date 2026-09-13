@@ -759,9 +759,11 @@ function App() {
                       onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; }}
                     >
                       <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item.title}</span>
-                      <span style={{ color: '#6b6b6b', flexShrink: 0, fontSize: '11px' }}>
-                        {new Date(item.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
-                      </span>
+                      {item.date && (
+                        <span style={{ color: '#6b6b6b', flexShrink: 0, fontSize: '11px' }}>
+                          {new Date(item.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                        </span>
+                      )}
                     </a>
                   ))}
                 </div>

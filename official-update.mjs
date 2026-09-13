@@ -261,12 +261,17 @@ async function fetchDocsArray(url) {
 // rows all carry that import moment as created_at, not each document's
 // real original publish date (confirmed: of 172 tracked-ticker items,
 // 142 shared the exact same date, every other date had 1-2). There's no
-// field anywhere in this API that recovers the true date for that batch,
-// so rather than show a fabricated one, dropProbablyMigrated below
-// excludes any date an anomalous fraction of all documents shares —
-// adapts automatically if this happens again, instead of hardcoding
-// today's specific bad date forever.
-function dropProbablyMigrated(items) {
+// field anywhere in this API that recovers the true date for that batch.
+// Dropping those items outright (an earlier version of this function)
+// overcorrected — several companies' ENTIRE announcement history turned
+// out to be nothing but migrated items, so they went from "showing
+// content" to "showing nothing at all". Keeping the item and blanking
+// just the date is the actual fix for "dates should be accurate": still
+// real, useful documents, just without a fabricated date attached.
+// Detects any date an anomalous fraction of all documents shares, so
+// this adapts automatically if a similar bulk-import happens again
+// rather than hardcoding today's specific bad date forever.
+function blankMigratedDates(items) {
   const counts = new Map();
   for (const item of items) counts.set(item.date, (counts.get(item.date) || 0) + 1);
   const suspect = new Set(
@@ -275,9 +280,10 @@ function dropProbablyMigrated(items) {
       .map(([date]) => date)
   );
   if (suspect.size > 0) {
-    console.log(`Dropping ${items.filter((i) => suspect.has(i.date)).length} announcement(s) dated ${[...suspect].join(', ')} — looks like a bulk-import stamp, not a real publish date.`);
+    const affected = items.filter((i) => suspect.has(i.date)).length;
+    console.log(`${affected} announcement(s) dated ${[...suspect].join(', ')} look like a bulk-import stamp, not a real publish date — keeping the items, blanking the date.`);
   }
-  return items.filter((item) => !suspect.has(item.date));
+  return items.map((item) => (suspect.has(item.date) ? { ...item, date: null } : item));
 }
 
 async function fetchAnnouncements(knownTickers) {
@@ -295,7 +301,13 @@ async function fetchAnnouncements(knownTickers) {
     }))
     .filter((item) => item.ticker);
 
-  return dropProbablyMigrated(items).sort((a, b) => b.date.localeCompare(a.date));
+  // Dated items first (newest first), undated ones after — a per-ticker
+  // slice downstream (see server.js) then naturally prefers showing the
+  // ones with a real date when there are more than fit.
+  return blankMigratedDates(items).sort((a, b) => {
+    if (a.date && b.date) return b.date.localeCompare(a.date);
+    return a.date ? -1 : b.date ? 1 : 0;
+  });
 }
 
 async function main() {
