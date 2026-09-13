@@ -196,6 +196,36 @@ app.get('/api/history', dataLimiter, async (req, res) => {
   }
 });
 
+// Company announcements/news, sourced from the exchange operator's own
+// "Latest Announcements" feed (see official-update.mjs) — written once a
+// day alongside price data, not fetched live per-request. Missing file
+// (announcements.json didn't exist yet, or that day's fetch failed) just
+// means no announcements to show, not an error — this is a nice-to-have
+// on top of the price data, not something that should ever break the
+// popup that shows it.
+app.get('/api/announcements', dataLimiter, async (req, res) => {
+  try {
+    const ticker = String(req.query.ticker || '').toUpperCase().slice(0, 20);
+    if (!ticker) {
+      return res.status(400).json({ error: 'ticker query param is required' });
+    }
+
+    let all = [];
+    try {
+      const raw = await readFile(path.join(__dirname, 'announcements.json'), 'utf8');
+      all = JSON.parse(raw);
+    } catch {
+      all = [];
+    }
+
+    const forTicker = all.filter((item) => item.ticker.toUpperCase() === ticker).slice(0, 10);
+    res.json(forTicker);
+  } catch (error) {
+    console.error('Error reading announcements:', error);
+    res.status(500).json({ error: 'Unable to load announcements.' });
+  }
+});
+
 // Tells the frontend when prices actually last changed on the server —
 // the data file's own mtime, which is exactly when official-update.mjs or
 // mmc-update.js last wrote it, NOT whenever a visitor's browser happens to

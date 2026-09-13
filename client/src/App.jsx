@@ -113,6 +113,7 @@ function App() {
   const [historyRange, setHistoryRange] = useState('month');
   const [historyData, setHistoryData] = useState([]);
   const [historyLoading, setHistoryLoading] = useState(false);
+  const [announcements, setAnnouncements] = useState([]);
   const [market, setMarket] = useState('vfex');
   const [bubbleRange, setBubbleRange] = useState('daily');
   const [sizeBy, setSizeBy] = useState('change');
@@ -183,6 +184,22 @@ function App() {
       .catch(() => setHistoryData([]))
       .finally(() => setHistoryLoading(false));
   }, [selectedCompany, historyRange, market]);
+
+  // Company announcements — sourced from the exchange's own "Latest
+  // Announcements" feed (see official-update.mjs), not range-dependent
+  // like price history, so this only needs to re-fetch when the selected
+  // company itself changes.
+  useEffect(() => {
+    if (!selectedCompany) {
+      setAnnouncements([]);
+      return;
+    }
+
+    fetch(`/api/announcements?ticker=${encodeURIComponent(selectedCompany.ticker)}`)
+      .then((res) => res.json())
+      .then((data) => setAnnouncements(Array.isArray(data) ? data : []))
+      .catch(() => setAnnouncements([]));
+  }, [selectedCompany]);
 
   const chartPoints = useMemo(() => {
     return historyData.map((entry) => ({
@@ -708,6 +725,48 @@ function App() {
                 <PriceChart points={chartPoints} color={colorForChange(selectedCompany.change)} currency={selectedCompany.currency} />
               )}
             </div>
+
+            {/* Company announcements — sourced from the exchange's own
+                disclosure feed (results, dividends, notices, etc.), not
+                this app's own content. Understated on purpose: the chart
+                above is the centerpiece, this is supplementary reading.
+                Nothing rendered at all when there's genuinely nothing —
+                unlike missing price history, an empty announcements list
+                isn't unusual enough to call out. */}
+            {announcements.length > 0 && (
+              <div style={{ marginTop: '18px', borderTop: '1px solid #2b2b2b', paddingTop: '14px' }}>
+                <div style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.14em', color: '#9a9a9a', marginBottom: '8px' }}>
+                  Recent Announcements
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+                  {announcements.map((item, index) => (
+                    <a
+                      key={index}
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        gap: '12px',
+                        padding: '7px 4px',
+                        fontSize: '12.5px',
+                        color: '#e2e2e2',
+                        textDecoration: 'none',
+                        borderRadius: '6px',
+                      }}
+                      onMouseEnter={(e) => { e.currentTarget.style.background = '#1c1c1c'; }}
+                      onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; }}
+                    >
+                      <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item.title}</span>
+                      <span style={{ color: '#6b6b6b', flexShrink: 0, fontSize: '11px' }}>
+                        {new Date(item.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                      </span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       )}

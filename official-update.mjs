@@ -32,6 +32,15 @@ const ZSE_HISTORY_FILE = path.join(__dirname, 'zse-history.json');
 const FUNDS_DATA_FILE = path.join(__dirname, 'funds-data.json');
 const FUNDS_HISTORY_FILE = path.join(__dirname, 'funds-history.json');
 
+// Separate host from the price/mcap API above — same exchange operator,
+// different service. Powers the "Latest Announcements" widget on
+// zse.co.zw's own homepage (found the same way: reading their site's JS
+// bundles for the fetch URL). No auth needed, unlike the sibling
+// "external documents" endpoint on a different host that does require an
+// API key and still 401s with the one lifted from that same bundle.
+const DOCS_BASE = 'https://ds88jcmqc11je.cloudfront.net/api/docs';
+const ANNOUNCEMENTS_FILE = path.join(__dirname, 'announcements.json');
+
 // Sanity floors — same purpose as daily-update.mjs's: refuse to let a
 // malformed/near-empty response (API changed shape, partial outage) get
 // committed and deployed.
@@ -219,6 +228,51 @@ function appendHistory(historyFile, entries) {
   return fresh.length;
 }
 
+// A doc's ticker can appear anywhere in its name, not just as a prefix —
+// confirmed on real data ("ZSE Public Notice - FMP.zw Delisting Notice"
+// has it mid-string). Matched against tickers we actually track (not just
+// "looks like TICKER.zw") so a suspended/delisted company's announcements
+// — which keep getting published long after the company drops out of the
+// live price-sheet feed this app tracks — don't end up pointing at a
+// company page that doesn't exist. Anything with no recognizable ticker
+// at all (market-wide notices, joint press releases) is dropped rather
+// than guessed at, since there's no per-company popup to put it in.
+function extractTicker(docName, knownTickers) {
+  const match = docName.match(/\b([A-Z]{2,6})\.(zw|vx)\b/i);
+  if (!match) return null;
+  const ticker = `${match[1].toUpperCase()}.${match[2].toUpperCase()}`;
+  return knownTickers.has(ticker) ? ticker : null;
+}
+
+// Unlike fetchJson's siblings under /api/fetch/, this endpoint returns a
+// bare array, not a {status, data} envelope.
+async function fetchDocsArray(url) {
+  const res = await fetch(url, { headers: BROWSER_HEADERS });
+  if (!res.ok) throw new Error(`${url} -> HTTP ${res.status}`);
+  const body = await res.json();
+  if (!Array.isArray(body)) {
+    throw new Error(`${url} -> unexpected response shape: ${JSON.stringify(body).slice(0, 200)}`);
+  }
+  return body;
+}
+
+async function fetchAnnouncements(knownTickers) {
+  const [zseDocs, vfexDocs] = await Promise.all([
+    fetchDocsArray(`${DOCS_BASE}?exchange=ZSE&category=announcements`),
+    fetchDocsArray(`${DOCS_BASE}?exchange=VFEX&category=announcements`),
+  ]);
+
+  return [...zseDocs, ...vfexDocs]
+    .map((doc) => ({
+      ticker: extractTicker(doc.doc_name, knownTickers),
+      title: doc.doc_name,
+      date: doc.created_at.slice(0, 10),
+      url: doc.download_url,
+    }))
+    .filter((item) => item.ticker)
+    .sort((a, b) => b.date.localeCompare(a.date));
+}
+
 async function main() {
   const [zsePriceSheet, vfexPriceSheet, zseMcap, vfexMcap] = await Promise.all([
     fetchJson(`${API_BASE}/price-sheet?exchange=ZSE`),
@@ -260,6 +314,18 @@ async function main() {
 
   if (zse.unmatched.length > 0) console.log(`\nNew/unmatched ZSE tickers:\n  ${zse.unmatched.join('\n  ')}`);
   if (vfex.unmatched.length > 0) console.log(`\nNew/unmatched VFEX tickers:\n  ${vfex.unmatched.join('\n  ')}`);
+
+  // Best-effort — company announcements are a nice-to-have on top of the
+  // price data above, not something worth failing the whole run over if
+  // this particular endpoint hiccups.
+  try {
+    const knownTickers = new Set([...zseRecords, ...vfexRecords, ...fundsRecords].map((r) => r.ticker));
+    const announcements = await fetchAnnouncements(knownTickers);
+    fs.writeFileSync(ANNOUNCEMENTS_FILE, JSON.stringify(announcements, null, 2) + '\n');
+    console.log(`Announcements: wrote ${announcements.length} items linked to tracked tickers.`);
+  } catch (error) {
+    console.warn('Could not fetch announcements (non-fatal):', error.message);
+  }
 }
 
 main().catch((error) => {
