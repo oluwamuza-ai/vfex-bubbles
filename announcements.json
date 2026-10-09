@@ -1,5 +1,23 @@
 [
   {
+    "ticker": "MEIK.ZW",
+    "title": "MEIK.zw Circular to Shareholders 09.10.26",
+    "date": "2026-10-09",
+    "url": "http://ds88jcmqc11je.cloudfront.net/websites/6ac89a45d2ccd_1791531589_MEIK.zw_Circular_to_Shareholders.pdf"
+  },
+  {
+    "ticker": "MEIK.ZW",
+    "title": "MEIK.zw AGM Notice & Proxy Form",
+    "date": "2026-10-09",
+    "url": "http://ds88jcmqc11je.cloudfront.net/websites/6ac89a063ada2_1791531526_MEIK.zw_AGM_Notice_&_Proxy_Form.pdf"
+  },
+  {
+    "ticker": "MEIK.ZW",
+    "title": "MEIK.zw EGM Notice & Proxy Form",
+    "date": "2026-10-09",
+    "url": "http://ds88jcmqc11je.cloudfront.net/websites/6ac898c73226f_1791531207_MEIK.zw_EGM_Notice_&_Proxy_Form.pdf"
+  },
+  {
     "ticker": "INV.VX",
     "title": "INV.vx 2026 Annual Report",
     "date": "2026-09-25",
@@ -90,16 +108,16 @@
     "url": "https://zseh-direct-uploads.s3.amazonaws.com/websites/6a465be3cff5b_1782995939_ZSEHL_AGM_Results-2025.pdf"
   },
   {
-    "ticker": "DZL.ZW",
-    "title": "DZL.zw Cautionary Statement",
-    "date": "2026-06-24",
-    "url": "https://zseh-direct-uploads.s3.amazonaws.com/websites/6a3bdf944d9fe_1782308756_DZL.zw_Cautionary_Statement.pdf"
-  },
-  {
     "ticker": "MEIK.ZW",
     "title": "MEIK.zw Further Cautionary Statement",
     "date": "2026-06-24",
     "url": "https://zseh-direct-uploads.s3.amazonaws.com/websites/6a3b7bd79c599_1782283223_MEIK.zw_Further_Cautionary_Statement.pdf"
+  },
+  {
+    "ticker": "DZL.ZW",
+    "title": "DZL.zw Cautionary Statement",
+    "date": "2026-06-24",
+    "url": "https://zseh-direct-uploads.s3.amazonaws.com/websites/6a3bdf944d9fe_1782308756_DZL.zw_Cautionary_Statement.pdf"
   },
   {
     "ticker": "ZSEH.ZW",
@@ -186,16 +204,16 @@
     "url": "https://zseh-direct-uploads.s3.amazonaws.com/websites/69bd070341dad_1773995779_INV.vx_HY_Financial_Report.pdf"
   },
   {
-    "ticker": "WILD.ZW",
-    "title": "Mar 04, 2026|WILD.zw AGM Notice",
-    "date": "2026-03-07",
-    "url": "https://zseh-direct-uploads.s3.amazonaws.com/websites/69a94e2f913c5_1772703279_WILD.zw-AGM-Notice.pdf"
-  },
-  {
     "ticker": "CFI.ZW",
     "title": "Mar 04, 2026|CFI.zw AGM Notice",
     "date": "2026-03-07",
     "url": "https://zseh-direct-uploads.s3.amazonaws.com/websites/69a94de90b3a3_1772703209_CFI.zw-AGM-Notice.pdf"
+  },
+  {
+    "ticker": "WILD.ZW",
+    "title": "Mar 04, 2026|WILD.zw AGM Notice",
+    "date": "2026-03-07",
+    "url": "https://zseh-direct-uploads.s3.amazonaws.com/websites/69a94e2f913c5_1772703279_WILD.zw-AGM-Notice.pdf"
   },
   {
     "ticker": "INN.VX",
