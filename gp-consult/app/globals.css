@@ -37,6 +37,13 @@
   --warn-soft: #fdf0d5;
   --ok: #157a3c;
   --ok-soft: #dcf3e3;
+  /* sequential mastery ramp (single hue, light → dark) */
+  --m0: #eef1ee;
+  --m1: #d3eeea;
+  --m2: #9fdbd1;
+  --m3: #4fb8aa;
+  --m4: #128b7d;
+  --m5: #0a5a51;
   color-scheme: light;
 }
 
@@ -56,6 +63,13 @@
   --warn-soft: #3a2a0c;
   --ok: #4ade80;
   --ok-soft: #12321f;
+  /* dark mode steps chosen separately: low mastery recedes into the surface */
+  --m0: #1f2824;
+  --m1: #17403b;
+  --m2: #1d6a61;
+  --m3: #24978a;
+  --m4: #3cc4b3;
+  --m5: #8ae8da;
   color-scheme: dark;
 }
 
