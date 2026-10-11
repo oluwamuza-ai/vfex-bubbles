@@ -43,14 +43,17 @@ export async function structured<S extends z.ZodType>(opts: {
   effort?: Effort;
   maxTokens?: number;
 }): Promise<z.infer<S>> {
-  const res = await anthropic().beta.messages.parse({
+  // Streamed so long outputs (grader, case generation) never hit the SDK's non-streaming timeout guard;
+  // finalMessage() still returns the parsed, schema-validated output.
+  const stream = anthropic().beta.messages.stream({
     model: opts.model,
     max_tokens: opts.maxTokens ?? 16000,
     system: [{ type: "text", text: opts.system, cache_control: { type: "ephemeral" } }],
     messages: [{ role: "user", content: opts.user }],
     output_config: { effort: opts.effort ?? "medium", format: betaZodOutputFormat(opts.schema) },
     ...fallbackParams(opts.model),
-  } as Parameters<ReturnType<typeof anthropic>["beta"]["messages"]["parse"]>[0]);
+  });
+  const res = await stream.finalMessage();
   if (res.stop_reason === "refusal") throw new LlmError("The model declined this request.");
   if (res.stop_reason === "max_tokens") throw new LlmError("Response was truncated (max_tokens).");
   if (res.parsed_output == null) throw new LlmError("Model output did not match the expected schema.");

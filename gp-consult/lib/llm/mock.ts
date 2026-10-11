@@ -3,7 +3,8 @@
 // Clinical content comes straight from the ConditionCard so it stays on-topic.
 import type { ConditionCard } from "@/lib/schemas/card";
 import type { CaseFile } from "@/lib/schemas/case";
-import type { ChatTurn } from "@/lib/schemas/consult";
+import type { ChatTurn, ExamRecord, InvestigationRecord, PlanSubmission } from "@/lib/schemas/consult";
+import type { GradeResult, Domain } from "@/lib/schemas/grade";
 
 const FEMALE = ["Amara Okafor", "Priya Sharma", "Fatima Hussain", "Ewa Kowalska", "Siobhan Murphy"];
 const MALE = ["Tom Fletcher", "Gareth Jones", "Daniel Mensah", "Li Wei", "Mohammed Ali"];
@@ -96,4 +97,51 @@ export function mockInvestigations(c: CaseFile, tests: string[]) {
     const hit = c.investigations.find((i) => t.toLowerCase().includes(i.test.toLowerCase().slice(0, 6)));
     return { test: t, result: hit?.result ?? "Within normal limits." };
   });
+}
+
+// ---- grader (heuristic, for offline testing only) ----
+
+export function mockGrade(input: {
+  card: ConditionCard;
+  caseFile: CaseFile;
+  transcript: ChatTurn[];
+  exams: ExamRecord[];
+  investigations: InvestigationRecord[];
+  plan: PlanSubmission;
+  localPractice: boolean;
+}): GradeResult {
+  const { card, caseFile, transcript, exams, investigations, plan } = input;
+  const doctor = transcript.filter((t) => t.role === "doctor").map((t) => t.content);
+  const words = (s: string) => new Set(s.toLowerCase().split(/\W+/).filter((w) => w.length > 3));
+  const dxWords = words(caseFile.diagnosis);
+  const dxHit = [...words(plan.workingDiagnosis)].some((w) => dxWords.has(w));
+  const asked = (re: RegExp) => doctor.filter((d) => re.test(d));
+  const ice = asked(/worr|concern|think|expect|hop/i);
+  const src = card.body.sources[0]?.url ?? "";
+  const g = (domain: Domain, score: number, evidence: string[], missed: string[], point: string): GradeResult["domains"][number] => ({
+    domain,
+    score,
+    evidence: evidence.slice(0, 3),
+    missed,
+    guidelinePoints: point ? [{ point, source: src }] : [],
+    comment: score >= 7 ? "Good." : "Room for improvement.",
+  });
+  const unnecessary = investigations.length > 4 ? investigations.slice(4).map((i) => i.test) : [];
+  return {
+    domains: [
+      g("history", Math.min(10, 3 + doctor.length), doctor.slice(0, 3), doctor.length < 5 ? ["Screen for red flags: " + caseFile.redFlagsToScreen.slice(0, 2).join("; ")] : [], card.body.keyHistory[0] ?? ""),
+      g("examination", exams.length ? 7 : 2, exams.map((e) => `Examined: ${e.request}`), exams.length ? [] : ["No examination performed"], card.body.examination[0] ?? ""),
+      g("investigations", Math.max(2, 8 - unnecessary.length * 2), investigations.map((i) => `Ordered: ${i.test}`), [], card.body.investigations[0] ?? ""),
+      g("diagnosis", dxHit ? 9 : 3, [`Plan: ${plan.workingDiagnosis}`], dxHit ? [] : [`Diagnosis was ${caseFile.diagnosis}`], ""),
+      g("management", plan.prescriptions.length || plan.nonDrug ? 7 : 3, plan.prescriptions.map((p) => `Plan: ${p.drug} ${p.dose}`), [], card.body.firstLine[0] ?? ""),
+      g("referral", plan.referral === "none" ? 6 : 7, [`Plan: referral ${plan.referral}`], [], card.body.referral[0] ?? ""),
+      g("safetyNetting", plan.safetyNetting.length > 20 ? 8 : 3, plan.safetyNetting ? [`Plan: ${plan.safetyNetting}`] : [], plan.safetyNetting ? [] : ["No safety-netting"], card.body.safetyNetting[0] ?? ""),
+      g("communication", ice.length >= 2 ? 8 : ice.length ? 6 : 3, ice, ice.length ? [] : ["Ideas, concerns and expectations not explored"], ""),
+    ],
+    unnecessaryTests: unnecessary,
+    modelConsultation: `(Offline mock) Model consultation for ${caseFile.patient.name}: open with an open question, explore the history and red flags (${caseFile.redFlagsToScreen.slice(0, 3).join("; ")}), examine (${caseFile.examination.map((e) => e.system).join(", ")}), explain ${caseFile.diagnosis} in lay terms, agree the plan: ${caseFile.modelPlan.management.join("; ")}. Safety-net: ${caseFile.modelPlan.safetyNetting.join("; ")}.`,
+    learningPoints: [card.body.firstLine[0] ?? card.name, card.body.safetyNetting[0] ?? ""].filter(Boolean).slice(0, 2),
+    cardConcerns: card.verified ? [] : ["Card is unverified — review before relying on it."],
+    localPracticeNotes: input.localPractice ? ["(Offline mock) Check EDLIZ for local first-line choice and availability."] : [],
+  };
 }

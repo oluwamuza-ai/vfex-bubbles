@@ -3,7 +3,9 @@ import type { ConditionCard } from "@/lib/schemas/card";
 import { CaseFile } from "@/lib/schemas/case";
 import { ExamFindingsOutput, InvestigationOutput, type ChatTurn } from "@/lib/schemas/consult";
 import { anthropic, GRADER_MODEL, isMock, PATIENT_MODEL, structured, type Anthropic } from "./client";
-import { mockCase, mockExam, mockInvestigations, mockPatientReply } from "./mock";
+import { mockCase, mockExam, mockGrade, mockInvestigations, mockPatientReply } from "./mock";
+import { GradeResult } from "@/lib/schemas/grade";
+import { graderSystemPrompt, graderUserPrompt } from "@/lib/prompts/grader";
 import { patientSystemPrompt } from "@/lib/prompts/patient";
 import { caseGenSystemPrompt, caseGenUserPrompt, examSystemPrompt, investigationSystemPrompt } from "@/lib/prompts/clinical";
 
@@ -71,4 +73,22 @@ export async function runInvestigations(c: CaseFile, tests: string[]) {
     maxTokens: 6000,
   });
   return out.results;
+}
+
+export async function gradeWithLlm(input: Parameters<typeof graderUserPrompt>[0]): Promise<{ result: GradeResult; model: string }> {
+  if (isMock()) {
+    return {
+      result: mockGrade({ ...input, localPractice: input.localPractice.enabled }),
+      model: "mock",
+    };
+  }
+  const result = await structured({
+    model: GRADER_MODEL,
+    system: graderSystemPrompt(),
+    user: graderUserPrompt(input),
+    schema: GradeResult,
+    effort: "high",
+    maxTokens: 32000,
+  });
+  return { result, model: GRADER_MODEL };
 }
