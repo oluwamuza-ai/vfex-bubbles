@@ -5,6 +5,7 @@ import fs from "node:fs";
 import path from "node:path";
 import * as schema from "./schema";
 import { seedIfEmpty } from "./seed";
+import { NodeSqliteDatabase } from "./node-sqlite-adapter";
 
 // Single place that knows about the driver. To move to Turso, swap this file for
 // drizzle-orm/libsql + @libsql/client; the query code elsewhere is unchanged.
@@ -16,13 +17,24 @@ const globalForDb = globalThis as unknown as { __gpDb?: DB };
 function open(): DB {
   const file = process.env.DATABASE_PATH || path.join(process.cwd(), "data", "gp.db");
   fs.mkdirSync(path.dirname(file), { recursive: true });
-  const sqlite = new Database(file);
+  const sqlite = openSqlite(file);
   sqlite.pragma("journal_mode = WAL");
   sqlite.pragma("foreign_keys = ON");
-  const db = drizzle(sqlite, { schema });
+  const db = drizzle({ client: sqlite as Database.Database, schema });
   migrate(db, { migrationsFolder: path.join(process.cwd(), "drizzle") });
   seedIfEmpty(db);
   return db;
+}
+
+/** better-sqlite3 when its native binary is available, else Node's built-in node:sqlite. */
+function openSqlite(file: string): Database.Database | NodeSqliteDatabase {
+  if (process.env.DB_DRIVER === "node-sqlite") return new NodeSqliteDatabase(file);
+  try {
+    return new Database(file);
+  } catch (e) {
+    console.warn(`[db] better-sqlite3 unavailable (${(e as Error).message.split("\n")[0]}); using node:sqlite`);
+    return new NodeSqliteDatabase(file);
+  }
 }
 
 export function getDb(): DB {
