@@ -58,3 +58,18 @@ describe("seed content", () => {
     for (const v of seedVignettes) expect(ids.has(v.conditionId)).toBe(true);
   });
 });
+
+import { diffCardBody } from "@/lib/cardDiff";
+describe("card diff", () => {
+  it("reports added and removed lines per field", () => {
+    const a = builtInCards[0].body;
+    const b = structuredClone(a);
+    b.firstLine = [...b.firstLine.slice(1), "New line"];
+    b.thresholds = [...b.thresholds, { label: "X", value: "1 mg" }];
+    const d = diffCardBody(a, b);
+    expect(d.map((x) => x.label)).toEqual(["First-line management", "Key thresholds / doses"]);
+    expect(d[0].added).toEqual(["New line"]);
+    expect(d[0].removed).toEqual([a.firstLine[0]]);
+    expect(diffCardBody(a, a)).toEqual([]);
+  });
+});

@@ -1,0 +1,20 @@
+{
+  "id": "otitis-media-child",
+  "name": "Acute otitis media (children)",
+  "specialty": "paediatrics",
+  "tags": ["infection", "antimicrobial", "ENT"],
+  "guidelineDate": "2022-03",
+  "body": {
+    "presentations": ["Ear pain, fever, irritability, ear rubbing in a young child"],
+    "redFlags": ["Mastoiditis: post-auricular swelling, protruding pinna", "Meningism or intracranial complication"],
+    "keyHistory": ["Duration, fever, discharge, recurrent episodes, penicillin allergy"],
+    "examination": ["Otoscopy: bulging, erythematous tympanic membrane; perforation with discharge"],
+    "investigations": ["None routinely"],
+    "firstLine": ["Analgesia; no antibiotic or back-up prescription for most (resolves in ~3 days)"],
+    "secondLine": ["Immediate antibiotic if systemically unwell, high risk of complications, or otorrhoea; amoxicillin 5–7 days (BNFc dose)"],
+    "referral": ["Same-day admission for suspected mastoiditis or intracranial complication"],
+    "safetyNetting": ["Return if not improving after 3 days, worsening, or new swelling behind the ear"],
+    "thresholds": [{ "label": "Antibiotic course", "value": "5–7 days" }],
+    "sources": [{ "title": "NICE NG91 Otitis media (acute): antimicrobial prescribing", "url": "https://www.nice.org.uk/guidance/ng91" }]
+  }
+}
