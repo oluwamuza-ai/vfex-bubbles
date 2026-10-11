@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-on-accent: var(--on-accent);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+:root {
+  --bg: #f6f7f5;
+  --surface: #ffffff;
+  --surface-2: #eef1ee;
+  --line: #dde2dd;
+  --ink: #18201c;
+  --muted: #5d6b63;
+  --accent: #0f766e;
+  --accent-soft: #d5efeb;
+  --on-accent: #ffffff;
+  --danger: #b42318;
+  --danger-soft: #fde4e1;
+  --warn: #9a5b00;
+  --warn-soft: #fdf0d5;
+  --ok: #157a3c;
+  --ok-soft: #dcf3e3;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #0f1412;
+  --surface: #171e1b;
+  --surface-2: #1f2824;
+  --line: #2c3833;
+  --ink: #e7ede9;
+  --muted: #95a59c;
+  --accent: #2dd4bf;
+  --accent-soft: #123b36;
+  --on-accent: #062420;
+  --danger: #f97066;
+  --danger-soft: #3d1a17;
+  --warn: #f5b546;
+  --warn-soft: #3a2a0c;
+  --ok: #4ade80;
+  --ok-soft: #12321f;
+  color-scheme: dark;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+@utility card {
+    @apply rounded-2xl border border-line bg-surface p-4;
+}
+
+@utility btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none;
+}
+
+@utility btn-primary {
+    @apply btn bg-accent text-on-accent hover:opacity-90;
+}
+
+@utility btn-ghost {
+    @apply btn border border-line bg-surface text-ink hover:bg-surface-2;
+}
+
+@utility btn-danger {
+    @apply btn bg-danger text-white hover:opacity-90;
+}
+
+@utility input {
+    @apply w-full rounded-xl border border-line bg-surface px-3 py-2.5 text-sm text-ink outline-none placeholder:text-muted focus:border-accent focus:ring-2 focus:ring-accent/30;
+}
+
+@utility label {
+    @apply mb-1 block text-xs font-semibold uppercase tracking-wide text-muted;
+}
+
+@utility chip {
+    @apply inline-flex items-center rounded-full border border-line bg-surface-2 px-2.5 py-0.5 text-xs font-medium text-muted;
+}
