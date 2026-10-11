@@ -44,3 +44,18 @@ export function markCaseUsed(id: string) {
 export function getCase(id: string) {
   return getDb().select().from(schema.caseFiles).where(eq(schema.caseFiles.id, id)).get() ?? null;
 }
+
+/** Make sure an unused case exists for condition+tier (used to pre-generate the likely next case). */
+export async function ensureCached(card: ConditionCard, tier: number) {
+  const db = getDb();
+  const cached = db
+    .select({ id: schema.caseFiles.id })
+    .from(schema.caseFiles)
+    .where(and(eq(schema.caseFiles.conditionId, card.id), eq(schema.caseFiles.tier, tier), isNull(schema.caseFiles.usedAt)))
+    .get();
+  if (!cached) await createCase(card, tier);
+}
+
+export function cachedConditionIds(): string[] {
+  return getDb().selectDistinct({ id: schema.caseFiles.conditionId }).from(schema.caseFiles).where(isNull(schema.caseFiles.usedAt)).all().map((r) => r.id);
+}

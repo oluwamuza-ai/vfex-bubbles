@@ -6,6 +6,10 @@ import { gradeWithLlm } from "@/lib/llm/services";
 import { flagOffFormulary } from "@/lib/formulary";
 import { computeOverall, DOMAINS, type DomainGrade, type StoredGrade } from "@/lib/schemas/grade";
 import { applyOutcome } from "@/lib/progress";
+import { cachedConditionIds, ensureCached } from "@/lib/repo/cases";
+import { listCards } from "@/lib/repo/cards";
+import { masteryRows, specialtyRatings } from "@/lib/repo/stats";
+import { chooseNext } from "@/lib/engine/select";
 
 const inflight = new Map<string, Promise<StoredGrade>>();
 
@@ -70,5 +74,13 @@ async function run(id: string): Promise<StoredGrade> {
     ratingAfter: outcome.ratingAfter,
     xpAwarded: outcome.xp,
   });
+  void prefetchNext().catch((e) => console.warn("[prefetch] next case generation failed:", e?.message));
   return grade;
+}
+
+/** Pre-generate the case the adaptive picker is likely to choose next, so "next patient" is instant. */
+async function prefetchNext() {
+  const pick = chooseNext({ cards: listCards(), mastery: masteryRows(), specialtyRatings: specialtyRatings(), now: Date.now(), cachedIds: cachedConditionIds() });
+  const card = pick && getCard(pick.conditionId);
+  if (pick && card) await ensureCached(card, pick.tier);
 }
