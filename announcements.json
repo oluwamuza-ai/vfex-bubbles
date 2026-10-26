@@ -1,5 +1,11 @@
 [
   {
+    "ticker": "TANG.ZW",
+    "title": "TANG.zw Circular to Shareholders",
+    "date": "2026-10-26",
+    "url": "http://ds88jcmqc11je.cloudfront.net/websites/6adef4f2daee9_1792996594_TANG.zw_Circular_to_Shareholders.pdf"
+  },
+  {
     "ticker": "INV.VX",
     "title": "INV.vx Musuma-1 Wellpad Completed",
     "date": "2026-10-16",
@@ -210,16 +216,16 @@
     "url": "https://zseh-direct-uploads.s3.amazonaws.com/websites/69bd070341dad_1773995779_INV.vx_HY_Financial_Report.pdf"
   },
   {
-    "ticker": "CFI.ZW",
-    "title": "Mar 04, 2026|CFI.zw AGM Notice",
-    "date": "2026-03-07",
-    "url": "https://zseh-direct-uploads.s3.amazonaws.com/websites/69a94de90b3a3_1772703209_CFI.zw-AGM-Notice.pdf"
-  },
-  {
     "ticker": "WILD.ZW",
     "title": "Mar 04, 2026|WILD.zw AGM Notice",
     "date": "2026-03-07",
     "url": "https://zseh-direct-uploads.s3.amazonaws.com/websites/69a94e2f913c5_1772703279_WILD.zw-AGM-Notice.pdf"
+  },
+  {
+    "ticker": "CFI.ZW",
+    "title": "Mar 04, 2026|CFI.zw AGM Notice",
+    "date": "2026-03-07",
+    "url": "https://zseh-direct-uploads.s3.amazonaws.com/websites/69a94de90b3a3_1772703209_CFI.zw-AGM-Notice.pdf"
   },
   {
     "ticker": "INN.VX",
