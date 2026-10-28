@@ -3,7 +3,7 @@
     "ticker": "TANG.ZW",
     "title": "TANG.zw Circular to Shareholders",
     "date": "2026-10-26",
-    "url": "http://ds88jcmqc11je.cloudfront.net/websites/6adef4f2daee9_1792996594_TANG.zw_Circular_to_Shareholders.pdf"
+    "url": "https://zseh-direct-uploads.s3.us-east-1.amazonaws.com/websites/6ae1b0c3490e2_1793175747_TANG.zw_Circular_to_Shareholders.pdf"
   },
   {
     "ticker": "INV.VX",
@@ -12,22 +12,10 @@
     "url": "http://ds88jcmqc11je.cloudfront.net/websites/6ad1e000045c4_1792139264_INV.vx_Musuma-1_Wellpad_Completed.pdf"
   },
   {
-    "ticker": "MEIK.ZW",
-    "title": "MEIK.zw Circular to Shareholders 09.10.26",
-    "date": "2026-10-09",
-    "url": "http://ds88jcmqc11je.cloudfront.net/websites/6ac89a45d2ccd_1791531589_MEIK.zw_Circular_to_Shareholders.pdf"
-  },
-  {
-    "ticker": "MEIK.ZW",
-    "title": "MEIK.zw AGM Notice & Proxy Form",
-    "date": "2026-10-09",
-    "url": "http://ds88jcmqc11je.cloudfront.net/websites/6ac89a063ada2_1791531526_MEIK.zw_AGM_Notice_&_Proxy_Form.pdf"
-  },
-  {
-    "ticker": "MEIK.ZW",
-    "title": "MEIK.zw EGM Notice & Proxy Form",
-    "date": "2026-10-09",
-    "url": "http://ds88jcmqc11je.cloudfront.net/websites/6ac898c73226f_1791531207_MEIK.zw_EGM_Notice_&_Proxy_Form.pdf"
+    "ticker": "RIOZ.ZW",
+    "title": "RIOZ.zw Full Circular - 28 Sep 2026",
+    "date": "2026-09-28",
+    "url": "https://zseh-direct-uploads.s3.us-east-1.amazonaws.com/websites/6ae1a1d2017d3_1793171922_RIOZ.zw_Abridged_Circular_to_Shareholders.pdf"
   },
   {
     "ticker": "INV.VX",
@@ -57,19 +45,7 @@
     "ticker": "ZSEH.ZW",
     "title": "ZSEH.zw HY26 USD&ZWG Financials and Audit Reviews",
     "date": "2026-09-01",
-    "url": "http://ds88jcmqc11je.cloudfront.net/websites/6aa10830524c2_1788938288_ZSEH.zw_HY26_USD&ZWG_Financials_and_Audit_Reviews.pdf"
-  },
-  {
-    "ticker": "ZSEH.ZW",
-    "title": "ZSEH.zw H1 Analyst Briefing Presentation",
-    "date": "2026-08-31",
-    "url": "http://ds88jcmqc11je.cloudfront.net/websites/6aa003beb80b3_1788871614_ZSEH_H1_2026_Analyst_Briefing_Presentation_Consolidated.pdf"
-  },
-  {
-    "ticker": "CBZ.ZW",
-    "title": "CBZ.zw HY1 2026 Financial Results",
-    "date": "2026-08-31",
-    "url": "http://ds88jcmqc11je.cloudfront.net/websites/6aa002b3d0966_1788871347_CBZ_Holdings_Interim_Financial_Results_H1.2026.pdf"
+    "url": "https://zseh-direct-uploads.s3.us-east-1.amazonaws.com/websites/6ae1a8572739f_1793173591_ZSEH.zw_HY26_USD&ZWG_Financials_and_Audit_Reviews.pdf"
   },
   {
     "ticker": "MEIK.ZW",
@@ -120,16 +96,16 @@
     "url": "https://zseh-direct-uploads.s3.amazonaws.com/websites/6a465be3cff5b_1782995939_ZSEHL_AGM_Results-2025.pdf"
   },
   {
-    "ticker": "MEIK.ZW",
-    "title": "MEIK.zw Further Cautionary Statement",
-    "date": "2026-06-24",
-    "url": "https://zseh-direct-uploads.s3.amazonaws.com/websites/6a3b7bd79c599_1782283223_MEIK.zw_Further_Cautionary_Statement.pdf"
-  },
-  {
     "ticker": "DZL.ZW",
     "title": "DZL.zw Cautionary Statement",
     "date": "2026-06-24",
     "url": "https://zseh-direct-uploads.s3.amazonaws.com/websites/6a3bdf944d9fe_1782308756_DZL.zw_Cautionary_Statement.pdf"
+  },
+  {
+    "ticker": "MEIK.ZW",
+    "title": "MEIK.zw Further Cautionary Statement",
+    "date": "2026-06-24",
+    "url": "https://zseh-direct-uploads.s3.amazonaws.com/websites/6a3b7bd79c599_1782283223_MEIK.zw_Further_Cautionary_Statement.pdf"
   },
   {
     "ticker": "ZSEH.ZW",
