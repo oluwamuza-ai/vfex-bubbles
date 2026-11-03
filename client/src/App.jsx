@@ -3,6 +3,39 @@ import './App.css';
 import VFEXBubbles, { tickerFor, formatChange, formatMarketCap, colorForChange } from './VFEXBubbles';
 import CompanyList from './CompanyList';
 import PriceChart from './PriceChart';
+import VirtualFund from './VirtualFund';
+
+// Private feature, not part of the public site. A visitor's browser only
+// ever has this key if they followed a one-time bookmark link containing
+// ?fund_key=... — once seen, it's persisted to localStorage (same browser,
+// future visits) and stripped from the visible URL. Without it, fundKey is
+// null, the toggle button below never renders, and nothing about this
+// feature exists in the page at all.
+const FUND_KEY_STORAGE = 'vfex-fund-key';
+
+function resolveFundKey() {
+  if (typeof window === 'undefined') return null;
+  const params = new URLSearchParams(window.location.search);
+  const fromUrl = params.get('fund_key');
+  if (fromUrl) {
+    try {
+      window.localStorage.setItem(FUND_KEY_STORAGE, fromUrl);
+    } catch {
+      // localStorage unavailable (private window, blocked storage) — key
+      // still works for this page load via the returned value, just won't
+      // persist across visits.
+    }
+    params.delete('fund_key');
+    const rest = params.toString();
+    window.history.replaceState({}, '', window.location.pathname + (rest ? `?${rest}` : ''));
+    return fromUrl;
+  }
+  try {
+    return window.localStorage.getItem(FUND_KEY_STORAGE);
+  } catch {
+    return null;
+  }
+}
 
 // NOTE: VFEX only publishes one closing price per trading day (no intraday
 // data), so there's no meaningful "days" granularity finer than a single
@@ -118,6 +151,8 @@ function App() {
   const [bubbleRange, setBubbleRange] = useState('daily');
   const [sizeBy, setSizeBy] = useState('change');
   const [lastUpdated, setLastUpdated] = useState('');
+  const [fundKey] = useState(resolveFundKey);
+  const [showFund, setShowFund] = useState(false);
   const listRef = useRef(null);
 
   useEffect(() => {
@@ -361,6 +396,29 @@ function App() {
               <line x1="3" y1="18" x2="3.01" y2="18" />
             </svg>
           </button>
+
+          {fundKey && (
+            <button
+              onClick={() => setShowFund(true)}
+              title="Virtual fund"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: '42px',
+                height: '42px',
+                borderRadius: '10px',
+                border: '1px solid #2b2b2b',
+                background: 'transparent',
+                cursor: 'pointer',
+              }}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f7f7f7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="12" y1="1" x2="12" y2="23" />
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+              </svg>
+            </button>
+          )}
         </div>
 
         {/* ===== PHONE CONTROLS — compact icons, hidden on desktop ===== */}
@@ -453,6 +511,30 @@ function App() {
               <line x1="3" y1="18" x2="3.01" y2="18" />
             </svg>
           </button>
+
+          {fundKey && (
+            <button
+              onClick={() => setShowFund(true)}
+              aria-label="Virtual fund"
+              title="Virtual fund"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: '36px',
+                height: '36px',
+                borderRadius: '10px',
+                border: '1px solid #2b2b2b',
+                background: '#171717',
+                cursor: 'pointer',
+              }}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f7f7f7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="12" y1="1" x2="12" y2="23" />
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+              </svg>
+            </button>
+          )}
         </div>
       </header>
 
@@ -545,6 +627,8 @@ function App() {
       <div ref={listRef} style={{ display: showList ? 'block' : 'none' }}>
         <CompanyList data={filteredSignals} onSelect={setSelectedCompany} />
       </div>
+
+      {showFund && fundKey && <VirtualFund fundKey={fundKey} onClose={() => setShowFund(false)} />}
 
       {selectedCompany && (
         <div

@@ -226,6 +226,42 @@ app.get('/api/announcements', dataLimiter, async (req, res) => {
   }
 });
 
+// Virtual paper-trading fund — not part of the public site. Nothing here
+// renders unless the caller has FUND_ACCESS_KEY, so a wrong/missing key
+// gets a plain 404 (as if the route didn't exist) rather than 401/403,
+// which would at least confirm something's there to probe. Set
+// FUND_ACCESS_KEY in the hosting platform's environment variables; if it's
+// never set, these routes are permanently unreachable (safe default).
+function requireFundKey(req, res, next) {
+  const expected = process.env.FUND_ACCESS_KEY;
+  if (!expected || req.query.key !== expected) {
+    return res.status(404).end();
+  }
+  next();
+}
+
+app.get('/api/fund', dataLimiter, requireFundKey, async (req, res) => {
+  try {
+    const raw = await readFile(path.join(__dirname, 'virtual-fund.json'), 'utf8');
+    res.json(JSON.parse(raw));
+  } catch (error) {
+    console.error('Error reading virtual fund state:', error);
+    res.status(500).json({ error: 'Unable to load fund state.' });
+  }
+});
+
+app.get('/api/fund/history', dataLimiter, requireFundKey, async (req, res) => {
+  try {
+    const market = req.query.market ? String(req.query.market).toUpperCase() : null;
+    const raw = await readFile(path.join(__dirname, 'virtual-fund-history.json'), 'utf8');
+    const history = JSON.parse(raw);
+    res.json(market ? history.filter((e) => e.market === market) : history);
+  } catch (error) {
+    console.error('Error reading virtual fund history:', error);
+    res.status(500).json({ error: 'Unable to load fund history.' });
+  }
+});
+
 // Tells the frontend when prices actually last changed on the server —
 // the data file's own mtime, which is exactly when official-update.mjs or
 // mmc-update.js last wrote it, NOT whenever a visitor's browser happens to

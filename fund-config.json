@@ -1,0 +1,9 @@
+{
+  "lookbackDays": 14,
+  "targetPositions": 5,
+  "maxPositionPct": 0.25,
+  "feePct": 0.01,
+  "minActivePct": 0.3,
+  "rebalanceEveryTradingDays": 5,
+  "excludedTickers": []
+}

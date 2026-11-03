@@ -1,0 +1,185 @@
+{
+  "funds": {
+    "VFEX": {
+      "currency": "USD",
+      "startingCash": 500,
+      "cash": 0,
+      "holdings": [
+        {
+          "ticker": "INN.VX",
+          "name": "Innscor Africa Limited",
+          "shares": 58.404392010279174,
+          "avgCost": 1.7122
+        },
+        {
+          "ticker": "AXIA.VX",
+          "name": "Axia Corporation Limited",
+          "shares": 528.5412262156448,
+          "avgCost": 0.1892
+        },
+        {
+          "ticker": "PHL.VX",
+          "name": "Padenga Holdings Ltd",
+          "shares": 62.3014142421033,
+          "avgCost": 1.6051
+        },
+        {
+          "ticker": "CMCL.VX",
+          "name": "Caledonia Mining Corporation Plc",
+          "shares": 2.9285235262937483,
+          "avgCost": 34.1469
+        },
+        {
+          "ticker": "SIM.VX",
+          "name": "Simbisa Brands Limited",
+          "shares": 135.66871959819449,
+          "avgCost": 0.7006
+        }
+      ],
+      "startDate": "2026-11-03",
+      "lastRebalanceDate": "2026-11-03"
+    },
+    "ZSE": {
+      "currency": "ZWG",
+      "startingCash": 20000,
+      "cash": 0,
+      "holdings": [
+        {
+          "ticker": "HIPO.ZW",
+          "name": "Hippo Valley Estates Limited",
+          "shares": 320.05023508489893,
+          "avgCost": 12.498038
+        },
+        {
+          "ticker": "BAT.ZW",
+          "name": "British American Tobacco Zimbabwe Limited",
+          "shares": 17.52577320491019,
+          "avgCost": 228.235294
+        },
+        {
+          "ticker": "FML.ZW",
+          "name": "First Mutual Holdings Limited",
+          "shares": 951.7129405360238,
+          "avgCost": 4.202948
+        },
+        {
+          "ticker": "MASH.ZW",
+          "name": "Mashonaland Holdings Limited",
+          "shares": 2325.5813953488373,
+          "avgCost": 1.72
+        },
+        {
+          "ticker": "SEED.ZW",
+          "name": "Seed Co Limited",
+          "shares": 905.2333804809052,
+          "avgCost": 4.2
+        }
+      ],
+      "startDate": "2026-11-03",
+      "lastRebalanceDate": "2026-11-03"
+    }
+  },
+  "transactions": [
+    {
+      "action": "buy",
+      "ticker": "INN.VX",
+      "shares": 58.404392010279174,
+      "price": 1.7122,
+      "fee": 1,
+      "reason": "momentum 22.3%, active 90%",
+      "date": "2026-11-03",
+      "market": "VFEX"
+    },
+    {
+      "action": "buy",
+      "ticker": "AXIA.VX",
+      "shares": 528.5412262156448,
+      "price": 0.1892,
+      "fee": 1,
+      "reason": "momentum 16.7%, active 100%",
+      "date": "2026-11-03",
+      "market": "VFEX"
+    },
+    {
+      "action": "buy",
+      "ticker": "PHL.VX",
+      "shares": 62.3014142421033,
+      "price": 1.6051,
+      "fee": 1,
+      "reason": "momentum 9.0%, active 100%",
+      "date": "2026-11-03",
+      "market": "VFEX"
+    },
+    {
+      "action": "buy",
+      "ticker": "CMCL.VX",
+      "shares": 2.9285235262937483,
+      "price": 34.1469,
+      "fee": 1,
+      "reason": "momentum 1.4%, active 90%",
+      "date": "2026-11-03",
+      "market": "VFEX"
+    },
+    {
+      "action": "buy",
+      "ticker": "SIM.VX",
+      "shares": 135.66871959819449,
+      "price": 0.7006,
+      "fee": 0.9504950495049505,
+      "reason": "momentum 0.9%, active 100%",
+      "date": "2026-11-03",
+      "market": "VFEX"
+    },
+    {
+      "action": "buy",
+      "ticker": "HIPO.ZW",
+      "shares": 320.05023508489893,
+      "price": 12.498038,
+      "fee": 40,
+      "reason": "momentum 25.0%, active 70%",
+      "date": "2026-11-03",
+      "market": "ZSE"
+    },
+    {
+      "action": "buy",
+      "ticker": "BAT.ZW",
+      "shares": 17.52577320491019,
+      "price": 228.235294,
+      "fee": 40,
+      "reason": "momentum 20.1%, active 50%",
+      "date": "2026-11-03",
+      "market": "ZSE"
+    },
+    {
+      "action": "buy",
+      "ticker": "FML.ZW",
+      "shares": 951.7129405360238,
+      "price": 4.202948,
+      "fee": 40,
+      "reason": "momentum 19.8%, active 90%",
+      "date": "2026-11-03",
+      "market": "ZSE"
+    },
+    {
+      "action": "buy",
+      "ticker": "MASH.ZW",
+      "shares": 2325.5813953488373,
+      "price": 1.72,
+      "fee": 40,
+      "reason": "momentum 13.9%, active 40%",
+      "date": "2026-11-03",
+      "market": "ZSE"
+    },
+    {
+      "action": "buy",
+      "ticker": "SEED.ZW",
+      "shares": 905.2333804809052,
+      "price": 4.2,
+      "fee": 38.019801980198025,
+      "reason": "momentum 12.9%, active 80%",
+      "date": "2026-11-03",
+      "market": "ZSE"
+    }
+  ],
+  "notes": []
+}
