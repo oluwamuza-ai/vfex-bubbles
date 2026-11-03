@@ -1,5 +1,17 @@
 [
   {
+    "ticker": "MEIK.ZW",
+    "title": "MEIK.zw EGM Results",
+    "date": "2026-11-03",
+    "url": "https://zseh-direct-uploads.s3.us-east-1.amazonaws.com/websites/6ae97bb488d3d_1793686452_MEIK.zw_EGM_Results.pdf"
+  },
+  {
+    "ticker": "MEIK.ZW",
+    "title": "MEIK.zw AGM Results",
+    "date": "2026-11-03",
+    "url": "https://zseh-direct-uploads.s3.us-east-1.amazonaws.com/websites/6ae97b99255cb_1793686425_MEIK.zw_AGM_Results.pdf"
+  },
+  {
     "ticker": "INV.VX",
     "title": "INV.vx Notice to Shareholders - Petroleum Production Sharing Agreement Gazettal",
     "date": "2026-11-02",
@@ -114,16 +126,16 @@
     "url": "https://zseh-direct-uploads.s3.amazonaws.com/websites/6a465be3cff5b_1782995939_ZSEHL_AGM_Results-2025.pdf"
   },
   {
-    "ticker": "DZL.ZW",
-    "title": "DZL.zw Cautionary Statement",
-    "date": "2026-06-24",
-    "url": "https://zseh-direct-uploads.s3.amazonaws.com/websites/6a3bdf944d9fe_1782308756_DZL.zw_Cautionary_Statement.pdf"
-  },
-  {
     "ticker": "MEIK.ZW",
     "title": "MEIK.zw Further Cautionary Statement",
     "date": "2026-06-24",
     "url": "https://zseh-direct-uploads.s3.amazonaws.com/websites/6a3b7bd79c599_1782283223_MEIK.zw_Further_Cautionary_Statement.pdf"
+  },
+  {
+    "ticker": "DZL.ZW",
+    "title": "DZL.zw Cautionary Statement",
+    "date": "2026-06-24",
+    "url": "https://zseh-direct-uploads.s3.amazonaws.com/websites/6a3bdf944d9fe_1782308756_DZL.zw_Cautionary_Statement.pdf"
   },
   {
     "ticker": "ZSEH.ZW",

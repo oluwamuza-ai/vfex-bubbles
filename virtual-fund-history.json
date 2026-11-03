@@ -2,15 +2,15 @@
   {
     "date": "2026-11-03",
     "market": "VFEX",
-    "value": 495.05,
+    "value": 481.82,
     "cash": 0,
-    "holdingsValue": 495.05
+    "holdingsValue": 481.82
   },
   {
     "date": "2026-11-03",
     "market": "ZSE",
-    "value": 19801.98,
+    "value": 19175.59,
     "cash": 0,
-    "holdingsValue": 19801.98
+    "holdingsValue": 19175.59
   }
 ]
