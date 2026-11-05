@@ -181,5 +181,10 @@
       "market": "ZSE"
     }
   ],
-  "notes": []
+  "notes": [
+    {
+      "date": "2026-11-05",
+      "text": "Reviewed today's closing prices (vfex-data.json/zse-data.json) and the full announcements.json feed before deciding on trades. No trades made in either fund.\n\nVFEX: Broad-based decline across almost the whole board — AXIA.VX -11.97% to $0.1566, INN.VX -10.47% to $1.5255, INV.VX -16.77%, FCA.VX -4.38%, SCIL.VX -4.01%, TSL.VX -5.33%, with only KAV.VX (+0.5%) up. All five current holdings (INN.VX, AXIA.VX, PHL.VX, CMCL.VX, SIM.VX) fell today. Checked announcements.json for anything dated 2026-10-29 through 2026-11-05 touching these tickers: the only recent items are MEIK.ZW AGM/EGM results (2026-11-03, not VFEX/not held) and INV.VX notices (2026-10-29/11-02, not held). Nothing company-specific explains the AXIA/INN/PHL/CMCL/SIM moves, so this reads as a market-wide/index-level repricing rather than stock-specific news. Selling into an unexplained, board-wide move with no confirming announcement would be reactive, not reasoned, so all five VFEX positions are held unchanged. Each is 18-23% of fund value, within the 30% maxPositionPct cap. VFEX total value: $465.72.\n\nZSE: Moves were more mixed/idiosyncratic — FML.ZW -14.21% to ZWG3.002584 (held; third straight down session, 4.202948 on 11-02 → 3.95 → 3.50 → 3.002584 on 11-05, a cumulative -28.5% slide since purchase), ARIS.ZW -11.75% and FBC.ZW -10.39% (neither held), against FIDL.ZW +7.53% and NMB.ZW +4.46% (neither held). announcements.json has zero items for FML.ZW, ARIS.ZW, FBC.ZW, FIDL.ZW or NMB.ZW in the entire feed — no citable company news behind any of these moves, consistent with thin-liquidity swings (HIPO.ZW, BAT.ZW, MASH.ZW were flat/near-unchanged today). FML.ZW's slide is the most concerning single position (now 16.1% of fund value, well under the 30% cap) but without a specific announcement or more than one volatile week of history, trimming it today would be a reactive sell into an unexplained drop. Holding all five ZSE positions unchanged (HIPO.ZW, BAT.ZW, FML.ZW, MASH.ZW, SEED.ZW); will revisit FML.ZW if the decline continues or an announcement surfaces. ZSE total value: ZWG17,750.20."
+    }
+  ]
 }
