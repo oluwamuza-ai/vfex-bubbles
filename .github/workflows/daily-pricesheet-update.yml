@@ -61,13 +61,17 @@ jobs:
       - name: Fetch and parse MMC's price sheet PDF (backup, no-ops if already covered)
         run: node daily-update.mjs
 
-      - name: Rebalance and snapshot the virtual paper-trading fund
-        # Must run after the price-data steps above — it reads today's
-        # closing prices to rank candidates and mark positions to market.
-        # Private feature (gated by FUND_ACCESS_KEY server-side); runs in
-        # this same public workflow because it only touches local JSON
-        # files, no secrets involved.
-        run: node fund-rebalance.mjs
+      - name: Snapshot the virtual paper-trading fund's NAV
+        # Must run after the price-data steps above — marks current
+        # holdings to today's close. Deterministic, no trading logic: the
+        # actual buy/sell decisions come from a separate daily LLM agent
+        # (cloud routine) that reads news/financials and edits
+        # virtual-fund.json directly, on its own schedule. This step just
+        # guarantees a continuous NAV series even on a day the agent holds
+        # or hasn't run yet. Private feature (gated by FUND_ACCESS_KEY
+        # server-side); runs in this public workflow because it only
+        # touches local JSON files, no secrets involved.
+        run: node fund-snapshot.mjs
 
       - name: Commit and push if data changed
         run: |
