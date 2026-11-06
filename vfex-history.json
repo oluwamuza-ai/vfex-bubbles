@@ -20392,5 +20392,133 @@
     "marketCap": 31012243.74,
     "change": -0.44,
     "volume": 37001
+  },
+  {
+    "ticker": "AXIA.VX",
+    "date": "2026-11-06",
+    "closingPrice": 0.1619,
+    "marketCap": 91683868.65059999,
+    "change": 3.38,
+    "volume": 354
+  },
+  {
+    "ticker": "CMCL.VX",
+    "date": "2026-11-06",
+    "closingPrice": 35.25,
+    "marketCap": 681561534.75,
+    "change": -2.32,
+    "volume": 8
+  },
+  {
+    "ticker": "INFR.VX",
+    "date": "2026-11-06",
+    "closingPrice": 0.2262,
+    "marketCap": 676827316.5186,
+    "change": 1.34,
+    "volume": 83239
+  },
+  {
+    "ticker": "FCA.VX",
+    "date": "2026-11-06",
+    "closingPrice": 0.1647,
+    "marketCap": 356128492.50630003,
+    "change": 2.04,
+    "volume": 33157
+  },
+  {
+    "ticker": "INN.VX",
+    "date": "2026-11-06",
+    "closingPrice": 1.6159,
+    "marketCap": 930639550.555,
+    "change": 5.93,
+    "volume": 6566
+  },
+  {
+    "ticker": "INV.VX",
+    "date": "2026-11-06",
+    "closingPrice": 0.1282,
+    "marketCap": 23379227.2294,
+    "change": 4.14,
+    "volume": 1691
+  },
+  {
+    "ticker": "KARO.VX",
+    "date": "2026-11-06",
+    "closingPrice": 100,
+    "marketCap": 0,
+    "change": 0,
+    "volume": 0
+  },
+  {
+    "ticker": "KAV.VX",
+    "date": "2026-11-06",
+    "closingPrice": 0.021,
+    "marketCap": 95729163.99900001,
+    "change": 4.48,
+    "volume": 2967
+  },
+  {
+    "ticker": "NED.VX",
+    "date": "2026-11-06",
+    "closingPrice": 17,
+    "marketCap": 2741641,
+    "change": 6.25,
+    "volume": 9
+  },
+  {
+    "ticker": "OLD.VX",
+    "date": "2026-11-06",
+    "closingPrice": 0.8899,
+    "marketCap": 4002803376.3619003,
+    "change": -0.34,
+    "volume": 56885
+  },
+  {
+    "ticker": "PHL.VX",
+    "date": "2026-11-06",
+    "closingPrice": 1.5947,
+    "marketCap": 1283877742.2097,
+    "change": -0.3,
+    "volume": 741
+  },
+  {
+    "ticker": "SCIL.VX",
+    "date": "2026-11-06",
+    "closingPrice": 0.3823,
+    "marketCap": 150790477.7507,
+    "change": 4.37,
+    "volume": 586
+  },
+  {
+    "ticker": "SIM.VX",
+    "date": "2026-11-06",
+    "closingPrice": 0.7007,
+    "marketCap": 393922880.9516,
+    "change": 7.39,
+    "volume": 691
+  },
+  {
+    "ticker": "TSL.VX",
+    "date": "2026-11-06",
+    "closingPrice": 0.222,
+    "marketCap": 80924779.77,
+    "change": -2.29,
+    "volume": 153
+  },
+  {
+    "ticker": "WPHL.VX",
+    "date": "2026-11-06",
+    "closingPrice": 0.2383,
+    "marketCap": 238300000,
+    "change": 0,
+    "volume": 0
+  },
+  {
+    "ticker": "ZIMPL.VX",
+    "date": "2026-11-06",
+    "closingPrice": 0.0902,
+    "marketCap": 31081159.8372,
+    "change": 0.22,
+    "volume": 4180
   }
 ]
