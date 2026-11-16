@@ -42,7 +42,7 @@
     "ZSE": {
       "currency": "ZWG",
       "startingCash": 20000,
-      "cash": 38.33530830999234,
+      "cash": 0,
       "holdings": [
         {
           "ticker": "BAT.ZW",
@@ -73,10 +73,16 @@
           "name": "Cbz Holdings Limited",
           "shares": 94.0613436042723,
           "avgCost": 29.999382
+        },
+        {
+          "ticker": "PROL.ZW",
+          "name": "Proplastics Limited",
+          "shares": 32.875158116354896,
+          "avgCost": 1.154542
         }
       ],
       "startDate": "2026-11-03",
-      "lastRebalanceDate": "2026-11-03"
+      "lastRebalanceDate": "2026-11-16"
     }
   },
   "transactions": [
@@ -199,9 +205,23 @@
       "reason": "CBZ.zw Q3 2026 Trading Update (announcements.json, 2026-11-12): customer deposits +53.8% YTD to ZWG42.69bn, net loans and advances +54.5% to ZWG15.73bn, total assets +38.0% to ZWG56.77bn, profit after tax +0.9% to ZWG1.12bn, total income +8.7%, funds under management +55.5% to ZWG14.41bn, GWP +36.4%. Directors confirmed going-concern and all subsidiaries capitalised above regulatory minimums. Price was still flat at 29.999382 on today's data (unchanged for 4 sessions), but volume jumped to 29,600 shares today from zero on each of the prior 4 sessions -- the market has not yet repriced this result into the stock, so this is a genuine, pre-move entry on a concrete, positive set of financial results rather than a chase of an existing move.",
       "date": "2026-11-12",
       "market": "ZSE"
+    },
+    {
+      "action": "buy",
+      "ticker": "PROL.ZW",
+      "shares": 32.875158116354896,
+      "price": 1.154542,
+      "fee": 0.37955750801972615,
+      "reason": "PROL.zw (Proplastics) Q3 2026 Trading Update (announcements.json, 2026-11-15; PDF text extracted via pdftotext after WebFetch could not parse the binary stream): sales volumes +16% YoY to 6,295 tons, revenue +17% YoY to $19.5m, production volumes +20% YoY to 6,877 tons, raw material supply stable, outlook explicitly positive on continued capacity investment and monetary/power stability -- a broad-based, unambiguously positive update with no offsetting negative metric. Price has sat flat at 1.154542 with zero volume for 6 straight sessions (11-09 through 11-16), so the market has not yet traded on this result at all -- a genuine pre-move entry rather than a chase, same pattern as the CBZ.ZW buy on 2026-11-12. Deployed the ZSE fund's full idle cash balance (ZWG38.34, otherwise sitting unused since 11-06) into this position; resulting size is ~0.2% of fund value, trivial relative to the 30% cap.",
+      "date": "2026-11-16",
+      "market": "ZSE"
     }
   ],
   "notes": [
+    {
+      "date": "2026-11-16",
+      "text": "Data pipeline had resumed (first fresh prices since 2026-11-13; vfex-data.json/zse-data.json/announcements.json all refreshed, and git history shows multiple commits between 11-13 and today). Reviewed all announcements dated since 11-13 and today's closing prices/volumes against recent history before deciding on trades.\n\nAnnouncements since 11-13: PROL.zw (Proplastics) Q3 2026 Trading Update (11-15), MSHL.zw (Masimba Holdings) Q3 Trading Update (11-13), ZSEH.zw (ZSE Holdings itself) Q3 2026 Trading Update (11-13). None of these three tickers were held by either fund. Opened all three PDFs with WebFetch; the direct fetch couldn't parse PROL's and MSHL's binary PDF streams, so re-fetched and ran pdftotext on the saved files (ZSEH's PDF text extracted cleanly on the first WebFetch).\n\nPROL.ZW: unambiguously positive across every metric -- sales volumes +16% YoY to 6,295 tons, revenue +17% YoY to $19.5m, production volumes +20% YoY to 6,877 tons, stable raw material supply, explicitly positive outlook on capacity investment and monetary/power stability, no negative line anywhere. Price has been completely flat at 1.154542 on zero volume for 6 straight sessions (11-09 through today) -- the market has not traded this at all yet, a clean pre-move setup like CBZ.ZW on 11-12. Bought using the ZSE fund's full idle cash (ZWG38.34, sitting unused since the 11-06 HIPO.ZW sale) -- 32.8752 shares at 1.154542, fee ZWG0.38, leaving ZWG0 cash. Resulting position is ~0.2% of ZSE fund value, trivial size but a real, citable, broad-based result.\n\nMSHL.ZW: mixed -- quarterly revenue +15% YoY to $19.4m, but YTD revenue still -3% and YTD profit after tax -14% below prior year; balance sheet strong (total assets +19%, net assets +11%, low leverage) and outlook upbeat, but the profit decline is a real negative that PROL.ZW didn't have. Price flat at 2.6 on near-zero volume. Passed on this one in favor of PROL.ZW's cleaner read -- no cash left to buy both regardless.\n\nZSEH.ZW: Q3 group turnover +145% YoY, but the report itself flags that ex-one CBZ block trade (21 Aug) growth was only +39%; trading volumes actually fell 55% YoY despite the quarter-on-quarter bounce; VFEX turnover -57% QoQ; listing base shrank from 66 to 64. Mixed-to-negative once the one-off trade is stripped out, no clean buy case, and price is flat on thin volume anyway -- not bought.\n\nZSE holdings (existing, no action beyond the PROL.ZW buy): FML.ZW +13.58% to ZWG4.10 on real, large volume (136,500 shares, its biggest print in weeks) -- a genuine move, but no FML.ZW-specific announcement in the feed, so per this fund's established practice of requiring news (not price action alone) to add to a position, held unchanged; now just under avg cost (4.202948). CBZ.ZW flat at ZWG30.00 on zero volume, no new news beyond the already-acted-on 11-12 update -- held. BAT.ZW flat at ZWG220 (down from the long-standing 228.2505 print a few days ago but zero volume today, illiquid) -- held. MASH.ZW and SEED.ZW both essentially flat on thin volume -- held. ZSE total value: ZWG17,966.01 (cash ZWG0, holdings ZWG17,966.01), all six positions well under the 30% cap (largest is FML.ZW at ~21.7%).\n\nNon-held ZSE tickers with large moves: HIPO.ZW (sold 11-06 on a confirmed downtrend) has now rallied for 3 straight real-volume sessions (+14.95% on 11-12, +6.35% on 11-13, +12.24% today on 181,700 shares) back up to 12.486241, essentially round-tripping the level it was sold at -- a genuine reversal, but with zero HIPO.ZW-specific announcement anywhere in the feed, re-buying on price action alone would be chasing exactly the kind of signal this fund has consistently declined to act on without news; flagged but not re-bought. TNCI.ZW traded a very heavy 301,100 shares with almost no price change (+0.03%) -- a liquidity event, not a signal, not acted on.\n\nVFEX: fund holds zero cash (fully invested), so no buys were possible regardless of signal strength; evaluated for completeness. CMCL.VX gained 14.6% to $37.6668 on real, accelerating volume (3,524 shares on 11-13, 12,106 today) -- a genuine 2-session reversal of the prior 6-session decline, now back above its $34.1469 avg cost. No CMCL.VX-specific announcement exists in the feed (gold price moves aren't separately tracked here), so this is a price/volume-only signal; consistent with how this fund has always required news (not momentum alone) to add to a position, and with zero cash available to fund a buy without selling another holding, held unchanged -- flagged as the most notable position to watch. INN.VX bounced 6.95% to $1.561 but on thin volume (223 shares), inconclusive. PHL.VX fell 5.91% to $1.5012 on real volume (111,483 shares) but remains within its recent 1.50-1.66 range rather than breaking to a fresh low -- held. AXIA.VX -3.35% on thin volume (3,247 shares), SIM.VX +1.46% on moderate volume (17,114 shares) -- neither actionable. VFEX total value: $476.16 (no cash), all five positions 18.7%-23.2% of fund value, within the 30% cap.\n\nNon-held VFEX tickers: SCIL.VX +10.66% and ZIMPL.VX -19.74% both on real volume, KAV.VX -5.07% -- none have a supporting announcement in the feed, and VFEX has no cash to deploy into a new position regardless."
+    },
     {
       "date": "2026-11-13",
       "text": "No trades made in either fund -- the daily data pipeline did not refresh today's inputs. Verified via git history: vfex-data.json, zse-data.json and announcements.json were all last changed by the '2026-11-12' price-sheet commit (87a055c); today's '2026-11-13' price-sheet commit (8884a77) touched only virtual-fund-history.json, adding a NAV row that is byte-identical to 2026-11-12's (VFEX $461.49, ZSE ZWG17,626.64) because fund-snapshot.mjs marked to the same stale, unrefreshed closing prices. Cross-checked announcements.json directly: the most recent dated item in the whole feed is still CBZ.ZW's Q3 2026 Trading Update dated 2026-11-12, which was already read and acted on yesterday (bought CBZ.ZW) -- there is zero new announcement and zero new price/volume data to evaluate today. Trading again off literally the same information already acted on yesterday would not be a reasoned decision, so both funds are held unchanged: VFEX (INN.VX, AXIA.VX, PHL.VX, CMCL.VX, SIM.VX, no cash) and ZSE (BAT.ZW, FML.ZW, MASH.ZW, SEED.ZW, CBZ.ZW, ZWG38.34 cash). Flagging this as a pipeline issue to revisit once fresh data lands -- not a market observation."
