@@ -1,5 +1,11 @@
 [
   {
+    "ticker": "MEIK.ZW",
+    "title": "MEIK.zw | Cautionary Statement",
+    "date": "2026-11-20",
+    "url": "https://zseh-direct-uploads.s3.us-east-1.amazonaws.com/websites/6afff2c2ad3a6_1795158722_MEIK.zw_Cautionary_Statement_-_20.11.26.pdf"
+  },
+  {
     "ticker": "PROL.ZW",
     "title": "PROL.zw | Q3 2026 Trading Update",
     "date": "2026-11-15",
@@ -186,16 +192,16 @@
     "url": "https://zseh-direct-uploads.s3.amazonaws.com/websites/6a228673160b6_1780647539_ZSEH.zw_AGM_Notice_%26_Proxy_Form.pdf"
   },
   {
-    "ticker": "RIOZ.ZW",
-    "title": "RIOZ.zw FY25 Financial Results & Audit Opinion",
-    "date": "2026-06-02",
-    "url": "https://zseh-direct-uploads.s3.amazonaws.com/websites/6a1e89c775eb8_1780386247_RIOZ.zw_FY25_Financial_Results_%26_Audit_Opinion.pdf"
-  },
-  {
     "ticker": "MEIK.ZW",
     "title": "MEIK.zw Cautionary Statement",
     "date": "2026-06-02",
     "url": "https://zseh-direct-uploads.s3.amazonaws.com/websites/6a1e7977296a1_1780382071_MEIK.zw_Cautionary_Statement.pdf"
+  },
+  {
+    "ticker": "RIOZ.ZW",
+    "title": "RIOZ.zw FY25 Financial Results & Audit Opinion",
+    "date": "2026-06-02",
+    "url": "https://zseh-direct-uploads.s3.amazonaws.com/websites/6a1e89c775eb8_1780386247_RIOZ.zw_FY25_Financial_Results_%26_Audit_Opinion.pdf"
   },
   {
     "ticker": "INV.VX",
