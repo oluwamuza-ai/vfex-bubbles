@@ -222,5 +222,19 @@
     "value": 18627.74,
     "cash": 0,
     "holdingsValue": 18627.74
+  },
+  {
+    "date": "2026-11-25",
+    "market": "VFEX",
+    "value": 422.86,
+    "cash": 0,
+    "holdingsValue": 422.86
+  },
+  {
+    "date": "2026-11-25",
+    "market": "ZSE",
+    "value": 18903.77,
+    "cash": 0,
+    "holdingsValue": 18903.77
   }
 ]
