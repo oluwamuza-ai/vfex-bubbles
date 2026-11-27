@@ -7,7 +7,7 @@
     "marketCap": 5130000,
     "currency": "ZWG",
     "estimated": true,
-    "volume": 0,
+    "volume": 16500,
     "instrumentType": "ETF",
     "market": "ZSE"
   },
@@ -31,7 +31,7 @@
     "marketCap": 0,
     "currency": "ZWG",
     "estimated": true,
-    "volume": 0,
+    "volume": 1000,
     "instrumentType": "ETF",
     "market": "ZSE"
   },
@@ -55,19 +55,19 @@
     "marketCap": 736652488,
     "currency": "ZWG",
     "estimated": false,
-    "volume": 32,
+    "volume": 0,
     "instrumentType": "REIT",
     "market": "ZSE"
   },
   {
     "ticker": "TIGER.REIT",
     "name": "Tigere Real Estate Investment Trust",
-    "change": -0.61,
-    "closingPrice": 1.095351,
-    "marketCap": 2047693991.0210788,
+    "change": -1.27,
+    "closingPrice": 1.081403,
+    "marketCap": 2021619028.9433868,
     "currency": "ZWG",
     "estimated": false,
-    "volume": 123995,
+    "volume": 18090,
     "instrumentType": "REIT",
     "market": "ZSE"
   },
@@ -79,7 +79,7 @@
     "marketCap": 54485550,
     "currency": "USD",
     "estimated": false,
-    "volume": 255,
+    "volume": 27,
     "instrumentType": "REIT",
     "market": "VFEX"
   },
@@ -91,19 +91,19 @@
     "marketCap": 9227594.64,
     "currency": "USD",
     "estimated": false,
-    "volume": 251,
+    "volume": 1270,
     "instrumentType": "ETF",
     "market": "VFEX"
   },
   {
     "ticker": "PFUMA.REIT",
     "name": "Pfuma Fund Real Estate Investment Trust",
-    "change": -1.07,
-    "closingPrice": 0.1485,
-    "marketCap": 80301634.875,
+    "change": 1.01,
+    "closingPrice": 0.15,
+    "marketCap": 81112762.5,
     "currency": "USD",
     "estimated": false,
-    "volume": 2349,
+    "volume": 365,
     "instrumentType": "REIT",
     "market": "VFEX"
   }
